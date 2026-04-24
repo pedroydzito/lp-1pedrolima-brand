@@ -1,0 +1,70 @@
+.elementor-kit-10{--e-global-color-primary:#CFFA53;--e-global-color-secondary:#5BDF7B;--e-global-color-text:#060312;--e-global-color-accent:#F5F5F5;--e-global-color-ff76ca0:#A9E207;--e-global-color-b2ece2b:#27CE50;--e-global-typography-primary-font-family:"Circular Std";--e-global-typography-primary-font-weight:400;--e-global-typography-secondary-font-family:"Circular Std";--e-global-typography-secondary-font-weight:400;--e-global-typography-text-font-family:"Circular Std";--e-global-typography-text-font-weight:400;--e-global-typography-accent-font-family:"Circular Std";--e-global-typography-accent-font-weight:500;background-color:#060312;}.elementor-kit-10 button,.elementor-kit-10 input[type="button"],.elementor-kit-10 input[type="submit"],.elementor-kit-10 .elementor-button{background-color:#CFFA53;font-family:"Circular Std", Sans-serif;color:var( --e-global-color-text );border-radius:100px 100px 100px 100px;}.elementor-kit-10 button:hover,.elementor-kit-10 button:focus,.elementor-kit-10 input[type="button"]:hover,.elementor-kit-10 input[type="button"]:focus,.elementor-kit-10 input[type="submit"]:hover,.elementor-kit-10 input[type="submit"]:focus,.elementor-kit-10 .elementor-button:hover,.elementor-kit-10 .elementor-button:focus{background-color:var( --e-global-color-text );color:#FFFFFF;}.elementor-kit-10 e-page-transition{background-color:#FFBC7D;}.elementor-kit-10 h1{font-size:80px;font-weight:700;line-height:72px;}.elementor-kit-10 h2{font-size:70px;}.elementor-section.elementor-section-boxed > .elementor-container{max-width:1440px;}.e-con{--container-max-width:1440px;--container-default-padding-top:0px;--container-default-padding-right:0px;--container-default-padding-bottom:0px;--container-default-padding-left:0px;}.elementor-widget:not(:last-child){--kit-widget-spacing:20px;}.elementor-element{--widgets-spacing:20px 20px;--widgets-spacing-row:20px;--widgets-spacing-column:20px;}{}h1.entry-title{display:var(--page-title-display);}.elementor-lightbox{background-color:#000000E6;}@media(max-width:1024px){.elementor-kit-10 h1{font-size:56px;line-height:54px;}.elementor-kit-10 h2{font-size:42px;}.elementor-section.elementor-section-boxed > .elementor-container{max-width:1024px;}.e-con{--container-max-width:1024px;}}@media(max-width:767px){.elementor-kit-10{font-size:13px;}.elementor-kit-10 h1{font-size:32px;line-height:30px;}.elementor-kit-10 h2{font-size:24px;}.elementor-section.elementor-section-boxed > .elementor-container{max-width:767px;}.e-con{--container-max-width:767px;}}/* Start custom CSS *//*Degradês*/
+.degrade-lima-claro {
+    background: linear-gradient(75deg, #CFFA53, #5BDF7B);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.degrade-lima-escuro {
+    background: linear-gradient(75deg, #A9E207, #27CE50);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;/* End custom CSS */
+/* Start Custom Fonts CSS */@font-face {
+	font-family: 'Circular Std';
+	font-style: normal;
+	font-weight: normal;
+	font-display: auto;
+	src: url('https://1pedrolima.com/wp-content/uploads/2025/10/CircularStd-Book.ttf') format('truetype');
+}
+@font-face {
+	font-family: 'Circular Std';
+	font-style: italic;
+	font-weight: normal;
+	font-display: auto;
+	src: url('https://1pedrolima.com/wp-content/uploads/2025/10/CircularStd-BookItalic.ttf') format('truetype');
+}
+@font-face {
+	font-family: 'Circular Std';
+	font-style: normal;
+	font-weight: bold;
+	font-display: auto;
+	src: url('https://1pedrolima.com/wp-content/uploads/2025/10/CircularStd-Bold.ttf') format('truetype');
+}
+@font-face {
+	font-family: 'Circular Std';
+	font-style: italic;
+	font-weight: bold;
+	font-display: auto;
+	src: url('https://1pedrolima.com/wp-content/uploads/2025/10/CircularStd-BoldItalic.ttf') format('truetype');
+}
+@font-face {
+	font-family: 'Circular Std';
+	font-style: normal;
+	font-weight: 900;
+	font-display: auto;
+	src: url('https://1pedrolima.com/wp-content/uploads/2025/10/CircularStd-Black.ttf') format('truetype');
+}
+@font-face {
+	font-family: 'Circular Std';
+	font-style: italic;
+	font-weight: 900;
+	font-display: auto;
+	src: url('https://1pedrolima.com/wp-content/uploads/2025/10/CircularStd-BlackItalic.ttf') format('truetype');
+}
+@font-face {
+	font-family: 'Circular Std';
+	font-style: normal;
+	font-weight: 500;
+	font-display: auto;
+	src: url('https://1pedrolima.com/wp-content/uploads/2025/10/CircularStd-Medium.ttf') format('truetype');
+}
+@font-face {
+	font-family: 'Circular Std';
+	font-style: italic;
+	font-weight: 500;
+	font-display: auto;
+	src: url('https://1pedrolima.com/wp-content/uploads/2025/10/CircularStd-MediumItalic.ttf') format('truetype');
+}
+/* End Custom Fonts CSS */
