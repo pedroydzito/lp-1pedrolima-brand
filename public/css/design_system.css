@@ -14,22 +14,290 @@
     --lima-light-card: #f6f6f6;
 }
 
-/* 
-  Fix Player Icons using Bootstrap Icons 
-*/
+@font-face {
+    font-family: 'CircularStd';
+    src: url('../assets/Fontes/CircularStd-Book.ttf') format('truetype');
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'CircularStd';
+    src: url('../assets/Fontes/CircularStd-Medium.ttf') format('truetype');
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: 'CircularStd';
+    src: url('../assets/Fontes/CircularStd-Bold.ttf') format('truetype');
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: 'CircularStd';
+    src: url('../assets/Fontes/CircularStd-Black.ttf') format('truetype');
+    font-weight: 900;
+}
+
+:root {
+    --e-global-typography-primary-font-family: "CircularStd", sans-serif !important;
+    --e-global-typography-secondary-font-family: "CircularStd", sans-serif !important;
+    --e-global-typography-text-font-family: "CircularStd", sans-serif !important;
+    --e-global-typography-accent-font-family: "CircularStd", sans-serif !important;
+    --e-global-typography-primary-font-weight: 700 !important;
+}
+
+body,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+a,
+span,
+li,
+button,
+input,
+textarea,
+.elementor-heading-title,
+.elementor-text-editor,
+.elementor-button,
+.elementor-widget-text-editor,
+.lima-tag {
+    font-family: "CircularStd", sans-serif !important;
+}
+
+h1,
+h1.elementor-heading-title {
+    letter-spacing: -2px !important;
+    /* Tightening for that premium look */
+}
+
+h2.elementor-heading-title {
+    letter-spacing: -1px !important;
+}
+
+/* Secondary Texts Hierarchy */
+.elementor-element-2b53e17 .elementor-heading-title,
+p.elementor-heading-title {
+    color: #0F172BBF !important;
+    /* Muted Dark Blue - 75% opacity */
+    font-weight: 400 !important;
+}
+
+#contatos .elementor-element-91e1a36 .elementor-heading-title,
+#contatos .elementor-widget-text-editor,
+#contatos p.elementor-heading-title {
+    color: #FFFFFFBF !important;
+    /* Muted White */
+    font-weight: 400 !important;
+}
+
+.elementor-widget-text-editor {
+    color: #0F172BBF !important;
+}
+
+/* Fix Player Icons using Bootstrap Icons */
+.srp_player_boxed {
+    background-color: #f6f6f6 !important;
+    border-radius: 12px;
+    /* Smooth corners for the player box */
+}
+
+.sricon-play::before,
+.srp-play-button.pause .sricon-play::before,
+.play.pause .sricon-play::before,
+.sricon-pause::before,
+.audio-playing .sricon-play::before,
+.audio-playing .srp-play-button .sricon-play::before,
+.is-playing .sricon-play::before,
+.srp_playing .sricon-play::before {
+    font-family: "bootstrap-icons" !important;
+}
+
 .sricon-play::before {
     content: "\F4F4" !important;
-    font-family: "bootstrap-icons" !important;
 }
 
-.sricon-pause::before {
-    content: "\F4DB" !important;
-    font-family: "bootstrap-icons" !important;
+/* Sonaar player adds classes when playing */
+.srp-play-button.pause .sricon-play::before,
+.play.pause .sricon-play::before,
+.sricon-pause::before,
+.audio-playing .sricon-play::before,
+.audio-playing .srp-play-button .sricon-play::before,
+.is-playing .sricon-play::before,
+.srp_playing .sricon-play::before,
+.srp_current.srp_playing_now .sricon-play::before,
+.srp-play-button[data-status="play"] .sricon-play::before,
+.srp_player_boxed[data-status="play"] .sricon-play::before {
+    content: "\F4C3" !important;
+    /* pause-fill */
 }
 
-/* Fix elementor single images not occupying 100% */
-.elementor-widget-image img {
+/* 1. Remove o limite de largura apenas dos contêineres de imagem de projeto, ignorando os logos que estão em header/footer */
+.e-con-full:not(#inicio):not(#projetos):not(#contatos) .elementor-widget-image {
+    max-width: 100% !important;
     width: 100% !important;
+}
+
+/* 2. Garante alinhamento central em TODOS os cabeçalhos e rodapés "Boxed" */
+.e-con-boxed>.e-con-inner {
+    max-width: var(--e-con-inner-width, 1140px) !important;
+    margin-right: auto !important;
+    margin-left: auto !important;
+}
+
+/* 3. Força as imagens de projeto a ocuparem o espaço, mas ignora os SVGs das logos */
+.e-con-full:not(#inicio):not(#projetos):not(#contatos) .elementor-widget-image img:not([src$=".svg"]),
+.e-con-full:not(#inicio):not(#projetos):not(#contatos) .elementor-widget-image a:not(:has(img[src$=".svg"])) {
+    width: 100% !important;
+    max-width: 100% !important;
+    display: block !important;
+    height: auto !important;
+}
+
+
+/* Hero Parallax Layers */
+.lima-hero-parallax {
+    position: relative;
+    width: 100%;
+    display: block;
+    overflow: visible;
+    /* Permite que o LIMA passe dos limites do card se necessário */
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.lima-hero-parallax .layer-mid {
+    position: relative;
+    width: 104%;
+    left: -2%;
+    /* Zoom suave o suficiente apenas para não cortar com a nova velocidade */
+    margin-top: -2%;
+    margin-bottom: -2%;
+    height: auto;
+    z-index: 2;
+    display: block;
+    will-change: transform;
+    transition: transform 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+    /* Movimento extremamente suave / floating */
+}
+
+.lima-hero-parallax .layer-back {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 100%;
+    /* Largura original restaurada */
+    height: max-content;
+    will-change: transform;
+    z-index: 1;
+    transition: transform 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.lima-hero-parallax .layer-front {
+    position: absolute;
+    top: calc(24% - 10px);
+    right: calc(20% + 30px);
+    /* Trazido 30px para a esquerda */
+    width: auto !important;
+    height: 110px !important;
+    /* +1.5x Tamanho */
+    will-change: transform;
+    z-index: 3;
+    transition: transform 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Garante que o LIMA do parallax não vaze por baixo do degradê dos projetos e que o hover dos projetos não seja cortado */
+/* Section do Hero / Parallax (Targeting the parent container directly) */
+#inicio {
+    position: relative;
+    z-index: 1 !important;
+    background-image: none !important;
+    /* Desabilita o estático do Elementor */
+    overflow: hidden !important;
+    /* Evita que o fundo vazado apareça fora da seção */
+}
+
+.layer-bg {
+    position: absolute;
+    top: -2%;
+    left: -2%;
+    width: 104%;
+    height: 104%;
+    background: url('../assets/Card1-background.jpg') center/cover no-repeat;
+    z-index: 0;
+    will-change: transform;
+    transition: transform 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Section de Título (Projetos Selecionados) */
+#projetos {
+    position: relative;
+    z-index: 10 !important;
+    /* Aumentado para garantir sobreposição */
+    background-color: #ffffff !important;
+}
+
+/* Section da Galeria de Projetos (Home) */
+.elementor-element-e6e0690 {
+    position: relative;
+    z-index: 20 !important;
+    /* Ainda maior que o título para o hover */
+    overflow: visible !important;
+}
+
+.elementor-element-e6e0690 .e-con-inner,
+.elementor-element-e6e0690 .e-con-full {
+    overflow: visible !important;
+}
+
+/* Alinhamento dos Headers (Início, Cabeçalho Projetos e Rodapé) */
+#header-projeto>.e-con-inner,
+#inicio>.e-con-inner,
+#contatos>.e-con-inner {
+    max-width: var(--e-con-inner-width, 1140px) !important;
+    margin-right: auto !important;
+    margin-left: auto !important;
+}
+
+/* Lenis Smooth Scroll CSS */
+html.lenis,
+html.lenis body {
+    height: auto;
+}
+
+.lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+    overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+    pointer-events: none;
+}
+
+/* Mobile Fallback: Mostra estático e tira parallax */
+@media (max-width: 768px) {
+    .lima-hero-parallax {
+        display: none !important;
+    }
+
+    .lima-static-mobile {
+        display: block !important;
+    }
 }
 
 /* Tags in Code instead of Images */
@@ -63,6 +331,7 @@
     /* default border */
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     mask-composite: exclude;
     z-index: -1;
 }
@@ -70,8 +339,8 @@
 .lima-tag span {
     background: var(--lima-dark-gradient);
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
     background-clip: text;
+    -webkit-text-fill-color: transparent;
     color: transparent;
 }
 
@@ -83,5 +352,86 @@
 .lima-tag.light-theme span {
     background: var(--lima-light-gradient);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
+}
+
+/* =========================================================================
+   Interações e Micro-Animações (Hover)
+   ========================================================================= */
+
+/* Limite para transições nos link e botões globais da página (ignorando o que não precisa) */
+a:not(.parallax-layer),
+button,
+.elementor-button,
+.elementor-social-icon,
+.elementor-widget-image:not(.lima-hero-parallax-wrapper) a img {
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease, filter 0.4s ease, box-shadow 0.4s ease !important;
+}
+
+/* Hover nos Botões e Ícones Sociais */
+.elementor-button:hover,
+.elementor-button:focus,
+.elementor-social-icon:hover {
+    transform: translateY(-4px) scale(1.05) !important;
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5) !important;
+    /* Brilho neon leve / Sombra de elevação */
+}
+
+/* Hover Textos da Nav */
+.elementor-widget-text-editor a:hover {
+    opacity: 0.7 !important;
+    display: inline-block;
+    transform: translateY(-2px);
+}
+
+/* Hover Capas dos Projetos (Efeito de Elevação Luxuosa) */
+.elementor-element-e6e0690 .elementor-widget-image a img {
+    border-radius: 12px;
+    /* Garante cantos polidos */
+    transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.6s ease !important;
+}
+
+.elementor-element-e6e0690 .elementor-widget-image a img:hover {
+    transform: translateY(-12px) !important;
+    filter: contrast(1.05) brightness(1.03) !important;
+    box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.35) !important;
+}
+
+/* 
+   ============== LOGO FIX ============== 
+   Ignora a quebra do elemento quando envolto na tag <a href="/">
+*/
+.lima-logo-link {
+    display: inline-block !important;
+    /* Limita as bordas */
+    font-size: 0;
+    vertical-align: middle;
+}
+
+/* Respeita limites Mobile sem quebrar flex */
+.lima-logo-link img {
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+    display: block !important;
+    width: auto !important;
+}
+
+/* Expansão Sutil da Logo no Hover */
+.lima-logo-link:hover img {
+    transform: scale(1.08) !important;
+}
+
+/* =========================================================================
+   Sistema de Fade-In Reveal
+   ========================================================================= */
+.lima-fade-hidden {
+    opacity: 0 !important;
+    transform: translateY(25px) !important;
+    /* Começa 25px pra baixo */
+    transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.lima-fade-animate {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
 }
