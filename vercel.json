@@ -1,0 +1,9 @@
+{
+    "redirects": [
+        {
+            "source": "/brand",
+            "destination": "/",
+            "permanent": true
+        }
+    ]
+}
