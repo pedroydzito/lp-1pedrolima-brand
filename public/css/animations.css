@@ -1,0 +1,406 @@
+/* ================================================================
+   PEDRO LIMA — ANIMATIONS SYSTEM  v4
+   ================================================================ */
+
+
+/* ----------------------------------------------------------------
+   PAGE ENTRY — fade-in fluido (sem loader)
+   O JS seta opacity:0 no documentElement imediatamente e anima
+   para 1 assim que o DOM estiver pronto. O CSS abaixo garante
+   que a transição seja suave mesmo que o JS rode tarde.
+   ---------------------------------------------------------------- */
+
+
+
+
+/* ----------------------------------------------------------------
+   CURSOR PERSONALIZADO (estilo Cuberto)
+
+   REGRA CRÍTICA: nunca altere opacity no .lima-cursor (container).
+   opacity < 1 no container cria um "isolated compositing group",
+   o que quebra o mix-blend-mode: exclusion no filho.
+   Toda visibilidade é controlada APENAS em .lima-cursor__circle.
+
+   ADAPTAÇÃO CLARO/ESCURO:
+   mix-blend-mode: exclusion com background:#fff →
+     • Sobre fundo escuro  → cursor aparece BRANCO  ✓
+     • Sobre fundo claro   → cursor aparece ESCURO  ✓
+
+   Estado -explore (sobre cards e imagens de projeto):
+     mix-blend-mode: normal + background:#060312 → cursor ESCURO
+     (fundo da página é claro nessas seções)
+
+   Estado -explore-white (sobre imagens lightboxáveis em páginas de projeto):
+     mix-blend-mode: normal + background:#ffffff → cursor BRANCO
+     (garante visibilidade sobre qualquer conteúdo de imagem)
+   ---------------------------------------------------------------- */
+
+.lima-cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    pointer-events: none;
+    /* sem opacity, sem will-change — ambos quebrariam o mix-blend-mode */
+}
+
+.lima-cursor__circle {
+    position: absolute;
+    width: 88px;
+    height: 88px;
+    top: -44px;
+    left: -44px;
+    border-radius: 50%;
+    background: #ffffff;
+    mix-blend-mode: exclusion;
+    /* começa invisível via scale+opacity no próprio elemento */
+    opacity: 0;
+    transform: scale(0);
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+        opacity 0.5s ease;
+    will-change: transform, opacity;
+}
+
+/* Mouse na página — estado base (pequeno, blend exclusion, adaptativo) */
+.lima-cursor.-active .lima-cursor__circle {
+    opacity: 1;
+    transform: scale(0.1);
+}
+
+/* Em cima de links / botões */
+.lima-cursor.-active.-pointer .lima-cursor__circle {
+    transform: scale(0.26);
+}
+
+/* Mouse saiu da janela — fade + scale rápidos */
+.lima-cursor.-leaving .lima-cursor__circle {
+    opacity: 0;
+    transform: scale(0);
+    transition-duration: 0.12s;
+    transition-timing-function: ease-in;
+}
+
+/* Estado EXPLORAR / EXPANDIR → círculo BRANCO, sem blend-mode
+   Funciona sobre qualquer fundo (escuro ou claro dos cards e imagens) */
+.lima-cursor.-explore .lima-cursor__circle {
+    opacity: 1 !important;
+    transform: scale(1) !important;
+    mix-blend-mode: normal;
+    background: #ffffff;
+    transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+        opacity 0.3s ease,
+        background 0.3s ease;
+}
+
+
+/* Texto dentro do cursor */
+.lima-cursor__label {
+    position: absolute;
+    width: 88px;
+    height: 88px;
+    top: -44px;
+    left: -44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-family: "CircularStd", sans-serif;
+    opacity: 0;
+    transform: scale(0.3) rotate(12deg);
+    transition: opacity 0.35s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    user-select: none;
+    pointer-events: none;
+    /* Texto escuro sobre círculo branco */
+    color: #060312;
+}
+
+.lima-cursor.-explore .lima-cursor__label {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+}
+
+/* Em telas touch: esconde o cursor extra */
+@media (pointer: coarse) {
+    .lima-cursor {
+        display: none !important;
+    }
+}
+
+
+/* ----------------------------------------------------------------
+   BOTÃO — FILL DE BAIXO PARA CIMA (estilo Cuberto)
+   ---------------------------------------------------------------- */
+
+.elementor-button {
+    position: relative !important;
+    overflow: hidden !important;
+    isolation: isolate;
+}
+
+/* Conteúdo acima do fill */
+.elementor-button .elementor-button-content-wrapper {
+    position: relative;
+    z-index: 2;
+}
+
+/* O "fill" que sobe de baixo */
+.elementor-button::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(75deg, #CFFA53 0%, #5BDF7B 100%);
+    transform: translateY(102%);
+    transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+    border-radius: inherit;
+}
+
+.elementor-button:hover::after {
+    transform: translateY(0);
+}
+
+/* Cancela o background-image instantâneo do Elementor */
+.elementor-button:hover,
+.elementor-button:focus {
+    background-image: none !important;
+}
+
+
+/* ----------------------------------------------------------------
+   PROJETOS — REMOVER SCALE-UP DO ELEMENTOR, ADICIONAR SCALE-DOWN
+   ---------------------------------------------------------------- */
+
+/* Zera a variável que o Elementor usa para escalar no hover */
+.elementor-element-de4db98:hover,
+.elementor-element-0527fd5:hover,
+.elementor-element-8cb6563:hover,
+.elementor-element-69bea9d:hover,
+.elementor-element-fc0f3d6:hover,
+.elementor-element-4eaf10e:hover {
+    --e-transform-scale: 1 !important;
+    --e-transform-translateX: 0px !important;
+    --e-transform-translateY: 0px !important;
+}
+
+/* O card (link) em si não escala */
+.lima-project-card {
+    display: block;
+    overflow: hidden;
+    border-radius: inherit;
+}
+
+/* Wrapper das duas imagens do slideshow */
+.lima-slide-wrap {
+    display: block;
+    position: relative;
+    overflow: hidden;
+    border-radius: inherit;
+    transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+    /* Garante que o wrap sempre tenha altura mínima baseada na imagem */
+    line-height: 0;
+}
+
+/* Scale-down suave no hover — igual ao Cuberto */
+.lima-project-card:hover .lima-slide-wrap {
+    transform: scale(0.97);
+}
+
+/* Imagem base (layer A) — define a altura do wrap, always covers */
+.lima-slide-a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* zera qualquer transition do Elementor nessa imagem */
+    transition: none !important;
+    animation: none !important;
+    /* min-height para evitar colapso quando imagem é menor */
+    min-height: 100%;
+}
+
+/* Imagem de transição (layer B) — absoluta, sobre a A, sempre cobre */
+.lima-slide-b {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    z-index: 2;
+    /* usa animation, não transition — evita conflito com Elementor */
+    transition: none !important;
+}
+
+/* Animação de entrada: fade-in + leve zoom-out (efeito vídeo) */
+@keyframes lima-img-enter {
+    from {
+        opacity: 0;
+        transform: scale(1.06);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+/* ----------------------------------------------------------------
+   ANIMAÇÕES DE SCROLL — FADE + SLIDE UP
+   ---------------------------------------------------------------- */
+
+[data-lima-anim] {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+        transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+}
+
+[data-lima-anim].is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+[data-lima-anim][data-lima-delay="1"] {
+    transition-delay: 0.08s;
+}
+
+[data-lima-anim][data-lima-delay="2"] {
+    transition-delay: 0.16s;
+}
+
+[data-lima-anim][data-lima-delay="3"] {
+    transition-delay: 0.24s;
+}
+
+[data-lima-anim][data-lima-delay="4"] {
+    transition-delay: 0.32s;
+}
+
+[data-lima-anim][data-lima-delay="5"] {
+    transition-delay: 0.40s;
+}
+
+
+/* ----------------------------------------------------------------
+   HEADING ANIMATION — palavra por palavra (slide up)
+   Os delays são aplicados inline pelo JS — sem nth-child aqui.
+   ---------------------------------------------------------------- */
+
+.lima-word-wrap {
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: bottom;
+    line-height: inherit;
+}
+
+.lima-word {
+    display: inline-block;
+    transform: translateY(112%);
+    transition: transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform;
+}
+
+.lima-heading-anim.is-visible .lima-word {
+    transform: translateY(0);
+}
+
+
+/* ----------------------------------------------------------------
+   LINKS DE NAVEGAÇÃO — underline slide
+   ---------------------------------------------------------------- */
+
+.elementor-widget-text-editor a {
+    position: relative;
+}
+
+.elementor-widget-text-editor a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 0;
+    height: 1px;
+    background: currentColor;
+    transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.elementor-widget-text-editor a:hover::after {
+    width: 100%;
+}
+
+
+/* ----------------------------------------------------------------
+   LIGHTBOX
+   ---------------------------------------------------------------- */
+
+#lima-lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 99998;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.35s ease;
+}
+
+#lima-lightbox.-open {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.lima-lightbox__bg {
+    position: absolute;
+    inset: 0;
+    background: rgba(6, 3, 18, 0.92);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+}
+
+.lima-lightbox__img {
+    position: relative;
+    z-index: 1;
+    max-width: 90vw;
+    max-height: 88vh;
+    object-fit: contain;
+    border-radius: 6px;
+    transform: scale(0.94);
+    transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 32px 80px rgba(0, 0, 0, 0.6);
+}
+
+#lima-lightbox.-open .lima-lightbox__img {
+    transform: scale(1);
+}
+
+.lima-lightbox__close {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    z-index: 2;
+    width: 44px;
+    height: 44px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    color: #ffffff;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease;
+    line-height: 1;
+    font-family: sans-serif;
+}
+
+.lima-lightbox__close:hover {
+    background: rgba(255, 255, 255, 0.22);
+}
