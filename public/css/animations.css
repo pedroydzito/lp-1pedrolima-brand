@@ -223,19 +223,37 @@
     animation: none !important;
 }
 
-/* Imagem do slideshow (layer B) — absoluta, ocupa TODO o espaço do wrap */
+/* Imagem do slideshow (layer B) — absoluta, ocupa TODO o espaco do wrap.
+   IMPORTANTE: height/width precisam de !important para vencer o
+   "height: auto !important" aplicado pelo design_system.css em imgs de projeto. */
 .lima-slide-b {
     position: absolute;
     inset: 0;
-    width: 100%;
-    height: 100%;
-    /* cover + center: expande até preencher, sem distorcer */
-    object-fit: cover;
-    object-position: center;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center !important;
+    max-width: none !important;
     opacity: 0;
     z-index: 2;
     transition: none !important;
-    animation: none !important;
+    /* animation nao bloqueada — a classe .lima-playing ativa o zoom-out */
+}
+
+/* Zoom-out sutil ativado em cada troca de imagem */
+.lima-slide-b.lima-playing {
+    animation: lima-zoom-out 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+/* Keyframe: comeca um pouco mais proximo e recua ate o tamanho normal */
+@keyframes lima-zoom-out {
+    from {
+        transform: scale(1.06);
+    }
+
+    to {
+        transform: scale(1);
+    }
 }
 
 /* Animação de entrada: fade-in + leve zoom-out (efeito vídeo) */

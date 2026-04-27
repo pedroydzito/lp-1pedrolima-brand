@@ -218,6 +218,15 @@
             var startDelay = null;
             var currentIdx = 0;
 
+            /* Reinicia o zoom-out a cada troca de imagem */
+            function playSlide(src) {
+                imgB.classList.remove('lima-playing');
+                void imgB.offsetHeight; /* reflow para reiniciar a animacao */
+                imgB.src = src;
+                imgB.style.opacity = '1';
+                imgB.classList.add('lima-playing');
+            }
+
             link.addEventListener('mouseenter', function () {
                 /* Cursor — aparece imediato */
                 if (cursor) {
@@ -231,43 +240,26 @@
                     }
                 }
 
-                /* Slideshow só começa após 1s parado sobre o card */
+                /* Slideshow comeca apos 0.5s parado sobre o card */
                 startDelay = setTimeout(function () {
                     startDelay = null;
-
-                    /* Esconde thumb instantaneamente */
                     originalImg.style.transition = 'none';
                     originalImg.style.opacity = '0';
-
-                    /* Mostra primeira imagem */
                     currentIdx = 0;
                     imgB.style.transition = 'none';
-                    imgB.src = images[0];
-                    imgB.style.opacity = '1';
-
-                    /* Troca a cada 500ms */
+                    playSlide(images[0]);
                     slideInterval = setInterval(function () {
                         currentIdx = (currentIdx + 1) % images.length;
-                        imgB.src = images[currentIdx];
+                        playSlide(images[currentIdx]);
                     }, 500);
-                }, 1000);
+                }, 500);
             });
 
             link.addEventListener('mouseleave', function () {
-                /* Cancela o delay se ainda não começou */
-                if (startDelay) {
-                    clearTimeout(startDelay);
-                    startDelay = null;
-                }
-
-                /* Para o slideshow se já estava rodando */
-                if (slideInterval) {
-                    clearInterval(slideInterval);
-                    slideInterval = null;
-                }
+                if (startDelay) { clearTimeout(startDelay); startDelay = null; }
+                if (slideInterval) { clearInterval(slideInterval); slideInterval = null; }
                 currentIdx = 0;
 
-                /* Cursor */
                 if (cursor) {
                     cursor.classList.remove('-explore');
                     var circle = cursor.querySelector('.lima-cursor__circle');
@@ -279,7 +271,7 @@
                     }
                 }
 
-                /* Restaura thumb (só se slideshow chegou a rodar) */
+                imgB.classList.remove('lima-playing');
                 imgB.style.opacity = '0';
                 imgB.src = '';
                 originalImg.style.opacity = '1';
