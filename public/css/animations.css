@@ -51,20 +51,25 @@
     top: -44px;
     left: -44px;
     border-radius: 50%;
-    background: #ffffff;
-    mix-blend-mode: exclusion;
-    /* começa invisível via scale+opacity no próprio elemento */
+    /* Escuro por padrão (para fundos claros como a seção de projetos) */
+    background: #060312;
+    mix-blend-mode: normal;
     opacity: 0;
     transform: scale(0);
     transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
-        opacity 0.5s ease;
-    will-change: transform, opacity;
+        opacity 0.5s ease,
+        background 0.25s ease;
 }
 
-/* Mouse na página — estado base (pequeno, blend exclusion, adaptativo) */
+/* Mouse na página — estado base: ponto escuro pequeno (fundo claro) */
 .lima-cursor.-active .lima-cursor__circle {
     opacity: 1;
     transform: scale(0.1);
+}
+
+/* Em fundos escuros (hero, header, footer): ponto BRANCO */
+.lima-cursor.-active.-on-dark-bg .lima-cursor__circle {
+    background: #ffffff;
 }
 
 /* Em cima de links / botões */
@@ -80,17 +85,16 @@
     transition-timing-function: ease-in;
 }
 
-/* Estado EXPLORAR / EXPANDIR → círculo BRANCO, sem blend-mode
-   Funciona sobre qualquer fundo (escuro ou claro dos cards e imagens) */
+/* Estado EXPLORAR / EXPANDIR → círculo BRANCO 88px, blend desligado */
 .lima-cursor.-explore .lima-cursor__circle {
     opacity: 1 !important;
     transform: scale(1) !important;
-    mix-blend-mode: normal;
-    background: #ffffff;
+    background: #ffffff !important;
+    mix-blend-mode: normal !important;
     transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
-        opacity 0.3s ease,
-        background 0.3s ease;
+        opacity 0.3s ease;
 }
+
 
 
 /* Texto dentro do cursor */
@@ -209,20 +213,19 @@
     transform: scale(0.97);
 }
 
-/* Imagem base (layer A) — define a altura do wrap, always covers */
+/* Imagem base (layer A) — define a altura do wrap, sempre cobre */
 .lima-slide-a {
     display: block;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    /* zera qualquer transition do Elementor nessa imagem */
+    /* sem transition — some instantâneamente */
     transition: none !important;
     animation: none !important;
-    /* min-height para evitar colapso quando imagem é menor */
     min-height: 100%;
 }
 
-/* Imagem de transição (layer B) — absoluta, sobre a A, sempre cobre */
+/* Imagem do slideshow (layer B) — absoluta, troca instantânea sem fade */
 .lima-slide-b {
     position: absolute;
     inset: 0;
@@ -231,8 +234,9 @@
     object-fit: cover;
     opacity: 0;
     z-index: 2;
-    /* usa animation, não transition — evita conflito com Elementor */
+    /* SEM transition e SEM animation — troca instantânea */
     transition: none !important;
+    animation: none !important;
 }
 
 /* Animação de entrada: fade-in + leve zoom-out (efeito vídeo) */
@@ -292,11 +296,14 @@
    Os delays são aplicados inline pelo JS — sem nth-child aqui.
    ---------------------------------------------------------------- */
 
+/* Word wrap: padding para evitar corte de glifos altos (ex: G, h, d) */
 .lima-word-wrap {
     display: inline-block;
     overflow: hidden;
     vertical-align: bottom;
     line-height: inherit;
+    padding-top: 0.18em;
+    margin-top: -0.18em;
 }
 
 .lima-word {

@@ -82,32 +82,78 @@
             requestAnimationFrame(tick);
         })();
 
+        /* ---- Detecção de zona: fundo claro → cursor escuro, fundo escuro → cursor branco ---- */
+        var lastZoneCheck = 0;
+
+        function detectCursorZone(clientX, clientY) {
+            if (!cursor || cursor.classList.contains('-explore')) return;
+            var now = Date.now();
+            if (now - lastZoneCheck < 120) return;
+            lastZoneCheck = now;
+
+            var el = document.elementFromPoint(clientX, clientY);
+            if (!el) return;
+
+            var isDark = false;
+            var node = el;
+            var depth = 0;
+            while (node && node !== document.documentElement && depth < 8) {
+                var style = window.getComputedStyle(node);
+                var bgImg = style.backgroundImage;
+                var bgColor = style.backgroundColor;
+
+                /* background-image não-vazia → assume fundo escuro (parallax, hero) */
+                if (bgImg && bgImg !== 'none') { isDark = true; break; }
+
+                /* background-color explícito (não transparente) */
+                if (bgColor && bgColor !== 'rgba(0, 0, 0, 0)') {
+                    var p = bgColor.match(/[\d.]+/g);
+                    if (p && p.length >= 3) {
+                        var lum = (0.299 * +p[0] + 0.587 * +p[1] + 0.114 * +p[2]) / 255;
+                        isDark = lum < 0.5;
+                    }
+                    break;
+                }
+                node = node.parentElement;
+                depth++;
+            }
+
+            var circle = cursor.querySelector('.lima-cursor__circle');
+            if (isDark) {
+                cursor.classList.add('-on-dark-bg');
+                if (circle) { circle.style.background = '#ffffff'; circle.style.mixBlendMode = ''; }
+            } else {
+                cursor.classList.remove('-on-dark-bg');
+                if (circle) { circle.style.background = '#060312'; circle.style.mixBlendMode = 'normal'; }
+            }
+        }
+
         /* ---- Mouse entra / move ---- */
         document.addEventListener('mousemove', function (e) {
             mouseX = e.clientX;
             mouseY = e.clientY;
 
             if (!isActive) {
-                /* Teleporta para posição real antes de ativar */
                 curX = mouseX;
                 curY = mouseY;
                 isActive = true;
                 cursor.classList.remove('-leaving');
                 cursor.classList.add('-active');
             }
+
+            detectCursorZone(e.clientX, e.clientY);
         });
 
-        /* ---- Mouse sai da janela — fade+scale rápidos ---- */
+        /* ---- Mouse sai da janela ---- */
         document.addEventListener('mouseleave', function () {
             isActive = false;
-            cursor.classList.remove('-active', '-pointer', '-explore');
+            cursor.classList.remove('-active', '-pointer', '-explore', '-on-dark-bg');
             cursor.classList.add('-leaving');
         });
 
-        /* ---- Estado do cursor via event delegation ---- */
+        /* ---- Estado pointer via event delegation ---- */
         document.addEventListener('mouseover', function (e) {
             if (!cursor) return;
-            /* Não sobrescreve o estado -explore com -pointer */
             if (cursor.classList.contains('-explore')) return;
 
             var el = e.target;
@@ -171,17 +217,8 @@
             var slideInterval = null;
             var currentIdx = 0;
 
-            function showSlide(src) {
-                /* Para a animação anterior (reseta para opacity:0 via CSS) */
-                imgB.style.animation = 'none';
-                /* Reflow força o browser a aplicar animation:none antes do próximo frame */
-                void imgB.offsetHeight;
-                imgB.src = src;
-                /* Inicia animação — lima-img-enter vai de opacity:0 a 1 */
-                imgB.style.animation = 'lima-img-enter 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards';
-            }
-
             link.addEventListener('mouseenter', function () {
+                /* Cursor */
                 if (cursor) {
                     cursor.classList.add('-explore');
                     var circle = cursor.querySelector('.lima-cursor__circle');
@@ -192,19 +229,26 @@
                         circle.style.opacity = '1';
                     }
                 }
+
+                /* Esconde thumb IMEDIATAMENTE — sem transition */
+                originalImg.style.transition = 'none';
+                originalImg.style.opacity = '0';
+
+                /* Mostra primeira imagem do slideshow diretamente */
                 currentIdx = 0;
+                imgB.style.transition = 'none';
+                imgB.src = images[0];
+                imgB.style.opacity = '1';
 
-                /* Mostra a primeira imagem IMEDIATAMENTE ao entrar */
-                showSlide(images[0]);
-
-                /* Interval começa na SEGUNDA imagem para não voltar à thumb */
+                /* Troca instantânea a cada 500ms */
                 slideInterval = setInterval(function () {
                     currentIdx = (currentIdx + 1) % images.length;
-                    showSlide(images[currentIdx]);
+                    imgB.src = images[currentIdx];
                 }, 500);
             });
 
             link.addEventListener('mouseleave', function () {
+                /* Cursor */
                 if (cursor) {
                     cursor.classList.remove('-explore');
                     var circle = cursor.querySelector('.lima-cursor__circle');
@@ -215,14 +259,15 @@
                         circle.style.opacity = '';
                     }
                 }
+
                 clearInterval(slideInterval);
                 slideInterval = null;
-
-                /* Reseta overlay — imgA (original/thumb) fica visível */
-                imgB.style.animation = 'none';
-                void imgB.offsetHeight;
-                imgB.src = '';
                 currentIdx = 0;
+
+                /* Esconde slideshow e restaura thumb */
+                imgB.style.opacity = '0';
+                imgB.src = '';
+                originalImg.style.opacity = '1';
             });
         });
     }
