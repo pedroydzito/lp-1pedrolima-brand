@@ -1,0 +1,15 @@
+Este projeto opera em Harness Engineering.
+
+Antes de qualquer ação, leia os arquivos em harness/ nesta ordem:
+AGENTS.md → SPEC.md → PROGRESS.md → ARCHITECTURE.md → CONTRACTS.md → SENSORS.md
+
+Stack: Node.js + Express, HTML/CSS/JS vanilla. Sem TypeScript.
+
+Regras:
+- Toda tarefa é registrada em harness/CONTRACTS.md antes de ser executada
+- Nenhuma tarefa é concluída sem passar nos sensores de harness/SENSORS.md
+- Testes cobrem back-end E front-end — mudanças de CSS e design têm sensores próprios
+- harness/PROGRESS.md é atualizado ao fim de cada tarefa
+- Commit ao final de cada tarefa validada
+
+Mesmo pedidos simples como "corrija isso" ou "muda essa cor" seguem este fluxo.
