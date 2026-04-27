@@ -203,38 +203,37 @@
     position: relative;
     overflow: hidden;
     border-radius: inherit;
-    transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
-    /* Garante que o wrap sempre tenha altura mínima baseada na imagem */
+    /* Sem transform de escala — o slideshow é o efeito */
     line-height: 0;
+    /* Remove qualquer sombra herdada */
+    box-shadow: none !important;
+    filter: none !important;
 }
 
-/* Scale-down suave no hover — igual ao Cuberto */
-.lima-project-card:hover .lima-slide-wrap {
-    transform: scale(0.97);
-}
 
 /* Imagem base (layer A) — define a altura do wrap, sempre cobre */
 .lima-slide-a {
     display: block;
     width: 100%;
-    height: 100%;
+    /* height: auto preserva a altura natural da thumb, object-fit cobre o wrap */
+    height: auto;
     object-fit: cover;
-    /* sem transition — some instantâneamente */
+    object-position: center;
     transition: none !important;
     animation: none !important;
-    min-height: 100%;
 }
 
-/* Imagem do slideshow (layer B) — absoluta, troca instantânea sem fade */
+/* Imagem do slideshow (layer B) — absoluta, ocupa TODO o espaço do wrap */
 .lima-slide-b {
     position: absolute;
     inset: 0;
     width: 100%;
     height: 100%;
+    /* cover + center: expande até preencher, sem distorcer */
     object-fit: cover;
+    object-position: center;
     opacity: 0;
     z-index: 2;
-    /* SEM transition e SEM animation — troca instantânea */
     transition: none !important;
     animation: none !important;
 }

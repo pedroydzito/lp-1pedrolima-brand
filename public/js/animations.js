@@ -215,10 +215,11 @@
             wrap.appendChild(imgB);
 
             var slideInterval = null;
+            var startDelay = null;
             var currentIdx = 0;
 
             link.addEventListener('mouseenter', function () {
-                /* Cursor */
+                /* Cursor — aparece imediato */
                 if (cursor) {
                     cursor.classList.add('-explore');
                     var circle = cursor.querySelector('.lima-cursor__circle');
@@ -230,24 +231,42 @@
                     }
                 }
 
-                /* Esconde thumb IMEDIATAMENTE — sem transition */
-                originalImg.style.transition = 'none';
-                originalImg.style.opacity = '0';
+                /* Slideshow só começa após 1s parado sobre o card */
+                startDelay = setTimeout(function () {
+                    startDelay = null;
 
-                /* Mostra primeira imagem do slideshow diretamente */
-                currentIdx = 0;
-                imgB.style.transition = 'none';
-                imgB.src = images[0];
-                imgB.style.opacity = '1';
+                    /* Esconde thumb instantaneamente */
+                    originalImg.style.transition = 'none';
+                    originalImg.style.opacity = '0';
 
-                /* Troca instantânea a cada 500ms */
-                slideInterval = setInterval(function () {
-                    currentIdx = (currentIdx + 1) % images.length;
-                    imgB.src = images[currentIdx];
-                }, 500);
+                    /* Mostra primeira imagem */
+                    currentIdx = 0;
+                    imgB.style.transition = 'none';
+                    imgB.src = images[0];
+                    imgB.style.opacity = '1';
+
+                    /* Troca a cada 500ms */
+                    slideInterval = setInterval(function () {
+                        currentIdx = (currentIdx + 1) % images.length;
+                        imgB.src = images[currentIdx];
+                    }, 500);
+                }, 1000);
             });
 
             link.addEventListener('mouseleave', function () {
+                /* Cancela o delay se ainda não começou */
+                if (startDelay) {
+                    clearTimeout(startDelay);
+                    startDelay = null;
+                }
+
+                /* Para o slideshow se já estava rodando */
+                if (slideInterval) {
+                    clearInterval(slideInterval);
+                    slideInterval = null;
+                }
+                currentIdx = 0;
+
                 /* Cursor */
                 if (cursor) {
                     cursor.classList.remove('-explore');
@@ -260,11 +279,7 @@
                     }
                 }
 
-                clearInterval(slideInterval);
-                slideInterval = null;
-                currentIdx = 0;
-
-                /* Esconde slideshow e restaura thumb */
+                /* Restaura thumb (só se slideshow chegou a rodar) */
                 imgB.style.opacity = '0';
                 imgB.src = '';
                 originalImg.style.opacity = '1';

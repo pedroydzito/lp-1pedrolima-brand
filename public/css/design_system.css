@@ -396,9 +396,10 @@ button,
 }
 
 .elementor-element-e6e0690 .elementor-widget-image a img:hover {
-    transform: translateY(-12px) !important;
-    filter: contrast(1.05) brightness(1.03) !important;
-    box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.35) !important;
+    /* Elevação desativada — o slideshow é o único efeito de hover */
+    transform: none !important;
+    filter: none !important;
+    box-shadow: none !important;
 }
 
 /* 
