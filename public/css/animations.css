@@ -228,13 +228,12 @@
     object-fit: cover;
     object-position: center;
     border-radius: inherit;
-    transition: none !important;
+    transition: opacity 0.4s ease !important;
     animation: none !important;
 }
 
-/* Imagem do slideshow (layer B) — absoluta, ocupa TODO o espaco do wrap.
-   IMPORTANTE: height/width precisam de !important para vencer o
-   "height: auto !important" aplicado pelo design_system.css em imgs de projeto. */
+/* Camadas do slideshow (layer B) — absoluta, ocupa TODO o espaco do wrap.
+   Usamos duas camadas (b1 e b2) para crossfade fluido (double buffering). */
 .lima-slide-b {
     position: absolute;
     inset: 0;
@@ -246,24 +245,30 @@
     opacity: 0;
     z-index: 2;
     border-radius: inherit;
-    transition: none !important;
-    /* animation nao bloqueada — a classe .lima-playing ativa o zoom-out */
+    pointer-events: none;
+    /* Transição de opacidade 0 ao sair (instante) para evitar ghosting.
+       O transform mantém a suavidade se houver sobreposição. */
+    transition: opacity 0s !important, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 
-/* Zoom-out ativado em cada troca de imagem — fade-in + zoom-out visível */
+/* Quando ativa, ganha opacidade suave e sobe no z-index para sobrepor a anterior */
+.lima-slide-b.lima-active {
+    opacity: 1 !important;
+    z-index: 3;
+    transition: opacity 0.6s ease !important, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
 .lima-slide-b.lima-playing {
-    animation: lima-zoom-out 0.55s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    /* animação de zoom-out cinético: 0.8s para um efeito luxuoso e perceptível */
+    animation: lima-zoom-out 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
-/* Keyframe: fade-in + zoom-out simultâneos — o efeito de movimento fica claro */
+/* Keyframe: fade-in já acontece via transition, aqui focamos no zoom-out cinético */
 @keyframes lima-zoom-out {
     from {
-        opacity: 0;
-        transform: scale(1.10);
+        transform: scale(1.12);
     }
-
     to {
-        opacity: 1;
         transform: scale(1);
     }
 }

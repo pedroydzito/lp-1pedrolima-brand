@@ -201,34 +201,69 @@
 
             link.classList.add('lima-project-card');
 
-            /* -- Cria wrapper + layer B (overlay) -- */
+            /* -- Cria wrapper + camadas B1 e B2 (double buffering) -- */
             var wrap = document.createElement('div');
             wrap.className = 'lima-slide-wrap';
             link.insertBefore(wrap, originalImg);
             originalImg.classList.add('lima-slide-a');
             wrap.appendChild(originalImg);
 
-            var imgB = document.createElement('img');
-            imgB.className = 'lima-slide-b';
-            imgB.alt = originalImg.alt || '';
-            /* Sem src inicial — será atribuído na entrada do hover */
-            wrap.appendChild(imgB);
+            var imgB1 = document.createElement('img');
+            imgB1.className = 'lima-slide-b';
+            imgB1.alt = originalImg.alt || '';
+            wrap.appendChild(imgB1);
 
-            var slideInterval = null;
+            var imgB2 = document.createElement('img');
+            imgB2.className = 'lima-slide-b';
+            imgB2.alt = originalImg.alt || '';
+            wrap.appendChild(imgB2);
+
+            var slideTimeout = null;
             var startDelay = null;
             var currentIdx = 0;
+            var activeBuffer = 0; /* 0 ou 1 */
+            var bufs = [imgB1, imgB2];
 
-            /* Reinicia o zoom-out a cada troca de imagem */
-            function playSlide(src) {
-                imgB.classList.remove('lima-playing');
-                void imgB.offsetHeight; /* reflow para reiniciar a animacao */
-                imgB.src = src;
-                imgB.style.opacity = ''; /* limpa inline style — o keyframe controla opacity */
-                imgB.classList.add('lima-playing');
+            function preloadNext() {
+                var nextIdx = (currentIdx + 1) % images.length;
+                var inactiveBuf = bufs[1 - activeBuffer];
+                
+                /* Carrega a próxima imagem no buffer que está escondido */
+                inactiveBuf.classList.remove('lima-active', 'lima-playing');
+                inactiveBuf.style.opacity = '0';
+                inactiveBuf.src = images[nextIdx];
+            }
+
+            function swap() {
+                /* 1. Troca o buffer ativo */
+                activeBuffer = 1 - activeBuffer;
+                var currentBuf = bufs[activeBuffer];
+                var prevBuf = bufs[1 - activeBuffer];
+
+                /* 2. Dispara animação da imagem que já estava pré-carregada */
+                currentBuf.classList.add('lima-active', 'lima-playing');
+                
+                /* 3. Esconde a anterior após o fade-in */
+                setTimeout(function() {
+                    prevBuf.classList.remove('lima-active', 'lima-playing');
+                    prevBuf.style.opacity = '0';
+                }, 700);
+
+                /* 4. Esconde a thumb original no primeiro swap */
+                if (originalImg.style.opacity !== '0') {
+                    setTimeout(function() { originalImg.style.opacity = '0'; }, 200);
+                }
+
+                /* 5. Avança o índice e já carrega a PRÓXIMA no buffer que acabou de sobrar */
+                currentIdx = (currentIdx + 1) % images.length;
+                preloadNext();
+
+                /* 6. Agenda o próximo swap */
+                slideTimeout = setTimeout(swap, 1500);
             }
 
             link.addEventListener('mouseenter', function () {
-                /* Cursor — aparece imediato */
+                /* Cursor */
                 if (cursor) {
                     cursor.classList.add('-explore');
                     var circle = cursor.querySelector('.lima-cursor__circle');
@@ -240,26 +275,32 @@
                     }
                 }
 
-                /* Slideshow comeca apos 0.5s parado sobre o card */
+                /* Início imediato do pipeline */
                 startDelay = setTimeout(function () {
                     startDelay = null;
-                    originalImg.style.transition = 'none';
-                    originalImg.style.opacity = '0';
                     currentIdx = 0;
-                    imgB.style.transition = 'none';
-                    playSlide(images[0]);
-                    slideInterval = setInterval(function () {
-                        currentIdx = (currentIdx + 1) % images.length;
-                        playSlide(images[currentIdx]);
-                    }, 500);
-                }, 500);
+                    
+                    /* Prepara a primeira imagem no buffer 0 e a segunda no buffer 1 */
+                    bufs[0].src = images[0];
+                    activeBuffer = 0;
+                    
+                    var isRunning = false;
+                    var run = function() {
+                        if (isRunning) return;
+                        isRunning = true;
+                        bufs[0].classList.add('lima-active', 'lima-playing');
+                        preloadNext();
+                        slideTimeout = setTimeout(swap, 1500);
+                    };
+
+                    if (bufs[0].complete) run(); else bufs[0].onload = run;
+                }, 400);
             });
 
             link.addEventListener('mouseleave', function () {
                 if (startDelay) { clearTimeout(startDelay); startDelay = null; }
-                if (slideInterval) { clearInterval(slideInterval); slideInterval = null; }
-                currentIdx = 0;
-
+                if (slideTimeout) { clearTimeout(slideTimeout); slideTimeout = null; }
+                
                 if (cursor) {
                     cursor.classList.remove('-explore');
                     var circle = cursor.querySelector('.lima-cursor__circle');
@@ -271,10 +312,15 @@
                     }
                 }
 
-                imgB.classList.remove('lima-playing');
-                imgB.style.opacity = '0';
-                imgB.src = '';
+                /* Reseta tudo para estado inicial */
+                bufs.forEach(function(b) {
+                    b.classList.remove('lima-active', 'lima-playing');
+                    b.src = '';
+                    b.style.opacity = '0';
+                });
                 originalImg.style.opacity = '1';
+                currentIdx = 0;
+                activeBuffer = 0;
             });
         });
     }

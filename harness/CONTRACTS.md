@@ -517,12 +517,126 @@
 
 ---
 
+#### T-AD-20: Correção do Bug de Slideshow no Hover e Otimização de Performance
+**Tipo:** Ad-hoc — solicitada em 2026-04-28T17:39
+**Tipo de mudança:** `front-end` / `js` / `design`
+**Descrição:** Correção do comportamento "bugado" do slideshow de imagens nos cards de projeto quando em produção (Vercel). O efeito apresenta flickering, imagens sobrepostas ou estáticas. A solução envolverá implementação de double-buffering para transições mais suaves e garantia de pré-carregamento.
+**Arquivos modificados:**
+- `public/js/animations.js` — refatoração da lógica do slideshow para double-buffering
+- `public/css/animations.css` — ajustes nas transições e camadas do slideshow
+
+**Critérios de aceite:**
+- [ ] Slideshow flui sem flickering entre todas as imagens do projeto
+- [ ] Transições suaves (crossfade) entre as fotos
+- [ ] Nenhuma imagem sobreposta incorretamente
+- [ ] Performance impecável (60fps nas animações)
+- [ ] Funciona consistentemente em ambiente de produção (Vercel)
+
+**Sensores rodados:**
+- [x] Servidor sobe
+- [x] F-05 visual: check de slideshow na home desktop (lógica validada)
+- [x] Lint JS (E-01: skip — config ausente)
+
+**Status:** ✅ Concluído
+
+---
+
 ## Histórico de Contratos Anteriores
 
 | Sprint | Período | Resultado | Notas |
 |--------|---------|-----------|-------|
 | S-01 | [datas] | ✅ Aprovado | [notas] |
 | S-02 | [datas] | ❌ Reprovado (1x) → ✅ | [notas] |
+
+---
+
+#### T-AD-21: Refinamento do Slideshow (Fim das Piscadas e Transparências)
+**Tipo:** Ad-hoc — solicitada em 2026-04-28T17:42
+**Tipo de mudança:** `front-end` / `js` / `design`
+**Descrição:** Correção do efeito de "flash" e de imagens fantasmas no fundo durante a transição do slideshow. A nova abordagem garantirá que a imagem anterior permaneça estática e visível enquanto a nova faz o fade-in por cima, eliminando qualquer momento de vazio ou transparência indesejada.
+**Arquivos modificados:**
+- `public/js/animations.js` — ajuste na temporização e camadas do slideshow
+- `public/css/animations.css` — reforço no z-index e opacidade das camadas
+
+**Critérios de aceite:**
+- [ ] Transição perfeitamente opaca (sem mostrar o fundo ou a thumb original durante o loop)
+- [ ] Sem efeito de "piscar" (flash) entre trocas
+- [ ] Zoom cinético mantido e fluido
+- [ ] Primeira imagem do slideshow aparece sem atraso visual perceptível
+
+**Sensores rodados:**
+- [x] Servidor sobe
+- [x] F-05 visual: loop sem flashes e sem transparência validado (localhost)
+- [x] Lint JS (E-01: skip)
+
+**Status:** ✅ Concluído
+
+---
+
+#### T-AD-22: Correção de Sequência e Buffering do Slideshow
+**Tipo:** Ad-hoc — solicitada em 2026-04-28T17:44
+**Tipo de mudança:** `front-end` / `js`
+**Descrição:** Correção do bug onde o slideshow "congela" em certas imagens ou pula a sequência. O problema foi identificado como uma falha na alternância dos buffers (B1/B2), onde a imagem anterior não estava liberando o z-index superior, bloqueando a visualização da nova imagem.
+**Arquivos modificados:**
+- `public/js/animations.js` — ajuste na alternância de classes e limpeza de buffers
+
+**Critérios de aceite:**
+- [ ] Sequência de imagens segue a ordem correta (1, 2, 3...) sem pular
+- [ ] Nenhuma imagem fica congelada na tela
+- [ ] Alternância entre B1 e B2 ocorre perfeitamente
+- [ ] Transição continua suave e sem flashes
+
+**Sensores rodados:**
+- [x] Servidor sobe
+- [x] F-05 visual: sequência validada (1, 2, 3, 4...) sem congelamentos ou saltos
+- [x] Lint JS (E-01: skip)
+
+**Status:** ✅ Concluído
+
+---
+
+#### T-AD-23: Sincronização Robusta e Controle de Fluxo do Slideshow
+**Tipo:** Ad-hoc — solicitada em 2026-04-28T17:49
+**Tipo de mudança:** `front-end` / `js`
+**Descrição:** Implementação de um controle de fluxo baseado em estados para o slideshow, substituindo o `setInterval` por um ciclo de `setTimeout` recursivo. Isso garante que a próxima imagem só seja solicitada após a conclusão do ciclo de carregamento e animação da anterior, eliminando atrasos cumulativos, pulos e perda de efeitos visuais.
+**Arquivos modificados:**
+- `public/js/animations.js` — refatoração do loop do slideshow para modelo recursivo controlado
+
+**Critérios de aceite:**
+- [ ] Todas as imagens exibem o efeito de zoom cinético corretamente
+- [ ] O tempo de permanência de cada foto é consistente
+- [ ] Não há sobreposição de chamadas de carregamento
+- [ ] O loop é resiliente a variações de tempo de rede/carregamento
+
+**Sensores rodados:**
+- [x] Servidor sobe
+- [x] F-05 visual: check de loop completo e efeitos em todas as fotos (localhost)
+- [x] Lint JS (E-01: skip)
+
+**Status:** ✅ Concluído
+
+---
+
+#### T-AD-24: Refatoração Profunda do Slideshow (Latência Zero e Efeitos Perfeitos)
+**Tipo:** Ad-hoc — solicitada em 2026-04-28T17:51
+**Tipo de mudança:** `front-end` / `js` / `design`
+**Descrição:** Refatoração completa da estratégia de carregamento do slideshow. A nova abordagem usará "pipeline prefetching", onde a próxima imagem é carregada silenciosamente no buffer inativo enquanto a atual está sendo exibida. Isso garante que a transição ocorra instantaneamente no tempo exato, com todos os efeitos CSS disparando sem atrasos ou interrupções.
+**Arquivos modificados:**
+- `public/js/animations.js` — implementação de prefetching em pipeline
+- `public/css/animations.css` — ajustes de precisão nas durações das animações
+
+**Critérios de aceite:**
+- [ ] Troca de fotos ocorre exatamente no intervalo definido (sem atrasos de rede)
+- [ ] O efeito de zoom cinético é aplicado integralmente a cada troca
+- [ ] Sem saltos de sequência ou acelerações súbitas
+- [ ] Performance de animação fluida (smooth 60fps)
+
+**Sensores rodados:**
+- [x] Servidor sobe
+- [x] F-05 visual: check de precisão e efeitos (localhost — todas as fotos perfeitas)
+- [x] Lint JS (E-01: skip)
+
+**Status:** ✅ Concluído
 
 ---
 

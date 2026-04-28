@@ -122,6 +122,11 @@ se houver features planejadas.
 | 2026-04-28 | T-AD-17: ajuste de padding do player mobile | — |
 | 2026-04-28 | T-AD-18: unset de padding em container específico (mobile) | — |
 | 2026-04-28 | T-AD-19: override de grid para coluna única (home mobile) | — |
+| 2026-04-28 | T-AD-20: correção de slideshow no hover (double buffering) | — |
+| 2026-04-28 | T-AD-21: refinamento de transição (fim das piscadas) | — |
+| 2026-04-28 | T-AD-22: correção de sequência e buffering do slideshow | — |
+| 2026-04-28 | T-AD-23: sincronização robusta (recursiva) do slideshow | — |
+| 2026-04-28 | T-AD-24: refatoração profunda (pipeline prefetch) | — |
 
 ---
 
