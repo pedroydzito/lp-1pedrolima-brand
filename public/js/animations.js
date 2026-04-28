@@ -223,7 +223,7 @@
                 imgB.classList.remove('lima-playing');
                 void imgB.offsetHeight; /* reflow para reiniciar a animacao */
                 imgB.src = src;
-                imgB.style.opacity = '1';
+                imgB.style.opacity = ''; /* limpa inline style — o keyframe controla opacity */
                 imgB.classList.add('lima-playing');
             }
 
@@ -523,6 +523,14 @@
         /* -- Configura cada imagem -- */
         lightboxImages.forEach(function (img) {
             /* NÃO aplicar cursor:none — cursor nativo não pode sumir */
+
+            /* Wrap para o scale-down no hover sem overflow */
+            if (!img.closest('.lima-img-hover-wrap')) {
+                var hoverWrap = document.createElement('div');
+                hoverWrap.className = 'lima-img-hover-wrap';
+                img.parentNode.insertBefore(hoverWrap, img);
+                hoverWrap.appendChild(img);
+            }
 
             img.addEventListener('mouseenter', function () {
                 if (cursor) {

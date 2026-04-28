@@ -6,9 +6,9 @@
 
 ## Estado Atual do Projeto
 
-**Última atualização:** 2026-04-27T12:35:00-03:00
+**Última atualização:** 2026-04-28T09:04:00-03:00
 **Sprint ativo:** Nenhum
-**Status geral:** 🔄 Em progresso
+**Status geral:** 🟢 Estável
 
 ---
 
@@ -103,6 +103,25 @@ se houver features planejadas.
 | 2026-04-26 | Debug e correção do player de áudio em todas as páginas | 60a3720 |
 | 2026-04-27 | BOOTSTRAP executado: arquivos de agente criados, SPEC/PROGRESS/ARCHITECTURE atualizados | — |
 | 2026-04-27 | Sensores BOOTSTRAP: servidor ✅ sobe em 3s | lint ⚠️ ESLint não instalado | visual — pendente |
+| 2026-04-27 | T-AD-01: barra de progresso player, slideshow sem flash, cursor 88px, removão loader | 10ee8c9 |
+| 2026-04-28 | T-AD-02: animações de hover (scale-down 0.98), zoom-out slideshow | — |
+| 2026-04-28 | T-AD-03: remoção de fundo estático no Hero | — |
+| 2026-04-28 | T-AD-04: restauração de fundo parallax no Hero | — |
+| 2026-04-28 | T-AD-05: correção de border-radius em imagens de projeto no hover | — |
+| 2026-04-28 | T-AD-06: ajustes mobile (border-radius, tags, player de música) | — |
+| 2026-04-28 | T-AD-07: player seek, correção crop títulos, simetria footer | — |
+| 2026-04-28 | T-AD-08: correção de simetria do footer (seção branca) | — |
+| 2026-04-28 | T-AD-09: ajuste fino de padding via variáveis Elementor | — |
+| 2026-04-28 | T-AD-10: remoção de height fixo na barra de música (Sonaar) | — |
+| 2026-04-28 | T-AD-11: remoção de !important nos headings (h1) | — |
+| 2026-04-28 | T-AD-12: correção de layout do player mobile | — |
+| 2026-04-28 | T-AD-13: override de headings mobile (Elementor Kit) | — |
+| 2026-04-28 | T-AD-14: ajuste de line-height para 0.95 (h1) | — |
+| 2026-04-28 | T-AD-15: remoção de height da onda (player mobile) | — |
+| 2026-04-28 | T-AD-16: correção de overflow e containment do player mobile | — |
+| 2026-04-28 | T-AD-17: ajuste de padding do player mobile | — |
+| 2026-04-28 | T-AD-18: unset de padding em container específico (mobile) | — |
+| 2026-04-28 | T-AD-19: override de grid para coluna única (home mobile) | — |
 
 ---
 

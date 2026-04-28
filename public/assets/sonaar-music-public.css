@@ -5157,8 +5157,7 @@ article div.iron-audioplayer ol li {
 .sr_waveform_simplebar .sonaar_fake_wave {
   display: flex;
   justify-content: flex-start;
-  align-items: center;
-  height: 30px !important; }
+  align-items: center; }
   .sr_waveform_simplebar .sonaar_fake_wave .sonaar_wave_base {
     border-radius: 10px;
     height: 6px; }

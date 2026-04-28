@@ -436,6 +436,7 @@
 	<script src="/assets/wp-emoji-release.min.js.download" defer=""></script>
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 	<link rel="stylesheet" href="/css/design_system.css">
+<link rel="stylesheet" href="/css/animations.css">
 </head>
 
 <body data-rsssl="1"
@@ -765,33 +766,7 @@
 		}
 		requestAnimationFrame(raf);
 	</script>
-
-
-	<!-- Efeitos de Visibilidade On Scroll -->
-	<script>
-		document.addEventListener("DOMContentLoaded", function() {
-			const observer = new IntersectionObserver((entries) => {
-				entries.forEach(entry => {
-					if (entry.isIntersecting) {
-						entry.target.classList.add('lima-fade-animate');
-						observer.unobserve(entry.target);
-					}
-				});
-			}, { threshold: 0.15 });
-			
-			// Seleciona todos os widgets que deveriam piscar/aparecer
-			const elements = document.querySelectorAll(
-				'.elementor-widget-heading, .elementor-widget-text-editor, .elementor-widget-button, ' +
-				'.elementor-element-de4db98, .elementor-element-0527fd5, .elementor-element-8cb6563, ' +
-				'.elementor-element-69bea9d, .elementor-element-fc0f3d6, .elementor-element-4eaf10e'
-			);
-			
-			elements.forEach(el => {
-				el.classList.add('lima-fade-hidden');
-				observer.observe(el);
-			});
-		});
-	</script>
+<script src="/js/animations.js"></script>
 </body>
 
 

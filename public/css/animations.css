@@ -203,11 +203,20 @@
     position: relative;
     overflow: hidden;
     border-radius: inherit;
-    /* Sem transform de escala — o slideshow é o efeito */
     line-height: 0;
-    /* Remove qualquer sombra herdada */
     box-shadow: none !important;
     filter: none !important;
+    /* Escala do wrapper no hover — afeta ambas as camadas A e B */
+    transform: scale(1);
+    transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform;
+    /* Fix para clipping de border-radius com transforms */
+    isolation: isolate;
+}
+
+/* Scale-down suave ao passar o mouse sobre o card da home (suavizado de 0.96 para 0.98) */
+.lima-project-card:hover .lima-slide-wrap {
+    transform: scale(0.98);
 }
 
 
@@ -215,10 +224,10 @@
 .lima-slide-a {
     display: block;
     width: 100%;
-    /* height: auto preserva a altura natural da thumb, object-fit cobre o wrap */
     height: auto;
     object-fit: cover;
     object-position: center;
+    border-radius: inherit;
     transition: none !important;
     animation: none !important;
 }
@@ -236,23 +245,66 @@
     max-width: none !important;
     opacity: 0;
     z-index: 2;
+    border-radius: inherit;
     transition: none !important;
     /* animation nao bloqueada — a classe .lima-playing ativa o zoom-out */
 }
 
-/* Zoom-out sutil ativado em cada troca de imagem */
+/* Zoom-out ativado em cada troca de imagem — fade-in + zoom-out visível */
 .lima-slide-b.lima-playing {
-    animation: lima-zoom-out 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    animation: lima-zoom-out 0.55s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
 }
 
-/* Keyframe: comeca um pouco mais proximo e recua ate o tamanho normal */
+/* Keyframe: fade-in + zoom-out simultâneos — o efeito de movimento fica claro */
 @keyframes lima-zoom-out {
     from {
-        transform: scale(1.06);
+        opacity: 0;
+        transform: scale(1.10);
     }
 
     to {
+        opacity: 1;
         transform: scale(1);
+    }
+}
+
+/* ----------------------------------------------------------------
+   IMAGENS DE PROJETO (páginas de projeto) — scale-down no hover
+   Aplicado às imagens dentro do lightbox trigger, via wrapper
+   ---------------------------------------------------------------- */
+
+/* Wrapper de contenção para animar sem overflow — border-radius igual ao dos cards da home */
+.lima-img-hover-wrap {
+    display: block;
+    overflow: hidden;
+    border-radius: 24px !important;
+    line-height: 0;
+    /* Fix para clipping de border-radius com transforms e hardware acceleration */
+    isolation: isolate;
+    transform: translateZ(0);
+    will-change: transform;
+}
+
+.lima-img-hover-wrap img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 24px !important;
+    transform: scale(1);
+    transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform;
+    /* Garante que o rounded corner seja renderizado corretamente no transform */
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
+}
+
+.lima-img-hover-wrap:hover img {
+    transform: scale(0.98);
+}
+
+@media (max-width: 768px) {
+    .lima-img-hover-wrap,
+    .lima-img-hover-wrap img {
+        border-radius: 15px !important;
     }
 }
 
@@ -313,14 +365,16 @@
    Os delays são aplicados inline pelo JS — sem nth-child aqui.
    ---------------------------------------------------------------- */
 
-/* Word wrap: padding para evitar corte de glifos altos (ex: G, h, d) */
+/* Word wrap: padding para evitar corte de glifos altos (ex: G, h, d) e baixos (ex: g, y) */
 .lima-word-wrap {
     display: inline-block;
     overflow: hidden;
     vertical-align: bottom;
     line-height: inherit;
-    padding-top: 0.18em;
-    margin-top: -0.18em;
+    padding-top: 0.15em;
+    padding-bottom: 0.15em;
+    margin-top: -0.15em;
+    margin-bottom: -0.15em;
 }
 
 .lima-word {

@@ -70,8 +70,18 @@ textarea,
 
 h1,
 h1.elementor-heading-title {
-    letter-spacing: -2px !important;
+    font-size: 84px;
+    line-height: 0.95; /* Tighter look as requested */
+    letter-spacing: -2px;
     /* Tightening for that premium look */
+}
+
+@media (max-width: 767px) {
+    .elementor-kit-10 h1 {
+        font-size: 32px !important;
+        line-height: 0.95 !important;
+        letter-spacing: -1px !important;
+    }
 }
 
 h2.elementor-heading-title {
@@ -101,8 +111,9 @@ p.elementor-heading-title {
 /* Fix Player Icons using Bootstrap Icons */
 .srp_player_boxed {
     background-color: #f6f6f6 !important;
-    border-radius: 12px;
+    border-radius: 24px !important; /* Matched with project images */
     /* Smooth corners for the player box */
+    overflow: hidden !important;
 }
 
 .sricon-play::before,
@@ -231,7 +242,10 @@ html {
     left: -2%;
     width: 104%;
     height: 104%;
-    background: url('../assets/Card1-background.jpg') center/cover no-repeat;
+    background-image: url('../assets/Card1-background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-color: #060312; /* Fundo escuro profundo como base */
     z-index: 0;
     will-change: transform;
     transition: transform 1.5s cubic-bezier(0.16, 1, 0.3, 1);
@@ -438,4 +452,123 @@ button,
 .lima-fade-animate {
     opacity: 1 !important;
     transform: translateY(0) !important;
+}
+
+/* Ajuste de Padding específico para a transição do footer (Róger Nobles / Elementor-208) */
+.elementor-208 .elementor-element.elementor-element-1af830d {
+    --padding-bottom: 20px;
+}
+
+@media (max-width: 767px) {
+    .elementor-208 .elementor-element.elementor-element-1af830d {
+        --padding-bottom: 5%;
+    }
+}
+
+/* =========================================================================
+   Mobile Overrides (Border-radius, Tags, Player)
+   ========================================================================= */
+@media (max-width: 768px) {
+    /* 1. Global Border-radius Reduction (24px -> 15px) */
+    .elementor-element-e6e0690 .elementor-widget-image a,
+    .elementor-element-e6e0690 .elementor-widget-image a img,
+    .srp_player_boxed {
+        border-radius: 15px !important;
+    }
+
+    /* 2. Tag Size Reduction (Approx. Half) */
+    .lima-tag {
+        padding: 8px 18px !important;
+        font-size: 10px !important;
+        letter-spacing: 0.5px !important;
+    }
+
+    /* 3. Music Player Timer Overflow & Spacing Fix */
+    .elementor-widget-music-player {
+        margin-bottom: 20px !important;
+    }
+
+    .srp_player_boxed {
+        padding: 20px 20px !important; /* Symmetrical breathing room as requested */
+        overflow: hidden !important;
+    }
+
+    .srp_player_boxed .srp_player_grid {
+        display: block !important; /* Simplified layout for mobile */
+    }
+
+    .srp_player_boxed .album-player {
+        padding: 0 !important;
+        width: 100% !important;
+    }
+
+    .srp_player_boxed .sr_progressbar {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: flex-start !important; 
+        gap: 6px !important; 
+        width: 100% !important;
+        max-width: 100% !important; 
+        padding: 0 !important;
+        margin: 0 !important; /* Removed top margin to keep it centered with play button */
+        box-sizing: border-box !important;
+        overflow: hidden !important;
+        position: relative !important;
+    }
+
+    .srp_player_boxed .srp_control_box {
+        display: flex !important;
+        align-items: center !important;
+        width: 100% !important;
+        gap: 12px !important;
+        overflow: hidden !important;
+    }
+
+    .srp_player_boxed .srp_wave_box {
+        flex-grow: 1 !important;
+        min-width: 0 !important; /* CRITICAL: allows the bar to shrink and stay inside the card */
+        display: block !important;
+    }
+
+    .srp_player_boxed .player {
+        width: 100% !important;
+    }
+
+    .srp_player_boxed .currentTime,
+    .srp_player_boxed .totalTime {
+        position: static !important;
+        flex-shrink: 0 !important;
+        font-size: 10px !important; /* Slightly smaller for mobile */
+        width: auto !important;
+        margin: 0 !important;
+        line-height: 1 !important;
+        opacity: 0.7 !important;
+    }
+
+    .srp_player_boxed .wave {
+        flex-grow: 1 !important;
+        min-width: 0 !important;
+        margin: 0 !important;
+        background: rgba(0,0,0,0.05) !important;
+        border-radius: 10px !important;
+    }
+
+    .srp_player_boxed .srp-play-button {
+        margin-bottom: 0 !important;
+        vertical-align: middle !important;
+    }
+
+    /* 4. Footer Symmetry (already handled globally above, here just for mobile consistency) */
+}
+
+@media (max-width: 767px) {
+    [data-id="0d2ae98"] .e-con-inner {
+        padding-bottom: unset !important;
+    }
+
+    .elementor-2 .elementor-element.elementor-element-a279a19 {
+        --e-con-grid-template-columns: repeat(1, 1fr);
+        --grid-auto-flow: row;
+        --row-gap: 10px;
+    }
 }

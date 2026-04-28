@@ -123,6 +123,7 @@ document.addEventListener("DOMContentLoaded", function () {
             // Setup progress bar container styling
             if (waveCut && waveBase) {
                 waveBase.style.position = 'relative';
+                waveBase.style.cursor = 'pointer'; // Feedback visual para busca
                 waveCut.style.position = 'absolute';
                 waveCut.style.top = '0';
                 waveCut.style.left = '0';
@@ -131,6 +132,17 @@ document.addEventListener("DOMContentLoaded", function () {
                 waveCut.style.transition = 'width 0.3s linear';
                 // Make wave_cut visible if it was hidden by Sonaar defaults
                 waveCut.style.overflow = 'hidden';
+
+                // Add SEEK functionality
+                waveBase.addEventListener('click', function (e) {
+                    const rect = waveBase.getBoundingClientRect();
+                    const x = e.clientX - rect.left; // x position within the element
+                    const width = rect.width;
+                    const pct = x / width;
+                    if (isFinite(audioEl.duration)) {
+                        audioEl.currentTime = pct * audioEl.duration;
+                    }
+                });
             }
         });
 
