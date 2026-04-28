@@ -418,8 +418,8 @@
 		media="all">
 	<link rel="stylesheet" id="e-apple-webkit-css" href="/assets/apple-webkit.min.css" type="text/css" media="all">
 	<link rel="stylesheet" id="elementor-post-2-css" href="/assets/post-2.css" type="text/css" media="all">
-	<script type="text/javascript" src="/assets/jquery.min.js.download" id="jquery-core-js"></script>
-	<script type="text/javascript" src="/assets/jquery-migrate.min.js.download" id="jquery-migrate-js"></script>
+	<script type="text/javascript" src="/assets/jquery.min.js.download" id="jquery-core-js" defer></script>
+	<script type="text/javascript" src="/assets/jquery-migrate.min.js.download" id="jquery-migrate-js" defer></script>
 	<link rel="https://api.w.org/" href="https://1pedrolima.com/wp-json/">
 	<link rel="alternate" title="JSON" type="application/json" href="https://1pedrolima.com/wp-json/wp/v2/pages/2">
 	<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://1pedrolima.com/xmlrpc.php?rsd">
@@ -437,6 +437,11 @@
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 	<link rel="stylesheet" href="/css/design_system.css">
 <link rel="stylesheet" href="/css/animations.css">
+    <!-- PERF: preload critical above-the-fold images -->
+    <link rel="preload" as="image" href="/assets/Lima_.webp" fetchpriority="high">
+    <link rel="preload" as="image" href="/assets/IMG_8394 2.webp" fetchpriority="high">
+    <link rel="preload" as="image" href="/assets/Card1-front-1.webp" fetchpriority="high">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 </head>
 
 <body data-rsssl="1"
@@ -495,12 +500,12 @@
 				<div class="elementor-element elementor-element-313a119 elementor-widget elementor-widget-image"
 					data-id="313a119" data-element_type="widget" data-e-type="widget" data-widget_type="image.default">
 					<div class="lima-hero-wrapper">
-						<img src="/assets/Card1-front-1.png" class="lima-static-mobile" alt="Pedro Lima Mobile Banner"
+						<img src="/assets/Card1-front-1.webp" class="lima-static-mobile" alt="Pedro Lima Mobile Banner"
 							style="width: 100%; height: auto; display: none;">
 						<div class="lima-hero-parallax" id="limaParallax">
-							<img src="/assets/Lima_.png" class="parallax-layer layer-back" data-speed="0.012"
+							<img src="/assets/Lima_.webp" class="parallax-layer layer-back" data-speed="0.012"
 								alt="Lima Text">
-							<img src="/assets/IMG_8394 2.png" class="parallax-layer layer-mid" data-speed="0.01"
+							<img src="/assets/IMG_8394 2.webp" class="parallax-layer layer-mid" data-speed="0.01"
 								alt="Pedro Lima">
 							<img src="/assets/Brand Designer.svg" class="parallax-layer layer-front" data-speed="0.015"
 								alt="Brand Designer">
@@ -541,7 +546,7 @@
 					data-settings="{&quot;_transform_scale_effect_hover&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:1.015,&quot;sizes&quot;:[]},&quot;_transform_scale_effect_hover_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_scale_effect_hover_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]}}"
 					data-widget_type="image.default">
 					<a href="/roger-nobles">
-						<img decoding="async" width="1536" height="857" src="/assets/RogerNobles-1-1536x857.png"
+						<img decoding="async" width="1536" height="857" src="/assets/RogerNobles-1-1536x857.webp" loading="lazy"
 							class="attachment-1536x1536 size-1536x1536 wp-image-303" alt=""> </a>
 				</div>
 				<div class="elementor-element elementor-element-0527fd5 e-transform elementor-widget elementor-widget-image"
@@ -549,7 +554,7 @@
 					data-settings="{&quot;_transform_scale_effect_hover&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:1.015,&quot;sizes&quot;:[]},&quot;_transform_scale_effect_hover_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_scale_effect_hover_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]}}"
 					data-widget_type="image.default">
 					<a href="/robison-kunz">
-						<img decoding="async" width="1536" height="857" src="/assets/RobisonKunz-1-1536x857.png"
+						<img decoding="async" width="1536" height="857" src="/assets/RobisonKunz-1-1536x857.webp" loading="lazy"
 							class="attachment-1536x1536 size-1536x1536 wp-image-302" alt=""> </a>
 				</div>
 				<div class="elementor-element elementor-element-8cb6563 e-transform elementor-widget elementor-widget-image"
@@ -557,7 +562,7 @@
 					data-settings="{&quot;_transform_scale_effect_hover&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:1.015,&quot;sizes&quot;:[]},&quot;_transform_scale_effect_hover_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_scale_effect_hover_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]}}"
 					data-widget_type="image.default">
 					<a href="/luna-sheeny">
-						<img decoding="async" width="1536" height="857" src="/assets/LunaSheeny-1-1536x857.png"
+						<img decoding="async" width="1536" height="857" src="/assets/LunaSheeny-1-1536x857.webp" loading="lazy"
 							class="attachment-1536x1536 size-1536x1536 wp-image-299" alt=""> </a>
 				</div>
 				<div class="elementor-element elementor-element-69bea9d e-transform elementor-widget elementor-widget-image"
@@ -565,7 +570,7 @@
 					data-settings="{&quot;_transform_scale_effect_hover&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:1.015,&quot;sizes&quot;:[]},&quot;_transform_scale_effect_hover_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_scale_effect_hover_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]}}"
 					data-widget_type="image.default">
 					<a href="/martin-dahmer">
-						<img decoding="async" width="1536" height="857" src="/assets/MartinDahmer-1-1536x857.png"
+						<img decoding="async" width="1536" height="857" src="/assets/MartinDahmer-1-1536x857.webp" loading="lazy"
 							class="attachment-1536x1536 size-1536x1536 wp-image-300" alt=""> </a>
 				</div>
 				<div class="elementor-element elementor-element-fc0f3d6 e-transform elementor-widget elementor-widget-image"
@@ -573,7 +578,7 @@
 					data-settings="{&quot;_transform_scale_effect_hover&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:1.015,&quot;sizes&quot;:[]},&quot;_transform_scale_effect_hover_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_scale_effect_hover_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]}}"
 					data-widget_type="image.default">
 					<a href="/priscila-elpo">
-						<img decoding="async" width="1536" height="857" src="/assets/PriscilaElpo-1-1536x857.png"
+						<img decoding="async" width="1536" height="857" src="/assets/PriscilaElpo-1-1536x857.webp" loading="lazy"
 							class="attachment-1536x1536 size-1536x1536 wp-image-301" alt=""> </a>
 				</div>
 				<div class="elementor-element elementor-element-4eaf10e e-transform elementor-widget elementor-widget-image"
@@ -581,7 +586,7 @@
 					data-settings="{&quot;_transform_scale_effect_hover&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:1.015,&quot;sizes&quot;:[]},&quot;_transform_scale_effect_hover_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_scale_effect_hover_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]}}"
 					data-widget_type="image.default">
 					<a href="/vitor-dos-santos">
-						<img decoding="async" width="1536" height="857" src="/assets/VitorSantos-1-1536x857.png"
+						<img decoding="async" width="1536" height="857" src="/assets/VitorSantos-1-1536x857.webp" loading="lazy"
 							class="attachment-1536x1536 size-1536x1536 wp-image-304" alt=""> </a>
 				</div>
 			</div>

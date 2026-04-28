@@ -1,9 +1,38 @@
 const express = require('express');
 const path = require('path');
 const https = require('https');
+const compression = require('compression');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+
+// Compressão gzip/brotli para todas as respostas de texto
+app.use(compression({ level: 6 }));
+
+// Cache agressivo para assets estáticos (imagens, CSS, JS, fontes)
+// 1 ano de cache para assets com hash/versão; 1 dia para o restante
+app.use('/assets', (req, res, next) => {
+    const ext = path.extname(req.path).toLowerCase();
+    const immutable = ['.webp', '.png', '.jpg', '.svg', '.woff2', '.woff', '.ttf', '.mp3', '.mp4'];
+    if (immutable.includes(ext)) {
+        // 1 ano — assets de mídia não mudam de nome
+        res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
+    } else {
+        // CSS/JS — 1 dia
+        res.setHeader('Cache-Control', 'public, max-age=86400');
+    }
+    next();
+});
+
+app.use('/css', (req, res, next) => {
+    res.setHeader('Cache-Control', 'public, max-age=86400');
+    next();
+});
+
+app.use('/js', (req, res, next) => {
+    res.setHeader('Cache-Control', 'public, max-age=86400');
+    next();
+});
 
 app.use(express.static(path.join(__dirname, 'public')));
 

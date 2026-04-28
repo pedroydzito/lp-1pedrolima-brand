@@ -6,7 +6,7 @@
 
 ## Estado Atual do Projeto
 
-**Última atualização:** 2026-04-28T09:04:00-03:00
+**Última atualização:** 2026-04-28T21:30:00-03:00
 **Sprint ativo:** Nenhum
 **Status geral:** 🟢 Estável
 
@@ -41,6 +41,15 @@ Estado do código (2026-04-27):
 
 O próximo passo recomendado: commit do estado atual, depois abrir novo sprint
 se houver features planejadas.
+
+Otimizações de performance aplicadas (2026-04-28):
+- Todas as imagens PNG convertidas para WebP (123MB → 11MB, -91%)
+- jQuery carregado com defer em todas as 7 páginas (elimina render-blocking)
+- Preload hints para imagens críticas above-the-fold em todas as páginas
+- loading="lazy" em imagens below-the-fold (thumbnails na home + galeria nos projetos)
+- PROJECT_IMAGES em animations.js atualizado para .webp
+- compression (gzip) instalado e ativo no server.js
+- Cache headers: 1 ano para mídia/assets, 1 dia para CSS/JS
 ```
 
 ---

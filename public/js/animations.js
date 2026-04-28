@@ -12,12 +12,12 @@
        ================================================================ */
 
     var PROJECT_IMAGES = {
-        '/roger-nobles': ['/assets/roger-nobles-1.png', '/assets/roger-nobles-2.png', '/assets/roger-nobles-5.png', '/assets/roger-nobles-4.png', '/assets/roger-nobles-6.png', '/assets/roger-nobles-3.png', '/assets/roger-nobles-7.png'],
-        '/robison-kunz': ['/assets/robison-kunz-1.png', '/assets/robison-kunz-2.png', '/assets/robison-kunz-3.png', '/assets/robison-kunz-4.png', '/assets/robison-kunz-6.png'],
-        '/luna-sheeny': ['/assets/luna-sheeny-2.png', '/assets/luna-sheeny-3.png', '/assets/luna-sheeny-4.png', '/assets/luna-sheeny-5.png', '/assets/luna-sheeny-6.png', '/assets/luna-sheeny-7.png'],
-        '/martin-dahmer': ['/assets/martin-dahmer-2.png', '/assets/martin-dahmer-3.png', '/assets/martin-dahmer-4.png', '/assets/martin-dahmer-5.png', '/assets/martin-dahmer-6.png', '/assets/martin-dahmer-7.png'],
-        '/priscila-elpo': ['/assets/priscila-elpo-1.png', '/assets/priscila-elpo-2.png', '/assets/priscila-elpo-3.png', '/assets/priscila-elpo-4.png'],
-        '/vitor-dos-santos': ['/assets/vitor-dos-santos-1.png', '/assets/vitor-dos-santos-3.png', '/assets/vitor-dos-santos-2.png', '/assets/vitor-dos-santos-4.png'],
+        '/roger-nobles': ['/assets/roger-nobles-1.webp', '/assets/roger-nobles-2.webp', '/assets/roger-nobles-5.webp', '/assets/roger-nobles-4.webp', '/assets/roger-nobles-6.webp', '/assets/roger-nobles-3.webp', '/assets/roger-nobles-7.webp'],
+        '/robison-kunz': ['/assets/robison-kunz-1.webp', '/assets/robison-kunz-2.webp', '/assets/robison-kunz-3.webp', '/assets/robison-kunz-4.webp', '/assets/robison-kunz-6.webp'],
+        '/luna-sheeny': ['/assets/luna-sheeny-2.webp', '/assets/luna-sheeny-3.webp', '/assets/luna-sheeny-4.webp', '/assets/luna-sheeny-5.webp', '/assets/luna-sheeny-6.webp', '/assets/luna-sheeny-7.webp'],
+        '/martin-dahmer': ['/assets/martin-dahmer-2.webp', '/assets/martin-dahmer-3.webp', '/assets/martin-dahmer-4.webp', '/assets/martin-dahmer-5.webp', '/assets/martin-dahmer-6.webp', '/assets/martin-dahmer-7.webp'],
+        '/priscila-elpo': ['/assets/priscila-elpo-1.webp', '/assets/priscila-elpo-2.webp', '/assets/priscila-elpo-3.webp', '/assets/priscila-elpo-4.webp'],
+        '/vitor-dos-santos': ['/assets/vitor-dos-santos-1.webp', '/assets/vitor-dos-santos-3.webp', '/assets/vitor-dos-santos-2.webp', '/assets/vitor-dos-santos-4.webp'],
     };
 
     var PROJECT_HREFS = Object.keys(PROJECT_IMAGES);
@@ -510,9 +510,9 @@
         var link = img.closest('a');
         if (link && PROJECT_HREFS.indexOf(link.getAttribute('href')) !== -1) return false;
 
-        /* Só aceita imagens de projeto: .png ou .jpg nos assets */
+        /* Só aceita imagens de projeto: .png, .jpg ou .webp nos assets */
         if (lowerSrc.indexOf('/assets/') === -1) return false;
-        if (lowerSrc.indexOf('.png') === -1 && lowerSrc.indexOf('.jpg') === -1 && lowerSrc.indexOf('.jpeg') === -1) return false;
+        if (lowerSrc.indexOf('.png') === -1 && lowerSrc.indexOf('.jpg') === -1 && lowerSrc.indexOf('.jpeg') === -1 && lowerSrc.indexOf('.webp') === -1) return false;
 
         return true;
     }
@@ -606,12 +606,20 @@
                 }
             });
 
-            img.addEventListener('click', function () {
+            /* Intercepta o clique no <a> wrapper na fase de CAPTURA —
+               roda antes de qualquer handler do Elementor ou do browser,
+               cancela a navegação e abre o lightbox. */
+            var parentLink = img.closest('a[data-elementor-open-lightbox]');
+            var clickTarget = parentLink || img;
+
+            clickTarget.addEventListener('click', function (e) {
+                e.preventDefault();
+                e.stopImmediatePropagation();
                 var src = img.getAttribute('data-src') ||
                     img.getAttribute('data-lazy-src') ||
                     img.src;
                 openLightbox(src);
-            });
+            }, true /* capture */);
         });
 
         /* -- Fechar -- */

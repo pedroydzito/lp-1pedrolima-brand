@@ -440,6 +440,26 @@ button,
 }
 
 /* =========================================================================
+   IMAGENS DE GALERIA NAS PÁGINAS DE PROJETO
+   Aplica o mesmo border-radius do player de música (24px) a todas as
+   imagens de lightbox — sem tocar no logo nem em outros widgets.
+   ========================================================================= */
+
+.elementor-widget-image a[data-elementor-open-lightbox],
+.elementor-widget-image a[data-elementor-open-lightbox] img {
+    border-radius: 24px !important;
+    overflow: hidden;
+    display: block;
+}
+
+@media (max-width: 768px) {
+    .elementor-widget-image a[data-elementor-open-lightbox],
+    .elementor-widget-image a[data-elementor-open-lightbox] img {
+        border-radius: 15px !important;
+    }
+}
+
+/* =========================================================================
    Sistema de Fade-In Reveal
    ========================================================================= */
 .lima-fade-hidden {
