@@ -1076,12 +1076,16 @@ Aplicar em:
 - `public/css/design_system.css` — Criar/atualizar a classe `.lima-desc-text` e aplicar as regras nos 3 componentes.
 
 **Critérios de aceite:**
-- [ ] Font-size em desktop = 16px para os textos descritivos informados.
-- [ ] Font-size em mobile (≤ 767px) = 13px para os textos descritivos informados.
-- [ ] Cor `#0F172BBF !important` nos textos descritivos em fundo claro.
-- [ ] Design System atualizado com o padrão de textos descritivos.
+- [x] Font-size em desktop = 16px para os textos descritivos informados.
+- [x] Font-size em mobile (≤ 767px) = 13px para os textos descritivos informados.
+- [x] Cor `#0F172BBF !important` nos textos descritivos em fundo claro.
+- [x] Design System atualizado com o padrão de textos descritivos (`.lima-desc-text`).
 
-**Status:** 🔄 Em implementação
+**Sensores rodados:**
+- [x] Servidor sobe (HTTP 200 OK via curl)
+- [x] F-05 visual: textos descritivos com 16px desktop / 13px mobile e cor padronizada.
+
+**Status:** ✅ Concluído
 
 
 

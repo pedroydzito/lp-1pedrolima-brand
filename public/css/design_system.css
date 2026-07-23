@@ -88,24 +88,25 @@ h2.elementor-heading-title {
     letter-spacing: -1px !important;
 }
 
-/* Secondary Texts Hierarchy */
+/* Standard Descriptive Texts (Padrão de Textos Descritivos Globais) */
+.lima-desc-text,
+.lima-sobre-text,
 .elementor-element-2b53e17 .elementor-heading-title,
-p.elementor-heading-title {
-    color: #0F172BBF !important;
-    /* Muted Dark Blue - 75% opacity */
+.elementor-element-b32a681 .elementor-heading-title,
+p.elementor-heading-title,
+.elementor-widget-text-editor {
+    font-family: "CircularStd", sans-serif !important;
+    font-size: 16px !important;
     font-weight: 400 !important;
+    line-height: 1.65 !important;
+    color: #0F172BBF !important;
 }
 
 #contatos .elementor-element-91e1a36 .elementor-heading-title,
 #contatos .elementor-widget-text-editor,
 #contatos p.elementor-heading-title {
     color: #FFFFFFBF !important;
-    /* Muted White */
     font-weight: 400 !important;
-}
-
-.elementor-widget-text-editor {
-    color: #0F172BBF !important;
 }
 
 /* Fix Player Icons using Bootstrap Icons */
@@ -700,10 +701,10 @@ button,
 
 .lima-sobre-text {
     font-family: "CircularStd", sans-serif;
-    font-size: 18px;
+    font-size: 16px !important;
     line-height: 1.65;
     font-weight: 400;
-    color: var(--lima-light-text-sec);
+    color: #0F172BBF !important;
     max-width: 600px;
     margin: 0;
 }
@@ -799,7 +800,8 @@ button,
     }
 
     .lima-sobre-text {
-        font-size: 16px;
+        font-size: 13px !important;
+        line-height: 1.6 !important;
         text-align: center;
         margin: 0 auto;
     }
@@ -1133,15 +1135,28 @@ button,
     color: #ffffff;
     line-height: 1.4;
     margin: 0;
-    transition: color 0.3s ease;
+    position: relative;
 }
 
-.lima-faq-item:hover .lima-faq-question-text {
+.lima-faq-question-text::before {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     background: var(--lima-dark-gradient);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
     color: transparent;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.lima-faq-item:hover .lima-faq-question-text::before {
+    opacity: 1;
 }
 
 /* Ícone +/× desenhado em CSS para alinhamento perfeito */
@@ -1203,9 +1218,9 @@ button,
 
 .lima-faq-answer-inner {
     font-family: "CircularStd", sans-serif;
-    font-size: 16px;
+    font-size: 16px !important;
     font-weight: 400;
-    color: rgba(255, 255, 255, 0.65);
+    color: #FFFFFFBF !important;
     line-height: 1.75;
     padding: 0 32px 24px 32px;
     max-width: 800px;
@@ -1230,7 +1245,8 @@ button,
     }
 
     .lima-faq-answer-inner {
-        font-size: 15px;
+        font-size: 13px !important;
+        line-height: 1.6 !important;
         padding: 0 24px 20px 24px;
     }
 

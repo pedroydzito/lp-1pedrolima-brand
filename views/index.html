@@ -630,7 +630,7 @@
 				<div class="elementor-element elementor-element-2b53e17 elementor-widget elementor-widget-heading"
 					data-id="2b53e17" data-element_type="widget" data-e-type="widget"
 					data-widget_type="heading.default">
-					<p class="elementor-heading-title elementor-size-default">Algumas das marcas que eu ajudei a moldar
+					<p class="elementor-heading-title elementor-size-default lima-desc-text">Algumas das marcas que eu ajudei a moldar
 						e elevar.</p>
 				</div>
 			</div>
@@ -1094,6 +1094,11 @@
 			const faqItems = document.querySelectorAll('.lima-faq-item');
 
 			faqItems.forEach(function (item) {
+				const textEl = item.querySelector('.lima-faq-question-text');
+				if (textEl && !textEl.getAttribute('data-text')) {
+					textEl.setAttribute('data-text', textEl.textContent.trim());
+				}
+
 				const btn = item.querySelector('.lima-faq-question');
 				if (!btn) return;
 
