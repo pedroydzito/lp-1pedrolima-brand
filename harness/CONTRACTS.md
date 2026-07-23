@@ -996,3 +996,25 @@ Foi adicionado um pseudo-elemento `::before` invisível com expansão de borda p
 - [x] F-05 visual: Funcionalidade avaliada na teoria CSS (shaking bounds fixed).
 
 **Status:** ✅ Concluído
+
+---
+
+#### T-AD-39: Ajuste de espaçamento entre a tag FAQ e os cards no Mobile
+**Tipo:** Ad-hoc — solicitada em 2026-07-23
+**Tipo de mudança:** `front-end` / `design`
+**Descrição:** 
+No mobile, diminuir o espaçamento entre a tag FAQ (`.lima-faq-header`) e os cards do FAQ (`.lima-faq-list`) para que seja exatamente igual ao espaçamento superior que existe acima da tag FAQ (distância do topo da seção `#faq` até a tag FAQ = 40px).
+
+**Arquivos que serão modificados:**
+- `public/css/design_system.css` — Ajustar `margin-bottom` da `.lima-faq-header` no mobile para 8px (32px gap + 8px margin = 40px).
+
+**Critérios de aceite:**
+- [x] No mobile (≤ 767px), o espaçamento entre a tag FAQ e os cards é exatamente igual ao espaçamento acima da tag FAQ (40px).
+- [x] Visual do desktop permanece inalterado.
+
+**Sensores rodados:**
+- [x] Servidor sobe (HTTP 200 OK via curl)
+- [x] F-05 visual: espaçamento simétrico de 40px acima e abaixo da tag FAQ no mobile.
+
+**Status:** ✅ Concluído
+
