@@ -6,7 +6,7 @@
 
 ## Estado Atual do Projeto
 
-**Última atualização:** 2026-04-28T21:30:00-03:00
+**Última atualização:** 2026-07-23T10:28:00-03:00
 **Sprint ativo:** Nenhum
 **Status geral:** 🟢 Estável
 
@@ -136,6 +136,8 @@ Otimizações de performance aplicadas (2026-04-28):
 | 2026-04-28 | T-AD-22: correção de sequência e buffering do slideshow | — |
 | 2026-04-28 | T-AD-23: sincronização robusta (recursiva) do slideshow | — |
 | 2026-04-28 | T-AD-24: refatoração profunda (pipeline prefetch) | — |
+| 2026-07-23 | T-AD-25: favicon adicionado + SEO turbinado em todas as 7 páginas | 9db34b6 |
+| 2026-07-23 | T-AD-26: commit do arquivo de verificação do Google Search Console | pending |
 
 ---
 
