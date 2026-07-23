@@ -112,6 +112,43 @@ pedro-lima-brand/
 
 ---
 
+## Adicionando um Novo Projeto ao Portfólio
+
+Quando o usuário pedir para criar uma nova página de portfólio (ex: "adiciona o projeto X"), seguir este checklist **obrigatoriamente**:
+
+### 1. Criar o arquivo HTML
+- Criar `views/nome-do-cliente.html`
+- Usar `luna-sheeny.html` como base de estrutura
+- Substituir: imagens, título, descrição do projeto
+
+### 2. SEO completo no `<head>`
+Copiar o bloco SEO de uma página existente e personalizar:
+- `<title>`: `Identidade Visual [Nome] | Pedro Lima — Brand Designer`
+- `meta description`: descritiva, menciona o tipo de profissional do cliente
+- `meta keywords`: incluir nicho do cliente + `pedro lima, lima_, 1pedrolima`
+- `og:image`: URL da primeira imagem real do projeto
+- `JSON-LD` `@type: CreativeWork` com `creator: Pedro Lima`
+- `robots: index, follow` — NUNCA `noindex`
+
+### 3. Registrar a rota no server.js
+Adicionar o slug ao array `projects` em `server.js`:
+```js
+const projects = [
+    'luna-sheeny',
+    // ... outros projetos ...
+    'nome-do-cliente',  // ← adicionar aqui
+];
+```
+O sitemap.xml será atualizado automaticamente.
+
+### 4. Adicionar o card na home
+Em `views/index.html`, adicionar um bloco `<div>` na grade de projetos (seção `#projetos`) com a imagem do novo projeto, igual aos existentes.
+
+### 5. Após o deploy
+Orientar o usuário a ir no Google Search Console → Inspeção de URL → colar a nova URL → "Solicitar indexação". Em 3–7 dias o Google visita.
+
+---
+
 ## Proibido
 
 - TypeScript (sem tsc, sem .ts)
