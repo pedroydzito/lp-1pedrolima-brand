@@ -1143,9 +1143,11 @@
 					const cardWidth = getCardFullWidth();
 					const middleScroll = (cloneCount * totalOriginal) * cardWidth;
 					
-					// Offset para alinhar o "gap" (espaço) exatamente no meio da tela.
-					// Como o gap tem 20px, descontamos metade do gap (10px) da largura total do card.
-					const centerOffset = cardWidth - 10;
+					// Offset para alinhar no meio da tela
+					let centerOffset = cardWidth - 10; // Desktop: foca no gap
+					if (window.innerWidth <= 1024) {
+						centerOffset = cardWidth / 2; // Mobile: foca no centro do card
+					}
 					track.scrollLeft = middleScroll + centerOffset;
 
 					// Infinite Scroll & Curve physics

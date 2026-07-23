@@ -141,6 +141,7 @@ Otimizações de performance aplicadas (2026-04-28):
 | 2026-07-23 | T-AD-27: alinhamento de seções (Sobre Mim e FAQ) com footer (padding removido) | — |
 | 2026-07-23 | T-AD-28: padronização do border-radius da foto Sobre Mim (24px/15px) | — |
 | 2026-07-23 | T-AD-29: ajuste de espaçamento e proporção das imagens de feedbacks (9:16) no mobile | — |
+| 2026-07-23 | T-AD-30: ajuste da largura (80vw) e alinhamento do card de feedbacks no mobile | — |
 ---
 
 ## Variáveis de Ambiente Necessárias

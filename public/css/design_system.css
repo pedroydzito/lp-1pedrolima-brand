@@ -1009,9 +1009,9 @@ button,
         gap: 16px;
     }
 
-    /* 1.5 cards no mobile */
+    /* 1 card centralizado no mobile */
     .lima-feedback-card {
-        flex: 0 0 calc((100vw / 1.5) - 10px);
+        flex: 0 0 80vw;
         aspect-ratio: 9/16;
     }
 

@@ -792,3 +792,26 @@
 - [x] F-05 visual: Check no simulador mobile.
 
 **Status:** ✅ Concluído
+
+---
+
+#### T-AD-30: Ajuste do Alinhamento e Largura dos Feedbacks no Mobile
+**Tipo:** Ad-hoc — solicitada em 2026-07-23
+**Tipo de mudança:** `front-end` / `js` / `design`
+**Descrição:** 
+O alinhamento no mobile estava quebrado e não mostrava uma imagem completa. 
+1. Aumentar a largura do card no mobile para exibir 1 imagem quase completa (80vw) em vez de dividir 1.5.
+2. Modificar o JS para focar (centralizar) o meio do card em telas mobile (em vez do "gap").
+**Arquivos modificados:**
+- `public/css/design_system.css` — largura `.lima-feedback-card` no mobile.
+- `views/index.html` — script inline que ajusta o `scrollLeft` inicial.
+
+**Critérios de aceite:**
+- [x] Card preenche a maior parte da tela (80vw) no mobile.
+- [x] Ao carregar a página no mobile, 1 card aparece perfeitamente centralizado.
+- [x] Comportamento desktop inalterado (centralizado no gap).
+
+**Sensores rodados:**
+- [x] F-05 visual: Check no simulador mobile.
+
+**Status:** ✅ Concluído
