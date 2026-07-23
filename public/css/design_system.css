@@ -521,6 +521,17 @@ button,
         letter-spacing: 0.5px !important;
     }
 
+    /* 2b. Standard Descriptive Texts Mobile (13px) */
+    .lima-desc-text,
+    .elementor-element-2b53e17 .elementor-heading-title,
+    .elementor-element-2b53e17 p,
+    .elementor-element-b32a681 .elementor-heading-title,
+    .lima-sobre-text,
+    .lima-faq-answer-inner {
+        font-size: 13px !important;
+        line-height: 1.6 !important;
+    }
+
     /* 3. Music Player Timer Overflow & Spacing Fix */
     .elementor-widget-music-player {
         margin-bottom: 20px !important;

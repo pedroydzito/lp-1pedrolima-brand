@@ -1110,6 +1110,28 @@ A solução foi utilizar um pseudo-elemento `::before` sobreposto com `opacity: 
 
 **Status:** ✅ Concluído
 
+---
+
+#### T-AD-43: Correção do tamanho de fonte mobile (13px) do subtítulo de marcas na Home
+**Tipo:** Ad-hoc — solicitada em 2026-07-23
+**Tipo de mudança:** `front-end` / `design`
+**Descrição:** 
+Garantir que o subtítulo das marcas na home ("Algumas das marcas que eu ajudei a moldar e elevar.") (`.elementor-element-2b53e17 .elementor-heading-title`, `.lima-desc-text`) respeite a regra de `font-size: 13px !important` no mobile (≤ 767px).
+
+**Arquivos que serão modificados:**
+- `public/css/design_system.css` — Adicionar seletor explícito na media query mobile.
+
+**Critérios de aceite:**
+- [x] No mobile (≤ 767px), o subtítulo das marcas é exibido em 13px.
+- [x] Em desktop (≥ 768px), o subtítulo das marcas é exibido em 16px.
+
+**Sensores rodados:**
+- [x] Servidor sobe (HTTP 200 OK via curl)
+- [x] F-05 visual: subtítulo das marcas ajustado para 13px !important no mobile.
+
+**Status:** ✅ Concluído
+
+
 
 
 
