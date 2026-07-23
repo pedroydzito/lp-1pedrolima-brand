@@ -1186,7 +1186,7 @@ button,
 .lima-faq-item.is-open .lima-faq-icon {
     transform: rotate(45deg);
     background: var(--lima-dark-gradient);
-    border-color: transparent;
+    border: none;
     color: #060312; /* a cor da cruz quando ativo */
 }
 

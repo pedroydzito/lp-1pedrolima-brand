@@ -1037,6 +1037,51 @@ No mobile (≤ 767px), reordenar os elementos da seção "Sobre Mim" (`.lima-sob
 - [x] Servidor sobe (HTTP 200 OK via curl)
 - [x] F-05 visual: Reordenação dos botões (logo após a foto) via CSS grid-template-areas no mobile.
 
+
+---
+
+#### T-AD-41: Remover borda do ícone do FAQ quando selecionado
+**Tipo:** Ad-hoc — solicitada em 2026-07-23
+**Tipo de mudança:** `front-end` / `design`
+**Descrição:** 
+Remover a borda circular do ícone do FAQ (`.lima-faq-icon`) quando o card estiver ativo/selecionado (`.lima-faq-item.is-open`), mantendo apenas o círculo com degradê e a cruz. Ao desativar o card, a borda sutil retorna.
+
+**Arquivos modificados:**
+- `public/css/design_system.css` — `.lima-faq-item.is-open .lima-faq-icon` com `border: none;`.
+
+**Critérios de aceite:**
+- [x] Quando o card do FAQ está aberto, o ícone circular com degradê não tem borda em volta.
+- [x] Quando o card do FAQ está fechado, a borda discreta (15% opacidade) permanece visível.
+
+**Sensores rodados:**
+- [x] Servidor sobe (HTTP 200 OK)
+- [x] F-05 visual: ícone sem borda no estado ativo / com borda no estado inativo.
+
 **Status:** ✅ Concluído
+
+---
+
+#### T-AD-41: Padronização de textos descritivos no Design System (16px Desktop / 13px Mobile / #0F172BBF)
+**Tipo:** Ad-hoc — solicitada em 2026-07-23
+**Tipo de mudança:** `front-end` / `design`
+**Descrição:** 
+Padronizar a tipografia dos textos descritivos do site para seguirem o padrão dos projetos (16px em desktop, 13px em mobile, cor `#0F172BBF !important`).
+Aplicar em:
+1. Texto de detalhe do Sobre Mim (`.lima-sobre-text`)
+2. Descrição dos tópicos do FAQ (`.lima-faq-answer-inner`)
+3. Subtítulo das marcas ("Algumas das marcas que eu ajudei a moldar...") (`.elementor-element-2b53e17 .elementor-heading-title`)
+4. Classe utilitária `.lima-desc-text` e regras globais de texto no `design_system.css`.
+
+**Arquivos que serão modificados:**
+- `public/css/design_system.css` — Criar/atualizar a classe `.lima-desc-text` e aplicar as regras nos 3 componentes.
+
+**Critérios de aceite:**
+- [ ] Font-size em desktop = 16px para os textos descritivos informados.
+- [ ] Font-size em mobile (≤ 767px) = 13px para os textos descritivos informados.
+- [ ] Cor `#0F172BBF !important` nos textos descritivos em fundo claro.
+- [ ] Design System atualizado com o padrão de textos descritivos.
+
+**Status:** 🔄 Em implementação
+
 
 

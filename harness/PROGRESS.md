@@ -152,6 +152,7 @@ Otimizações de performance aplicadas (2026-04-28):
 | 2026-07-23 | T-AD-38: correção de bug no hover dos botões (loop tremendo) com pseudoelemento | — |
 | 2026-07-23 | T-AD-39: ajuste de espaçamento simétrico (40px) da tag FAQ no mobile | — |
 | 2026-07-23 | T-AD-40: reposicionamento dos botões no Sobre Mim (após foto e antes da descrição) no mobile | — |
+| 2026-07-23 | T-AD-41: remoção da borda do ícone do FAQ quando selecionado | — |
 ---
 
 ## Variáveis de Ambiente Necessárias
