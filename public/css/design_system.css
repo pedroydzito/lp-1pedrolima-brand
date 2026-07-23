@@ -492,7 +492,8 @@ button,
     /* 1. Global Border-radius Reduction (24px -> 15px) */
     .elementor-element-e6e0690 .elementor-widget-image a,
     .elementor-element-e6e0690 .elementor-widget-image a img,
-    .srp_player_boxed {
+    .srp_player_boxed,
+    .lima-sobre-image {
         border-radius: 15px !important;
     }
 
@@ -617,31 +618,67 @@ button,
    ========================================================================= */
 .lima-section-inner {
     max-width: 1140px;
+    width: 100%;
     margin: 0 auto;
-    padding: 0 24px;
+    padding: 0;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: 32px;
 }
 
+@media (max-width: 1024px) {
+    .lima-section-inner {
+        padding: 0 5%;
+    }
+}
+
 /* =========================================================================
    Seção Sobre Mim (#sobre)
    ========================================================================= */
 #sobre {
-    background-color: #060312;
+    background-color: #fafafa;
     padding: 120px 0;
     position: relative;
     z-index: 5;
 }
 
+.lima-sobre-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+        "tag image"
+        "heading image"
+        "text image"
+        "ctas image";
+    gap: 32px 64px;
+    align-items: center; /* alinhamento padrão */
+    width: 100%;
+}
+
+.lima-sobre-tag { grid-area: tag; justify-self: flex-start; }
+.lima-sobre-heading { grid-area: heading; text-align: left; }
+.lima-sobre-image { grid-area: image; height: 100%; }
+.lima-sobre-text { grid-area: text; text-align: left; margin: 0; }
+.lima-sobre-ctas { grid-area: ctas; justify-content: flex-start; }
+
+.lima-sobre-image {
+    width: 100%;
+    position: relative;
+    border-radius: 24px;
+    overflow: hidden;
+}
+
+.lima-sobre-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
 .lima-sobre-heading {
     font-family: "CircularStd", sans-serif;
-    font-size: 84px;
-    line-height: 0.95;
-    letter-spacing: -2px;
-    font-weight: 700;
-    color: var(--lima-dark-text);
+    color: var(--lima-light-text);
     margin: 0;
 }
 
@@ -650,43 +687,52 @@ button,
     font-size: 18px;
     line-height: 1.65;
     font-weight: 400;
-    color: var(--lima-dark-text-sec);
+    color: var(--lima-light-text-sec);
     max-width: 600px;
     margin: 0;
 }
 
 .lima-sobre-ctas {
     display: flex;
+    justify-content: flex-start;
     gap: 12px;
-    flex-wrap: wrap;
     margin-top: 8px;
 }
 
-/* Botões no fundo escuro — override para contexto #sobre */
+/* Botões no fundo claro — override para contexto #sobre */
 #sobre .elementor-button {
-    background: rgba(255, 255, 255, 0.08) !important;
-    color: #ffffff !important;
-    border: 1px solid rgba(255, 255, 255, 0.18) !important;
-    backdrop-filter: blur(10px);
+    background: rgba(6, 3, 18, 0.05) !important;
+    color: #060312 !important;
+    border: 1px solid rgba(6, 3, 18, 0.15) !important;
     padding: 14px 30px !important;
 }
 
 #sobre .elementor-button:hover {
-    background: rgba(255, 255, 255, 0.16) !important;
-    border-color: rgba(255, 255, 255, 0.35) !important;
+    background: rgba(6, 3, 18, 0.1) !important;
+    border-color: rgba(6, 3, 18, 0.3) !important;
 }
 
 /* Botão primário: gradiente no fundo */
 #sobre .elementor-button.lima-btn-primary {
-    background: var(--lima-dark-gradient) !important;
+    background: var(--lima-light-gradient) !important;
     color: #060312 !important;
     border: none !important;
     font-weight: 700 !important;
 }
 
 #sobre .elementor-button.lima-btn-primary:hover {
-    filter: brightness(1.08);
-    background: var(--lima-dark-gradient) !important;
+    filter: brightness(0.95);
+    background: var(--lima-light-gradient) !important;
+}
+
+/* Botão secundário (Instagram) no hover */
+#sobre .elementor-button.lima-btn-secondary:hover {
+    color: #ffffff !important;
+    border-color: #060312 !important;
+}
+
+#sobre .elementor-button.lima-btn-secondary::after {
+    background: #060312 !important;
 }
 
 @media (max-width: 767px) {
@@ -694,30 +740,292 @@ button,
         padding: 80px 0;
     }
 
+    .lima-sobre-grid {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "tag"
+            "heading"
+            "image"
+            "text"
+            "ctas";
+        gap: 24px;
+    }
+
+    .lima-sobre-image {
+        aspect-ratio: 4/5;
+        margin: 8px 0;
+    }
+
+    .lima-sobre-tag {
+        justify-self: center;
+    }
+
     .lima-sobre-heading {
-        font-size: 42px;
-        letter-spacing: -1px;
-        line-height: 0.95;
+        text-align: center;
     }
 
     .lima-sobre-text {
         font-size: 16px;
+        text-align: center;
+        margin: 0 auto;
     }
 
     .lima-sobre-ctas {
-        flex-direction: column;
+        flex-direction: row; /* Botões lado a lado no mobile */
+        flex-wrap: wrap;
         width: 100%;
+        justify-content: center;
     }
 
     .lima-sobre-ctas .elementor-button {
         text-align: center;
-        width: 100%;
+        flex: 1; /* Ocupam espaço igual e ficam lado a lado */
+        min-width: 140px;
     }
 }
 
 @media (min-width: 768px) and (max-width: 1024px) {
+    .lima-sobre-grid {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "tag"
+            "heading"
+            "image"
+            "text"
+            "ctas";
+        gap: 32px;
+    }
+
+    .lima-sobre-tag {
+        justify-self: center;
+    }
+
+    .lima-sobre-image {
+        aspect-ratio: 4/5;
+        margin: 16px 0;
+    }
+
     .lima-sobre-heading {
-        font-size: 56px;
+        text-align: center;
+    }
+
+    .lima-sobre-text {
+        text-align: center;
+        margin: 0 auto;
+    }
+
+    .lima-sobre-ctas {
+        justify-content: center;
+    }
+}
+
+/* =========================================================================
+   Seção Feedbacks (#feedbacks)
+   ========================================================================= */
+#feedbacks {
+    background-color: #ffffff;
+    padding: 120px 0;
+    position: relative;
+    z-index: 5;
+    overflow: hidden;
+}
+
+.lima-feedbacks-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 64px;
+    gap: 16px;
+}
+
+.lima-feedbacks-tag {
+    justify-self: center;
+}
+
+.lima-feedbacks-heading {
+    text-align: center;
+    margin: 0;
+}
+
+.lima-feedbacks-container {
+    width: 100vw;
+    margin-left: calc(-50vw + 50%); /* Expande de ponta a ponta da tela */
+    position: relative;
+    padding: 0; 
+}
+
+.lima-feedbacks-track {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    overflow-x: auto;
+    /* Removido o snap para o scroll infinito fluir */
+    scroll-behavior: auto; 
+    -webkit-overflow-scrolling: touch;
+    padding: 16px 50vw; /* Padding gigante para nunca encostar nas bordas nativas */
+    scrollbar-width: none; /* Firefox */
+}
+
+.lima-feedbacks-track::-webkit-scrollbar {
+    display: none; /* Chrome/Safari */
+}
+
+/* Base de dimensionamento - Transform aplicado via JS */
+.lima-feedback-card {
+    /* (100vw / 3.5) menos o gap de 20px */
+    flex: 0 0 calc((100vw / 3.5) - 14px);
+    aspect-ratio: 1/1; /* Quadradas 1:1 obrigatório */
+    border-radius: 24px;
+    overflow: hidden;
+    background-color: #f5f5f5;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    /* Transform via JS não pode ter transition para não dar lag */
+    transition: transform 0.3s ease;
+    cursor: zoom-in;
+    transform-origin: center center;
+    /* Evitar flicker durante GPU accell */
+    will-change: transform;
+}
+
+.lima-feedback-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Preenchidas, conforme solicitado */
+    object-position: center;
+    transition: opacity 0.3s ease;
+}
+
+.lima-feedback-card:hover {
+    transform: scale(1.02) !important;
+}
+
+/* Nav Container */
+.lima-feedbacks-nav-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 24px;
+    margin-bottom: 24px; /* Junto das imagens */
+    position: relative;
+    z-index: 10;
+}
+
+/* Nav Buttons (agora abaixo do título) */
+.lima-feedbacks-nav {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+}
+
+.lima-feedbacks-btn {
+    width: 40px; /* Menor */
+    height: 40px;
+    border-radius: 50%;
+    background: #fafafa !important; /* Forçar sobreposição do Elementor */
+    border: 1px solid rgba(0,0,0,0.05) !important; 
+    color: #111111 !important; /* Ícones pretos */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+}
+
+.lima-feedbacks-btn:hover {
+    background: #111111 !important; /* Fundo preto no hover */
+    color: #ffffff !important; /* Ícone branco no hover */
+    transform: scale(1.05);
+}
+
+/* Lightbox Modal Customizado */
+.lima-lightbox-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(17, 17, 17, 0.95);
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.lima-lightbox-modal.is-active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.lima-lightbox-close-wrap {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #cdf954;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+    z-index: 100000;
+}
+
+.lima-lightbox-close-wrap:hover {
+    transform: scale(1.05);
+    background-color: #b9e54a;
+}
+
+.lima-lightbox-content {
+    max-width: 90vw;
+    max-height: 90vh;
+    border-radius: 12px;
+    object-fit: contain;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+}
+
+@media (max-width: 1024px) {
+    #feedbacks {
+        padding: 40px 0;
+    }
+
+    .lima-feedbacks-container {
+        /* Já é 100vw de ponta a ponta */
+        padding: 0;
+        margin-left: calc(-50vw + 50%);
+        width: 100vw;
+    }
+
+    .lima-feedbacks-track {
+        padding: 16px 50vw; /* Padding gigante mantido pro scroll infinito */
+        gap: 16px;
+    }
+
+    /* 1.5 cards no mobile */
+    .lima-feedback-card {
+        flex: 0 0 calc((100vw / 1.5) - 10px);
+        aspect-ratio: 9/16;
+    }
+
+    .lima-feedbacks-header {
+        margin-bottom: 16px;
+    }
+
+    .lima-feedbacks-nav-container {
+        display: none; /* No mobile as pessoas usam drag nativo e as setas tomam muito espaço */
+    }
+
+    .lima-lightbox-close {
+        top: 16px;
+        right: 24px;
     }
 }
 
@@ -725,90 +1033,127 @@ button,
    Seção FAQ (#faq)
    ========================================================================= */
 #faq {
-    background-color: #ffffff;
+    background-color: #060312;
     padding: 120px 0;
     position: relative;
     z-index: 5;
 }
 
-.lima-faq-heading {
-    font-family: "CircularStd", sans-serif;
-    font-size: 84px;
-    line-height: 0.95;
-    letter-spacing: -2px;
-    font-weight: 700;
-    color: var(--lima-light-text);
-    margin: 0;
-    max-width: 780px;
+.lima-faq-header {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 24px;
 }
 
-/* Lista de perguntas */
+/* Lista de perguntas (Cards) */
 .lima-faq-list {
     display: flex;
     flex-direction: column;
     width: 100%;
-    border-top: 1px solid rgba(6, 3, 18, 0.1);
+    gap: 16px;
 }
 
+/* Item (Card) */
 .lima-faq-item {
-    border-bottom: 1px solid rgba(6, 3, 18, 0.1);
+    background-color: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
     overflow: hidden;
 }
 
+/* Botão da pergunta */
 .lima-faq-question {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 26px 0;
+    padding: 24px 32px;
     cursor: pointer;
     gap: 24px;
-    user-select: none;
-    background: none;
-    border: none;
+    background: transparent !important;
+    border: none !important;
     width: 100%;
     text-align: left;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.lima-faq-question:hover,
+.lima-faq-question:focus,
+.lima-faq-question:active {
+    background: transparent !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+/* Bloqueia qualquer ::before ou ::after de botão global */
+.lima-faq-question::before,
+.lima-faq-question::after {
+    display: none !important;
 }
 
 .lima-faq-question-text {
     font-family: "CircularStd", sans-serif;
-    font-size: 18px;
-    font-weight: 700;
-    color: var(--lima-light-text);
-    line-height: 1.3;
+    font-size: 20px;
+    font-weight: 400;
+    color: #ffffff;
+    line-height: 1.4;
     margin: 0;
     transition: color 0.3s ease;
 }
 
 .lima-faq-item:hover .lima-faq-question-text {
-    color: #2bce4d;
+    background: var(--lima-dark-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
 }
 
-/* Ícone +/× */
+/* Ícone +/× desenhado em CSS para alinhamento perfeito */
 .lima-faq-icon {
     flex-shrink: 0;
-    width: 32px;
-    height: 32px;
+    width: 40px;
+    height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    border: 2px solid rgba(6, 3, 18, 0.15);
-    color: var(--lima-light-text);
-    font-size: 20px;
-    font-weight: 300;
-    font-family: "CircularStd", sans-serif;
-    line-height: 1;
+    border: 2px solid rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    font-size: 0; /* esconde a fonte para evitar desalinhamento */
+    position: relative;
     transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
                 border-color 0.3s ease,
                 background 0.3s ease,
                 color 0.3s ease;
 }
 
+.lima-faq-icon::before,
+.lima-faq-icon::after {
+    content: '';
+    position: absolute;
+    background-color: currentColor;
+    border-radius: 1px;
+}
+
+/* Traço horizontal */
+.lima-faq-icon::before {
+    width: 14px;
+    height: 2px;
+}
+
+/* Traço vertical */
+.lima-faq-icon::after {
+    width: 2px;
+    height: 14px;
+}
+
 .lima-faq-item.is-open .lima-faq-icon {
     transform: rotate(45deg);
-    background: var(--lima-light-gradient);
+    background: var(--lima-dark-gradient);
     border-color: transparent;
-    color: #ffffff;
+    color: #060312; /* a cor da cruz quando ativo */
 }
 
 /* Resposta com animação de altura */
@@ -826,10 +1171,10 @@ button,
     font-family: "CircularStd", sans-serif;
     font-size: 16px;
     font-weight: 400;
-    color: rgba(6, 3, 18, 0.6);
+    color: rgba(255, 255, 255, 0.65);
     line-height: 1.75;
-    padding: 0 0 28px 0;
-    max-width: 720px;
+    padding: 0 32px 24px 32px;
+    max-width: 800px;
 }
 
 @media (max-width: 767px) {
@@ -837,28 +1182,27 @@ button,
         padding: 80px 0;
     }
 
-    .lima-faq-heading {
-        font-size: 42px;
-        letter-spacing: -1px;
+    .lima-faq-header {
+        margin-bottom: 24px;
+    }
+
+    .lima-faq-question {
+        padding: 20px 24px;
     }
 
     .lima-faq-question-text {
-        font-size: 15px;
+        font-size: 16px;
+        font-weight: 400;
     }
 
     .lima-faq-answer-inner {
-        font-size: 14px;
+        font-size: 15px;
+        padding: 0 24px 20px 24px;
     }
 
     .lima-faq-icon {
-        width: 26px;
-        height: 26px;
-        font-size: 16px;
-    }
-}
-
-@media (min-width: 768px) and (max-width: 1024px) {
-    .lima-faq-heading {
-        font-size: 56px;
+        width: 32px;
+        height: 32px;
+        font-size: 20px;
     }
 }

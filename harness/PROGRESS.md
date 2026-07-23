@@ -138,7 +138,9 @@ Otimizações de performance aplicadas (2026-04-28):
 | 2026-04-28 | T-AD-24: refatoração profunda (pipeline prefetch) | — |
 | 2026-07-23 | T-AD-25: favicon adicionado + SEO turbinado em todas as 7 páginas | 9db34b6 |
 | 2026-07-23 | T-AD-26: commit do arquivo de verificação do Google Search Console | 31a4449 |
-
+| 2026-07-23 | T-AD-27: alinhamento de seções (Sobre Mim e FAQ) com footer (padding removido) | — |
+| 2026-07-23 | T-AD-28: padronização do border-radius da foto Sobre Mim (24px/15px) | — |
+| 2026-07-23 | T-AD-29: ajuste de espaçamento e proporção das imagens de feedbacks (9:16) no mobile | — |
 ---
 
 ## Variáveis de Ambiente Necessárias

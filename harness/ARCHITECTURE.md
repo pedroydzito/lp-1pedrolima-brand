@@ -87,10 +87,13 @@ pedro-lima-brand/
 **Tipografia:** CircularStd (importada via CSS)
 **Variáveis definidas:** cores, espaçamentos, border-radius, sombras
 
-### Regras
-- Nenhum valor visual hardcoded fora do `design_system.css`
-- Para adicionar tokens: edite as variáveis no `:root`, depois use a variável
-- `border-radius` de cards: `24px` (ou via variável `--radius-card`)
+### Regras e Boas Práticas
+- **Fidelidade Variável:** Nenhum valor visual hardcoded fora do `design_system.css`. Para adicionar tokens, edite as variáveis no `:root`, depois use a variável.
+- **Alinhamento Responsivo:** Seções de conteúdo (como "Sobre Mim") devem seguir um fluxo natural da esquerda para a direita no Desktop (text-align: left), mas devem ser estritamente centralizadas no Mobile e Tablet (text-align: center, justify-self: center).
+- **Padronização de Tags:** Todas as tags indicativas de seção (ex: "Sobre Mim", "Projetos", "FAQ") devem usar a classe `.lima-tag`. Isso garante que tenham dimensões (padding/font-size) matematicamente idênticas. A variante clara deve usar `.lima-tag.light-theme`.
+- **Hierarquia Tipográfica (H1):** Títulos de seção devem sempre consumir a classe global `.elementor-heading-title` (ex: `<h1 class="elementor-heading-title">`). É terminantemente proibido sobrescrever o `font-size` ou `line-height` desses títulos por ID de seção no CSS; deixe a responsividade fluir pela classe global.
+- **Quebras de Seção (Off-white):** Para intercalar seções claras sem peso excessivo, deve-se usar a cor off-white suave `#fafafa` ao invés de tons escuros de cinza ou branco puro `#ffffff`.
+- **Bordas:** `border-radius` de cards em desktop é `24px` (ou variável equivalente).
 
 ---
 

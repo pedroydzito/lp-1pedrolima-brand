@@ -733,3 +733,62 @@
 - [x] Análise da estrutura (servidor serve public/ na raiz)
 
 **Status:** ✅ Concluído
+
+---
+
+#### T-AD-27: Alinhamento de Seções (Sobre Mim e FAQ) com Footer
+**Tipo:** Ad-hoc — solicitada em 2026-07-23
+**Tipo de mudança:** `front-end` / `design`
+**Descrição:** Ajuste de padding na classe `.lima-section-inner` para alinhar perfeitamente o conteúdo das seções "Sobre Mim" e "FAQ" com o título "Contatos" do footer em telas desktop, garantindo também a responsividade no mobile.
+**Arquivos modificados:**
+- `public/css/design_system.css` — Ajuste de padding e media query de `.lima-section-inner`
+
+**Critérios de aceite:**
+- [x] O padding lateral (24px) foi removido no desktop para alinhar com `.e-con-inner`
+- [x] Padding lateral (5%) foi mantido em telas ≤ 1024px para responsividade
+- [x] Largura 100% aplicada para preencher o container até o max-width
+
+**Sensores rodados:**
+- [x] F-05 visual: Check de alinhamento no simulador desktop e mobile
+- [x] Lint JS (E-01: skip - config ausente)
+
+**Status:** ✅ Concluído
+
+---
+
+#### T-AD-28: Border-radius da foto Sobre Mim
+**Tipo:** Ad-hoc — solicitada em 2026-07-23
+**Tipo de mudança:** `front-end` / `design`
+**Descrição:** Padronizar o border-radius da foto na seção "Sobre Mim" (`.lima-sobre-image`) para que corresponda aos cards de projeto.
+**Arquivos modificados:**
+- `public/css/design_system.css` — Ajuste de border-radius no desktop (24px) e na media query mobile (15px)
+
+**Critérios de aceite:**
+- [x] Imagem com border-radius de 24px no desktop
+- [x] Imagem com border-radius reduzido para 15px em telas mobile (≤ 768px)
+
+**Sensores rodados:**
+- [x] F-05 visual: Check em simulador desktop e mobile
+
+**Status:** ✅ Concluído
+
+---
+
+#### T-AD-29: Ajuste de Espaçamento e Proporção das Imagens de Feedbacks no Mobile
+**Tipo:** Ad-hoc — solicitada em 2026-07-23
+**Tipo de mudança:** `front-end` / `design`
+**Descrição:** 
+1. Diminuir espaços entre o título (nome) e as imagens, e diminuir o espaçamento abaixo das imagens no mobile.
+2. Mudar a proporção das imagens dos feedbacks para 9:16 apenas no mobile (mantendo 1:1 no desktop).
+**Arquivos modificados:**
+- `public/css/design_system.css` — Media queries na seção de feedbacks.
+
+**Critérios de aceite:**
+- [x] Espaçamento reduzido no padding da seção e margem do header em telas mobile.
+- [x] `.lima-feedbacks-nav-container` invisível no mobile para eliminar espaço fantasma.
+- [x] `.lima-feedback-card` com proporção 9:16 no mobile.
+
+**Sensores rodados:**
+- [x] F-05 visual: Check no simulador mobile.
+
+**Status:** ✅ Concluído

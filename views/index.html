@@ -693,48 +693,103 @@
 		<!-- SOBRE_START -->
 		<div id="sobre">
 			<div class="lima-section-inner">
-				<div class="lima-tag lima-fade-hidden">
-					<span>Sobre Mim</span>
-				</div>
-				<h2 class="lima-sobre-heading lima-fade-hidden">
-					Sou o designer por trás<br>
-					das marcas que você não<br>
-					consegue <span class="degrade-lima">ignorar</span>
-				</h2>
-				<p class="lima-sobre-text lima-fade-hidden">
-					Crio identidades visuais para marcas pessoais impossíveis de ignorar.
-					+6 anos usando o design como forma de expressão — não só como ferramenta,
-					mas como linguagem de quem você é.<br><br>
-					Baseado em Nova Petrópolis - RS. Atendo marcas em todo o Brasil, de forma remota.
-				</p>
-				<div class="lima-sobre-ctas lima-fade-hidden">
-					<a class="elementor-button elementor-button-link elementor-size-sm lima-btn-primary"
-						href="https://www.instagram.com/lima_designr/" target="_blank" rel="noopener">
-						<span class="elementor-button-content-wrapper">
-							<span class="elementor-button-text">Instagram</span>
-						</span>
-					</a>
-					<a class="elementor-button elementor-button-link elementor-size-sm"
-						href="http://wa.me/555499947886" target="_blank" rel="noopener">
-						<span class="elementor-button-content-wrapper">
-							<span class="elementor-button-text">WhatsApp</span>
-						</span>
-					</a>
-				</div>
+				<div class="lima-sobre-grid">
+					<div class="lima-sobre-tag lima-tag light-theme">
+						<span>Sobre Mim</span>
+					</div>
+					<h1 class="elementor-heading-title lima-sobre-heading">
+						Pedro <span class="degrade-lima-escuro">Lima</span>
+					</h1>
+					<div class="lima-sobre-image">
+						<img src="/assets/1738535223268_lima.jpg" alt="Pedro Lima" loading="lazy">
+					</div>
+					<p class="lima-sobre-text">
+						O design precisa mostrar quem as pessoas realmente são. Essência, verdade e personalidade. É isso que me move.<br><br>
+						Já são mais de 6 anos usando o design como forma de expressão. Para mim não é só uma ferramenta de trabalho, mas sim a linguagem que comunica quem você de fato é. E o meu objetivo é criar identidades visuais para marcas pessoais que são impossíveis de ignorar.<br><br>
+						Eu moro em Nova Petrópolis, na Serra Gaúcha, mas atendo de forma remota marcas de todos os cantos do Brasil. Quanto mais autêntica for a ideia, melhor.<br><br>
+						Se você valoriza uma marca verdadeira, que tem voz própria e zero frescura... muito prazer, eu sou o Pedro Lima.
+					</p>
+					<div class="lima-sobre-ctas">
+						<a class="elementor-button elementor-button-link elementor-size-sm lima-btn-primary"
+							href="http://wa.me/555499947886" target="_blank" rel="noopener">
+							<span class="elementor-button-content-wrapper">
+								<span class="elementor-button-text">WhatsApp</span>
+							</span>
+						</a>
+						<a class="elementor-button elementor-button-link elementor-size-sm lima-btn-secondary"
+							href="https://www.instagram.com/1pedrollima/" target="_blank" rel="noopener">
+							<span class="elementor-button-content-wrapper">
+								<span class="elementor-button-text">Instagram</span>
+							</span>
+						</a>
+					</div>
+				</div><!-- /.lima-sobre-grid -->
 			</div>
 		</div>
 		<!-- SOBRE_END -->
 
+		<!-- FEEDBACKS_START -->
+		<div id="feedbacks">
+			<div class="lima-section-inner">
+				<div class="lima-feedbacks-header">
+					<div class="lima-tag light-theme lima-feedbacks-tag">
+						<span>Feedbacks</span>
+					</div>
+					<h1 class="elementor-heading-title lima-feedbacks-heading">
+						O que dizem sobre <span class="degrade-lima-escuro">meu trabalho</span>
+					</h1>
+				</div>
+				<div class="lima-feedbacks-container">
+					<div class="lima-feedbacks-track" id="feedbacks-track">
+						<div class="lima-feedback-card">
+							<img src="/assets/Feedbacks/1.png" alt="Feedback 1" loading="lazy" class="lima-lightbox-trigger">
+						</div>
+						<div class="lima-feedback-card">
+							<img src="/assets/Feedbacks/2.png" alt="Feedback 2" loading="lazy" class="lima-lightbox-trigger">
+						</div>
+						<div class="lima-feedback-card">
+							<img src="/assets/Feedbacks/3.png" alt="Feedback 3" loading="lazy" class="lima-lightbox-trigger">
+						</div>
+						<div class="lima-feedback-card">
+							<img src="/assets/Feedbacks/4.png" alt="Feedback 4" loading="lazy" class="lima-lightbox-trigger">
+						</div>
+						<div class="lima-feedback-card">
+							<img src="/assets/Feedbacks/5.png" alt="Feedback 5" loading="lazy" class="lima-lightbox-trigger">
+						</div>
+					</div>
+				</div>
+				<!-- Setas Movidas para baixo das imagens -->
+				<div class="lima-feedbacks-nav-container">
+					<div class="lima-feedbacks-nav">
+						<button class="lima-feedbacks-btn lima-fb-prev" id="feedbacks-prev" aria-label="Feedback anterior">
+							<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+						</button>
+						<button class="lima-feedbacks-btn lima-fb-next" id="feedbacks-next" aria-label="Próximo feedback">
+							<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+						</button>
+					</div>
+				</div>
+
+				<!-- Lightbox Idêntico ao Elementor -->
+				<div id="lima-lightbox" class="lima-lightbox-modal">
+					<div class="lima-lightbox-close-wrap" id="lima-lightbox-close">
+						<svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#111111" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="1" y1="1" x2="13" y2="13"></line><line x1="13" y1="1" x2="1" y2="13"></line></svg>
+					</div>
+					<img class="lima-lightbox-content" id="lima-lightbox-img" alt="Feedback em tela cheia">
+				</div>
+			</div>
+		</div>
+		<!-- FEEDBACKS_END -->
+
 		<!-- FAQ_START -->
 		<div id="faq">
 			<div class="lima-section-inner">
-				<div class="lima-tag light-theme lima-fade-hidden">
-					<span>FAQ</span>
+				<div class="lima-faq-header">
+					<div class="lima-tag">
+						<span>FAQ</span>
+					</div>
 				</div>
-				<h2 class="lima-faq-heading lima-fade-hidden">
-					Perguntas que todo mundo faz <span class="degrade-lima-escuro">antes de fechar</span>
-				</h2>
-				<div class="lima-faq-list lima-fade-hidden" id="lima-faq" role="list">
+				<div class="lima-faq-list" id="lima-faq" role="list">
 
 					<div class="lima-faq-item" role="listitem">
 						<button class="lima-faq-question" id="faq-q1" aria-expanded="false" aria-controls="faq-a1">
@@ -743,7 +798,7 @@
 						</button>
 						<div class="lima-faq-answer" id="faq-a1" role="region" aria-labelledby="faq-q1">
 							<div class="lima-faq-answer-inner">
-								Identidade visual é o conjunto de elementos visuais que representam quem você é: logotipo, paleta de cores, tipografia, padrões e tom visual. Quando bem construída, ela comunica quem você é antes mesmo de você falar uma palavra. Para profissionais autônomos e marcas pessoais — como fotógrafos, psicólogos, coaches e consultores —, é o que separa quem é escolhido de quem é ignorado.
+								Identidade visual é a sua cara no mundo. Sabe aquele logo, as cores, os padrões que você usa? Tudo isso conta uma história antes mesmo de você abrir a boca. Pra quem é autônomo, tipo fotógrafo ou consultor, é exatamente isso que separa quem o cliente escolhe de quem ele ignora de vez.
 							</div>
 						</div>
 					</div>
@@ -755,7 +810,7 @@
 						</button>
 						<div class="lima-faq-answer" id="faq-a2" role="region" aria-labelledby="faq-q2">
 							<div class="lima-faq-answer-inner">
-								O logo é apenas um dos elementos da identidade visual — é a ponta do iceberg. Uma identidade visual completa inclui também a paleta de cores, a tipografia escolhida estrategicamente, os elementos gráficos de apoio, a linguagem visual e como tudo isso se aplica nos materiais reais do seu negócio. Logo sozinho não faz uma marca. Identidade visual sim.
+								O logo é só a ponta do iceberg, apenas um pedacinho da coisa toda. Uma identidade visual de verdade traz também as cores certas, fontes escolhidas a dedo, formas e toda a energia da sua marca aplicada na prática. Fazer só o logo não cria uma marca forte, mas a identidade visual sim!
 							</div>
 						</div>
 					</div>
@@ -767,7 +822,7 @@
 						</button>
 						<div class="lima-faq-answer" id="faq-a3" role="region" aria-labelledby="faq-q3">
 							<div class="lima-faq-answer-inner">
-								Quando a sua marca visual é coerente e profissional, ela trabalha por você o tempo todo — no feed do Instagram, nos stories, no cartão de visita, no currículo. Profissionais como terapeutas, fotógrafos, personal trainers e advogados que investem em identidade visual relatam mais facilidade em cobrar o valor real do seu trabalho e atrair clientes que valorizam o que entregam. O design não é custo — é argumento.
+								Quando o seu visual é alinhado e super profissional, ele trabalha pra você 24 horas por dia no Insta, no cartão de visitas, no portfólio. Quem investe de verdade nisso percebe que fica muito mais fácil cobrar o que o trabalho vale de verdade, e atrai pessoas que respeitam isso. Design nunca é gasto, é o seu melhor argumento.
 							</div>
 						</div>
 					</div>
@@ -779,7 +834,7 @@
 						</button>
 						<div class="lima-faq-answer" id="faq-a4" role="region" aria-labelledby="faq-q4">
 							<div class="lima-faq-answer-inner">
-								Em geral, um projeto completo leva de 3 a 6 semanas, dependendo da complexidade e da agilidade nas etapas de feedback. O processo passa por imersão na sua marca, desenvolvimento de conceito, apresentação de propostas e refinamentos até chegar na versão final que representa quem você é.
+								Normalmente um projeto fechadinho leva de 3 a 6 semanas. Tudo depende da complexidade e de como a gente flui nas trocas de ideia. Eu mergulho fundo na sua marca, crio os conceitos e a gente vai refinando juntos até chegar naquela versão que te representa 100%.
 							</div>
 						</div>
 					</div>
@@ -791,7 +846,7 @@
 						</button>
 						<div class="lima-faq-answer" id="faq-a5" role="region" aria-labelledby="faq-q5">
 							<div class="lima-faq-answer-inner">
-								Cada projeto é personalizado, mas em geral inclui: briefing estratégico, logotipo completo com variações de uso, paleta de cores, tipografia definida, elementos gráficos de apoio, guia de identidade visual e aplicações nos formatos que você vai usar no dia a dia. Nada genérico — tudo pensado para a sua marca específica.
+								Cada caso é um caso, mas no geral a gente entrega: briefing estratégico, logo completo e variações, paleta de cores, tipografia, elementos gráficos de apoio, guia da marca e já mostro tudo aplicado no que você vai usar no dia a dia. Esquece aquela coisa genérica, aqui tudo é moldado pra você.
 							</div>
 						</div>
 					</div>
@@ -803,7 +858,7 @@
 						</button>
 						<div class="lima-faq-answer" id="faq-a6" role="region" aria-labelledby="faq-q6">
 							<div class="lima-faq-answer-inner">
-								Atendo de forma 100% remota, o que me permite trabalhar com marcas em todo o Brasil. Sou baseado em Nova Petrópolis - RS, mas o processo todo — briefing, apresentações, reuniões — acontece online sem nenhuma perda de qualidade. Já trabalhei com clientes de diferentes regiões do país.
+								Atendo 100% online, e é por isso que consigo criar marcas para gente do Brasil inteiro! Eu moro em Nova Petrópolis no Rio Grande do Sul, mas nosso contato é tão próximo nas reuniões e apresentações que não perde absolutamente nada em qualidade. Já fiz projeto pra todos os cantos!
 							</div>
 						</div>
 					</div>
@@ -815,7 +870,7 @@
 						</button>
 						<div class="lima-faq-answer" id="faq-a7" role="region" aria-labelledby="faq-q7">
 							<div class="lima-faq-answer-inner">
-								Marca pessoal é quando você — o profissional — é a marca. Isso acontece com fotógrafos, psicólogos, advogados, consultores, terapeutas, coaches, artistas e qualquer pessoa que vende pelo que é, não apenas pelo que entrega. Se o cliente contrata você pela sua identidade, seu jeito de fazer, sua visão de mundo — você tem (ou precisa ter) uma marca pessoal forte.
+								Marca pessoal é quando VOCÊ é o negócio. Terapeutas, advogados, criadores de conteúdo... Se o cliente te contrata pelo seu jeito de fazer, pela sua visão de mundo e não só pelo serviço em si, você já tem uma marca pessoal. A questão é deixar ela forte e bem intencional.
 							</div>
 						</div>
 					</div>
@@ -827,7 +882,7 @@
 						</button>
 						<div class="lima-faq-answer" id="faq-a8" role="region" aria-labelledby="faq-q8">
 							<div class="lima-faq-answer-inner">
-								Alguns sinais clássicos: você sente vergonha de mandar o link do perfil ou portfólio. Clientes comparam seu preço com concorrentes sem ver diferença. Você trocou de nicho ou evoluiu, mas a marca ficou pra trás. Ou simplesmente sua marca visual não representa mais quem você é hoje. Se algum desses ressoa, já é hora de conversar.
+								Sabe quando bate aquela vergonha de mandar o link do seu portfólio? Ou quando os clientes ficam chorando preço comparando você com a concorrência? Pode ser que você tenha evoluído e sua marca visual tenha ficado estagnada lá atrás. Se algo nisso fez sentido pra você, já passou da hora da gente bater um papo.
 							</div>
 						</div>
 					</div>
@@ -1013,6 +1068,7 @@
 		});
 		function raf(time) {
 			lenis.raf(time);
+		}
 			requestAnimationFrame(raf);
 		}
 		requestAnimationFrame(raf);
@@ -1043,6 +1099,144 @@
 					}
 				});
 			});
+		})();
+	</script>
+	<!-- Feedbacks Infinite Curved Slider & Lightbox -->
+	<script>
+		(function () {
+			// Slider Nav & Infinite Curve
+			const track = document.getElementById('feedbacks-track');
+			const prevBtn = document.getElementById('feedbacks-prev');
+			const nextBtn = document.getElementById('feedbacks-next');
+
+			if (track) {
+				const originalCards = Array.from(track.querySelectorAll('.lima-feedback-card'));
+				if(originalCards.length === 0) return;
+
+				// Clone cards for infinite scroll (clone 3 sets before and 3 sets after)
+				const cloneCount = 3;
+				for (let i = 0; i < cloneCount; i++) {
+					originalCards.forEach(card => {
+						const clone = card.cloneNode(true);
+						track.appendChild(clone);
+					});
+				}
+				for (let i = 0; i < cloneCount; i++) {
+					originalCards.slice().reverse().forEach(card => {
+						const clone = card.cloneNode(true);
+						track.insertBefore(clone, track.firstChild);
+					});
+				}
+
+				const cards = Array.from(track.querySelectorAll('.lima-feedback-card'));
+				const totalOriginal = originalCards.length;
+				
+				// Helper to get exact width including gap
+				const getCardFullWidth = () => {
+					const trackStyle = window.getComputedStyle(track);
+					const gap = parseFloat(trackStyle.gap) || 0;
+					return cards[0].offsetWidth + gap;
+				};
+
+				// Initialize layout after rendering
+				setTimeout(() => {
+					const cardWidth = getCardFullWidth();
+					const middleScroll = (cloneCount * totalOriginal) * cardWidth;
+					
+					// Offset para alinhar o "gap" (espaço) exatamente no meio da tela.
+					// Como o gap tem 20px, descontamos metade do gap (10px) da largura total do card.
+					const centerOffset = cardWidth - 10;
+					track.scrollLeft = middleScroll + centerOffset;
+
+					// Infinite Scroll & Curve physics
+					let isScrolling = false;
+					track.addEventListener('scroll', () => {
+						if (!isScrolling) {
+							window.requestAnimationFrame(() => {
+								const currentWidth = getCardFullWidth();
+								const currentScroll = track.scrollLeft;
+								
+								// Seamless jump for infinite illusion
+								if (currentScroll < currentWidth * totalOriginal) {
+									track.scrollLeft = currentScroll + (totalOriginal * currentWidth);
+								} 
+								else if (currentScroll > currentWidth * totalOriginal * (cloneCount * 2)) {
+									track.scrollLeft = currentScroll - (totalOriginal * currentWidth);
+								}
+								
+								updateCurves();
+								isScrolling = false;
+							});
+							isScrolling = true;
+						}
+					});
+
+					// Update curves based on distance from center
+					function updateCurves() {
+						const trackCenter = track.scrollLeft + (track.clientWidth / 2);
+						cards.forEach(card => {
+							const cardCenter = card.offsetLeft + (card.offsetWidth / 2);
+							const distance = cardCenter - trackCenter;
+							
+							// Normalize distance (-1 to 1 relative to screen width)
+							const maxDist = track.clientWidth * 0.8;
+							let normalized = distance / maxDist;
+							if(normalized > 1) normalized = 1;
+							if(normalized < -1) normalized = -1;
+
+							// Math for curve: Removed rotation/translation to keep it flat
+							const rotate = 0; 
+							const translateY = 0; 
+							// Z-index based on center proximity (center = highest)
+							const zIndex = Math.round(100 - (Math.abs(normalized) * 50));
+							
+							card.style.transform = `translateY(${translateY}px) rotate(${rotate}deg)`;
+							card.style.zIndex = zIndex;
+						});
+					}
+
+					updateCurves();
+					window.addEventListener('resize', updateCurves);
+
+					// Nav Buttons
+					if (prevBtn && nextBtn) {
+						prevBtn.addEventListener('click', () => {
+							track.scrollBy({ left: -getCardFullWidth(), behavior: 'smooth' });
+						});
+						nextBtn.addEventListener('click', () => {
+							track.scrollBy({ left: getCardFullWidth(), behavior: 'smooth' });
+						});
+					}
+				}, 50);
+			}
+
+			// Lightbox using Event Delegation
+			const lightbox = document.getElementById('lima-lightbox');
+			const lightboxImg = document.getElementById('lima-lightbox-img');
+			const lightboxClose = document.getElementById('lima-lightbox-close');
+
+			if (lightbox && lightboxImg && lightboxClose) {
+				document.addEventListener('click', function(e) {
+					if (e.target && e.target.classList.contains('lima-lightbox-trigger')) {
+						lightboxImg.src = e.target.src;
+						lightbox.classList.add('is-active');
+						document.body.style.overflow = 'hidden';
+					}
+				});
+
+				const closeLightbox = () => {
+					lightbox.classList.remove('is-active');
+					document.body.style.overflow = '';
+					setTimeout(() => { lightboxImg.src = ''; }, 300);
+				};
+
+				lightboxClose.addEventListener('click', closeLightbox);
+				lightbox.addEventListener('click', function(e) {
+					if (e.target !== lightboxImg && !lightboxClose.contains(e.target)) {
+						closeLightbox();
+					}
+				});
+			}
 		})();
 	</script>
 <script src="/js/animations.js"></script>

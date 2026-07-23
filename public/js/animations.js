@@ -109,6 +109,13 @@
                 if (bgColor && bgColor !== 'rgba(0, 0, 0, 0)') {
                     var p = bgColor.match(/[\d.]+/g);
                     if (p && p.length >= 3) {
+                        var alpha = p.length >= 4 ? parseFloat(p[3]) : 1;
+                        if (alpha < 0.1) {
+                            /* Se for muito transparente, ignora e verifica o pai */
+                            node = node.parentElement;
+                            depth++;
+                            continue;
+                        }
                         var lum = (0.299 * +p[0] + 0.587 * +p[1] + 0.114 * +p[2]) / 255;
                         isDark = lum < 0.5;
                     }
