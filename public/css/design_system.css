@@ -6,6 +6,9 @@
     --lima-dark-text: #ffffff;
     --lima-dark-text-sec: #90a0b9;
     --lima-dark-card: #0f172b;
+    /* Card em fundo escuro (padrão: FAQ, modais, etc.) */
+    --lima-dark-card-bg: #090b1f;
+    --lima-dark-card-border: #1c283d;
 
     /* EM FUNDOS CLAROS */
     --lima-light-gradient: linear-gradient(90deg, #a3e10a, #2bce4d);
@@ -1095,10 +1098,10 @@ button,
     gap: 16px;
 }
 
-/* Item (Card) */
+/* Item (Card) — padrão de card em fundo escuro */
 .lima-faq-item {
-    background-color: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background-color: var(--lima-dark-card-bg);
+    border: 1px solid var(--lima-dark-card-border);
     border-radius: 20px;
     overflow: hidden;
 }
