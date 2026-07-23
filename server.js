@@ -56,6 +56,35 @@ projects.forEach(project => {
     });
 });
 
+// Sitemap dinâmico — atualiza automaticamente quando novos projetos são adicionados ao array `projects`
+app.get('/sitemap.xml', (req, res) => {
+    const baseUrl = 'https://brand.1pedrolima.com';
+    const today = new Date().toISOString().split('T')[0];
+
+    const urls = [
+        { loc: `${baseUrl}/`, priority: '1.0', changefreq: 'weekly' },
+        ...projects.map(p => ({
+            loc: `${baseUrl}/${p}`,
+            priority: '0.8',
+            changefreq: 'monthly'
+        }))
+    ];
+
+    const xml = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${urls.map(u => `  <url>
+    <loc>${u.loc}</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>${u.changefreq}</changefreq>
+    <priority>${u.priority}</priority>
+  </url>`).join('\n')}
+</urlset>`;
+
+    res.set('Content-Type', 'application/xml');
+    res.set('Cache-Control', 'public, max-age=86400');
+    res.send(xml);
+});
+
 // Proxy route for audio files (bypasses hotlink protection and CORS)
 app.get('/audio-proxy', (req, res) => {
     const url = req.query.url;
