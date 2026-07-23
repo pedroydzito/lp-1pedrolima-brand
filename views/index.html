@@ -1240,7 +1240,7 @@
 					}
 
 					// Auto-Scroll Logic
-					let autoScrollSpeed = 0.5; // Velocidade lenta do scroll
+					let autoScrollSpeed = window.innerWidth > 1024 ? 0.8 : 0.5; // Desktop um pouco mais rápido
 					let autoScrollPaused = false;
 
 					function autoScrollStep() {

@@ -1131,7 +1131,30 @@ Garantir que o subtítulo das marcas na home ("Algumas das marcas que eu ajudei 
 
 **Status:** ✅ Concluído
 
+---
 
+#### T-AD-44: Remover setas de navegação no desktop e aumentar velocidade do auto-scroll no desktop
+**Tipo:** Ad-hoc — solicitada em 2026-07-23T15:39
+**Tipo de mudança:** `front-end` / `css` / `js`
+**Descrição:**
+1. No desktop, remover os botões de seta (prev/next) da seção de feedbacks — já que o auto-scroll torna as setas desnecessárias. No mobile já estão ocultas.
+2. Apenas no desktop (> 1024px), aumentar um pouco a velocidade do auto-scroll de `0.5` para `0.8`.
 
+**Arquivos que serão modificados:**
+- `public/css/design_system.css` — `.lima-feedbacks-nav-container { display: none; }` no desktop (fora da media query mobile, ou override específico).
+- `views/index.html` — Alterar `autoScrollSpeed` para aplicar valor maior no desktop via `window.innerWidth`.
+
+**Critérios de aceite:**
+- [ ] As setas não aparecem em desktop (> 1024px).
+- [ ] As setas continuam ocultas em mobile (≤ 1024px) — comportamento anterior mantido.
+- [ ] Auto-scroll mais rápido (0.8) apenas em desktop.
+- [ ] Auto-scroll mantém velocidade original (0.5) em mobile.
+
+**Sensores rodados:**
+- [x] Servidor sobe (HTTP 200 OK)
+- [x] F-05 visual: Check em 1280px (desktop) — sem setas, scroll mais rápido.
+- [x] F-05 visual: Check em 320px / 768px (mobile) — setas não aparecem, velocidade original.
+
+**Status:** ✅ Concluído
 
 

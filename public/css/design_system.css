@@ -949,15 +949,9 @@ button,
     transform: scale(0.98) !important;
 }
 
-/* Nav Container */
+/* Nav Container — oculto em todas as telas (auto-scroll substitui as setas) */
 .lima-feedbacks-nav-container {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    margin-top: 8px; /* Mais próximo das imagens */
-    margin-bottom: 24px;
-    position: relative;
-    z-index: 10;
+    display: none;
 }
 
 /* Nav Buttons (agora abaixo do título) */

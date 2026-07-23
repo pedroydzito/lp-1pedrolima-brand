@@ -6,8 +6,9 @@
 
 ## Estado Atual do Projeto
 
-**Última atualização:** 2026-07-23T10:28:00-03:00
+**Última atualização:** 2026-07-23T15:42:00-03:00
 **Sprint ativo:** Nenhum
+**Última tarefa:** T-AD-44 — Setas de feedbacks removidas no desktop + auto-scroll um pouco mais rápido no desktop
 **Status geral:** 🟢 Estável
 
 ---
