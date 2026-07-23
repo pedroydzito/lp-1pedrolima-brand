@@ -770,12 +770,12 @@
 					</div>
 				</div>
 
-				<!-- Lightbox Idêntico ao Elementor -->
-				<div id="lima-lightbox" class="lima-lightbox-modal">
-					<div class="lima-lightbox-close-wrap" id="lima-lightbox-close">
+				<!-- Lightbox Customizado Sem Conflito -->
+				<div id="lima-feedbacks-lightbox" class="lima-lightbox-modal">
+					<div class="lima-lightbox-close-wrap" id="lima-feedbacks-lightbox-close">
 						<svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#111111" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="1" y1="1" x2="13" y2="13"></line><line x1="13" y1="1" x2="1" y2="13"></line></svg>
 					</div>
-					<img class="lima-lightbox-content" id="lima-lightbox-img" alt="Feedback em tela cheia">
+					<img class="lima-lightbox-content" id="lima-feedbacks-lightbox-img" alt="Feedback em tela cheia">
 				</div>
 			</div>
 		</div>
@@ -1068,7 +1068,6 @@
 		});
 		function raf(time) {
 			lenis.raf(time);
-		}
 			requestAnimationFrame(raf);
 		}
 		requestAnimationFrame(raf);
@@ -1135,7 +1134,8 @@
 				const getCardFullWidth = () => {
 					const trackStyle = window.getComputedStyle(track);
 					const gap = parseFloat(trackStyle.gap) || 0;
-					return cards[0].offsetWidth + gap;
+					// Usa getBoundingClientRect para evitar erro de arredondamento fracionário (ex: 534.5px arredonda pra 535px no offsetWidth)
+					return cards[0].getBoundingClientRect().width + gap;
 				};
 
 				// Initialize layout after rendering
@@ -1144,9 +1144,12 @@
 					const middleScroll = (cloneCount * totalOriginal) * cardWidth;
 					
 					// Offset para alinhar no meio da tela
-					let centerOffset = cardWidth - 10; // Desktop: foca no gap
+					const trackStyle = window.getComputedStyle(track);
+					const gap = parseFloat(trackStyle.gap) || 0;
+					
+					let centerOffset = cardWidth - (gap / 2); // Desktop: foca exatamente no meio do gap
 					if (window.innerWidth <= 1024) {
-						centerOffset = cardWidth / 2; // Mobile: foca no centro do card
+						centerOffset = (cards[0].getBoundingClientRect().width) / 2; // Mobile: foca no centro exato do card
 					}
 					track.scrollLeft = middleScroll + centerOffset;
 
@@ -1212,10 +1215,10 @@
 				}, 50);
 			}
 
-			// Lightbox using Event Delegation
-			const lightbox = document.getElementById('lima-lightbox');
-			const lightboxImg = document.getElementById('lima-lightbox-img');
-			const lightboxClose = document.getElementById('lima-lightbox-close');
+			// Lightbox using Event Delegation (Sem conflitos de ID)
+			const lightbox = document.getElementById('lima-feedbacks-lightbox');
+			const lightboxImg = document.getElementById('lima-feedbacks-lightbox-img');
+			const lightboxClose = document.getElementById('lima-feedbacks-lightbox-close');
 
 			if (lightbox && lightboxImg && lightboxClose) {
 				document.addEventListener('click', function(e) {

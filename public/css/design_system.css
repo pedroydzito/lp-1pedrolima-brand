@@ -737,7 +737,7 @@ button,
 
 @media (max-width: 767px) {
     #sobre {
-        padding: 80px 0;
+        padding: 40px 0;
     }
 
     .lima-sobre-grid {
@@ -752,7 +752,7 @@ button,
     }
 
     .lima-sobre-image {
-        aspect-ratio: 4/5;
+        aspect-ratio: 1/1;
         margin: 8px 0;
     }
 
@@ -884,7 +884,6 @@ button,
     border: 1px solid rgba(0, 0, 0, 0.05);
     /* Transform via JS não pode ter transition para não dar lag */
     transition: transform 0.3s ease;
-    cursor: zoom-in;
     transform-origin: center center;
     /* Evitar flicker durante GPU accell */
     will-change: transform;
@@ -899,7 +898,7 @@ button,
 }
 
 .lima-feedback-card:hover {
-    transform: scale(1.02) !important;
+    transform: scale(0.98) !important;
 }
 
 /* Nav Container */
@@ -907,8 +906,8 @@ button,
     width: 100%;
     display: flex;
     justify-content: center;
-    margin-top: 24px;
-    margin-bottom: 24px; /* Junto das imagens */
+    margin-top: 8px; /* Mais próximo das imagens */
+    margin-bottom: 24px;
     position: relative;
     z-index: 10;
 }
@@ -1016,7 +1015,7 @@ button,
     }
 
     .lima-feedbacks-header {
-        margin-bottom: 16px;
+        margin-bottom: 0px;
     }
 
     .lima-feedbacks-nav-container {
@@ -1179,7 +1178,7 @@ button,
 
 @media (max-width: 767px) {
     #faq {
-        padding: 80px 0;
+        padding: 40px 0;
     }
 
     .lima-faq-header {

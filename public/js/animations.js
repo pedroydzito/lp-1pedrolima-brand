@@ -525,13 +525,13 @@
     }
 
     function setupLightbox() {
-        var allImgs = document.querySelectorAll('.elementor-widget-image img');
+        var allImgs = document.querySelectorAll('.elementor-widget-image img, .lima-lightbox-trigger');
         if (!allImgs.length) return;
 
-        /* Filtra apenas imagens de projeto válidas */
+        /* Filtra apenas imagens de projeto válidas ou que tenham a classe trigger explicitly */
         var lightboxImages = [];
         allImgs.forEach(function (img) {
-            if (isProjectImage(img)) {
+            if (img.classList.contains('lima-lightbox-trigger') || isProjectImage(img)) {
                 lightboxImages.push(img);
             }
         });
@@ -577,8 +577,8 @@
         lightboxImages.forEach(function (img) {
             /* NÃO aplicar cursor:none — cursor nativo não pode sumir */
 
-            /* Wrap para o scale-down no hover sem overflow */
-            if (!img.closest('.lima-img-hover-wrap')) {
+            /* Wrap para o scale-down no hover sem overflow (exceto para feedbacks que escalam o card todo) */
+            if (!img.closest('.lima-img-hover-wrap') && !img.closest('.lima-feedback-card')) {
                 var hoverWrap = document.createElement('div');
                 hoverWrap.className = 'lima-img-hover-wrap';
                 img.parentNode.insertBefore(hoverWrap, img);

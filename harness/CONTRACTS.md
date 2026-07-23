@@ -815,3 +815,111 @@ O alinhamento no mobile estava quebrado e não mostrava uma imagem completa.
 - [x] F-05 visual: Check no simulador mobile.
 
 **Status:** ✅ Concluído
+
+---
+
+#### T-AD-31: Comportamento de imagens de projetos nos Feedbacks
+**Tipo:** Ad-hoc — solicitada em 2026-07-23
+**Tipo de mudança:** `front-end` / `js` / `design`
+**Descrição:** 
+Fazer com que as imagens da seção de feedbacks (na home) se comportem exatamente como as imagens dentro das páginas de projetos.
+1. Ao passar o mouse, o cursor deve mudar para "EXPANDIR" e a imagem sofre scale-down.
+2. Ao clicar, a imagem deve abrir no lightbox (`#lima-lightbox`).
+**Arquivos modificados:**
+- `public/js/animations.js` — Modificar seletor e lógica do lightbox para incluir os `.lima-lightbox-trigger`.
+- `public/css/design_system.css` — Remover hover scale antigo do `.lima-feedback-card` e adicionar suporte ao wrapper de animação.
+
+**Critérios de aceite:**
+- [x] Mouse enter/leave ativa cursor EXPANDIR/EXPLORAR nas imagens de feedback.
+- [x] Clique abre a imagem correspondente no lightbox.
+- [x] O scale hover original da imagem (scale down 0.98) substitui o scale up do card.
+- [x] Aspect-ratio e layout do card não quebram.
+
+**Sensores rodados:**
+- [x] F-05 visual: Check em simulador desktop.
+
+**Status:** ✅ Concluído
+
+---
+
+#### T-AD-32: Correção de Centralização e Hover Background nos Feedbacks
+**Tipo:** Ad-hoc — solicitada em 2026-07-23
+**Tipo de mudança:** `front-end` / `js` / `design`
+**Descrição:** 
+1. Ao passar o mouse na imagem de feedback, ela estava diminuindo de tamanho internamente e exibindo a cor de fundo do card, porque o wrapper `.lima-img-hover-wrap` estava sendo aplicado incorretamente a eles.
+2. O gap (espaço) entre os cartões de feedback não estava perfeitamente centralizado no desktop, sofrendo um desvio por causa de arredondamento de sub-pixels no `offsetWidth`.
+
+**Arquivos modificados:**
+- `public/js/animations.js` — Remoção da injeção do `.lima-img-hover-wrap` para cards de feedback.
+- `public/css/design_system.css` — Aplicado scale(0.98) direto no `.lima-feedback-card:hover`.
+- `views/index.html` — Trocado `offsetWidth` por `getBoundingClientRect().width` no cálculo inicial e no infinite scroll para ter precisão fracionária no cálculo do centro.
+
+**Critérios de aceite:**
+- [x] O `.lima-feedback-card` inteiro sofre redução no hover, e a foto continua 1:1 sem mostrar background.
+- [x] O centro exato do gap fica precisamente alinhado ao centro da tela (marcador do mouse) no desktop.
+- [x] As setas mantêm navegação exata.
+
+**Sensores rodados:**
+- [x] F-05 visual: Check em simulador desktop de cálculos do BoundingClientRect.
+
+**Status:** ✅ Concluído
+
+---
+
+#### T-AD-33: Ajuste de espaçamentos da seção Feedbacks (Mobile)
+**Tipo:** Ad-hoc — solicitada em 2026-07-23
+**Tipo de mudança:** `front-end` / `css`
+**Descrição:** 
+1. Reduzir a distância entre o título/descrição da seção e as imagens dos feedbacks para que fique igual à distância usada na seção de projetos.
+2. Diminuir o espaço abaixo das imagens pela metade.
+
+**Arquivos modificados:**
+- `public/css/design_system.css` — Zerado o `margin-bottom` de `.lima-feedbacks-header` e alterado o `padding-bottom` de `#feedbacks` de 40px para 20px, apenas dentro da media query de `max-width: 1024px`.
+
+**Critérios de aceite:**
+- [x] O espaço entre o título e os cartões de feedback diminui visualmente no mobile.
+- [x] O espaço na base da seção diminui de 40px para 20px no mobile.
+
+**Sensores rodados:**
+- [x] F-05 visual: Check em simulador mobile.
+
+**Status:** ✅ Concluído
+
+---
+
+#### T-AD-34: Padronização do padding de seções no Mobile
+**Tipo:** Ad-hoc — solicitada em 2026-07-23
+**Tipo de mudança:** `front-end` / `css`
+**Descrição:** 
+1. Ajustar o `padding` (espaçamento interno) em cima e embaixo das seções "Sobre mim" (`#sobre`), "Feedbacks" (`#feedbacks`) e "FAQ" (`#faq`) no mobile para que sigam o mesmo padrão mais compacto (40px) da seção Projetos.
+
+**Arquivos modificados:**
+- `public/css/design_system.css` — Alterado os paddings dentro das media queries de `max-width: 1024px` e `max-width: 767px` para `padding: 40px 0;` em `#sobre`, `#feedbacks` e `#faq`.
+
+**Critérios de aceite:**
+- [x] O espaço superior e inferior dessas 3 seções se torna idêntico ao longo do mobile (40px).
+
+**Sensores rodados:**
+- [x] F-05 visual: Check em simulador mobile.
+
+**Status:** ✅ Concluído
+
+---
+
+#### T-AD-35: Ajuste de Aspect-Ratio da Imagem da Seção Sobre Mim no Mobile
+**Tipo:** Ad-hoc — solicitada em 2026-07-23
+**Tipo de mudança:** `front-end` / `css`
+**Descrição:** 
+1. Alterar o formato/proporção da foto do perfil na seção "Sobre Mim" (`.lima-sobre-image`) no mobile para 1:1 (quadrada) em vez de 4:5 (vertical).
+
+**Arquivos modificados:**
+- `public/css/design_system.css` — Alterado `aspect-ratio: 4/5` para `aspect-ratio: 1/1` em `.lima-sobre-image` dentro do bloco `@media (max-width: 767px)`.
+
+**Critérios de aceite:**
+- [x] Foto exibida em proporção perfeitamente quadrada (1:1) exclusivamente no mobile.
+
+**Sensores rodados:**
+- [x] F-05 visual: Check em simulador mobile.
+
+**Status:** ✅ Concluído
+
