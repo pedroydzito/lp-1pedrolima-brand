@@ -780,14 +780,14 @@ button,
             "tag"
             "heading"
             "image"
-            "text"
-            "ctas";
+            "ctas"
+            "text";
         gap: 24px;
     }
 
     .lima-sobre-image {
         aspect-ratio: 1/1;
-        margin: 8px 0;
+        margin: 8px 0 0 0;
     }
 
     .lima-sobre-tag {
@@ -809,6 +809,7 @@ button,
         flex-wrap: wrap;
         width: 100%;
         justify-content: center;
+        margin-top: 0;
     }
 
     .lima-sobre-ctas .elementor-button {

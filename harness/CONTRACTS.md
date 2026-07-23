@@ -1018,3 +1018,25 @@ No mobile, diminuir o espaçamento entre a tag FAQ (`.lima-faq-header`) e os car
 
 **Status:** ✅ Concluído
 
+---
+
+#### T-AD-40: Reposicionamento dos botões WhatsApp/Instagram no Sobre Mim no Mobile
+**Tipo:** Ad-hoc — solicitada em 2026-07-23
+**Tipo de mudança:** `front-end` / `design`
+**Descrição:** 
+No mobile (≤ 767px), reordenar os elementos da seção "Sobre Mim" (`.lima-sobre-grid`) para que os botões de WhatsApp e Instagram (`.lima-sobre-ctas`) fiquem logo após a foto (`.lima-sobre-image`) e antes do texto descritivo (`.lima-sobre-text`).
+
+**Arquivos que serão modificados:**
+- `public/css/design_system.css` — Atualizar `grid-template-areas` de `.lima-sobre-grid` na media query mobile.
+
+**Critérios de aceite:**
+- [x] No mobile (≤ 767px), os botões aparecem logo abaixo da foto e acima da descrição.
+- [x] Visual no desktop permanece inalterado.
+
+**Sensores rodados:**
+- [x] Servidor sobe (HTTP 200 OK via curl)
+- [x] F-05 visual: Reordenação dos botões (logo após a foto) via CSS grid-template-areas no mobile.
+
+**Status:** ✅ Concluído
+
+
