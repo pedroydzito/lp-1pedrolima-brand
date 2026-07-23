@@ -383,6 +383,22 @@ button,
     transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease, filter 0.4s ease, box-shadow 0.4s ease !important;
 }
 
+/* Correção do bug de hover tremendo (aumenta a área de clique) */
+.elementor-button,
+.elementor-social-icon {
+    position: relative;
+}
+.elementor-button::before,
+.elementor-social-icon::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    z-index: -1;
+}
+
 /* Hover nos Botões e Ícones Sociais */
 .elementor-button:hover,
 .elementor-button:focus,
@@ -733,6 +749,24 @@ button,
 
 #sobre .elementor-button.lima-btn-secondary::after {
     background: #060312 !important;
+}
+
+#sobre .elementor-button-content-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#sobre .elementor-button-icon {
+    display: inline-flex;
+    align-items: center;
+    margin-right: 8px;
+}
+
+#sobre .elementor-button-icon svg {
+    width: 16px;
+    height: 16px;
+    fill: currentColor;
 }
 
 @media (max-width: 767px) {

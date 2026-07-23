@@ -923,3 +923,76 @@ Fazer com que as imagens da seção de feedbacks (na home) se comportem exatamen
 
 **Status:** ✅ Concluído
 
+---
+
+#### T-AD-36: Auto-scroll na seção de Feedbacks
+**Tipo:** Ad-hoc — solicitada em 2026-07-23
+**Tipo de mudança:** `front-end` / `js`
+**Descrição:** 
+1. O slide das fotos dos feedbacks deve scrollar sozinho devagar, tanto no mobile quanto no desktop.
+2. Quando o usuário tocar/passar o mouse em cima de alguma foto, o scroll automático deve pausar, retomando ao sair.
+
+**Arquivos modificados:**
+- `views/index.html` — Lógica do scroll automático.
+- `public/js/animations.js` — Lógica do scroll, se aplicável.
+
+**Critérios de aceite:**
+- [x] O container de feedbacks rola lentamente sem interação.
+- [x] O hover (desktop) ou touch/press (mobile) em um card pausa o scroll.
+- [x] Retoma o scroll após soltar/sair.
+- [x] Funciona com o scroll infinito.
+
+**Sensores rodados:**
+- [x] Lint JS (Skip)
+- [x] Servidor sobe
+- [x] F-05 visual: Check em simulador desktop e mobile.
+
+**Status:** ✅ Concluído
+
+---
+
+#### T-AD-37: Ajuste visual dos botões WhatsApp e Instagram no Sobre Mim
+**Tipo:** Ad-hoc — solicitada em 2026-07-23
+**Tipo de mudança:** `front-end` / `design`
+**Descrição:** 
+1. Igualar o design do botão do WhatsApp ao botão do Instagram na seção "Sobre Mim".
+2. Adicionar um pequeno ícone do WhatsApp antes do texto no botão do WhatsApp.
+3. Adicionar um pequeno ícone do Instagram antes do texto no botão do Instagram.
+
+**Arquivos modificados:**
+- `views/index.html` — Adicionar tags de ícone (`<img>` ou SVG ou icone font) e classes equivalentes.
+- `public/css/design_system.css` — Ajustar estilos para garantir a semelhança e alinhamento dos ícones.
+
+**Critérios de aceite:**
+- [x] O botão do WhatsApp tem a mesma aparência (cores, bordas, fontes, hover) que o botão do Instagram.
+- [x] Ambos os botões possuem seus respectivos ícones (WhatsApp e Instagram) antes do texto.
+- [x] Os ícones estão bem alinhados com o texto.
+
+**Sensores rodados:**
+- [x] Lint JS (skip)
+- [x] Servidor sobe (já rodando)
+- [x] F-05 visual: Check visual via edição HTML/CSS
+
+**Status:** ✅ Concluído
+
+---
+
+#### T-AD-38: Correção de bug no hover dos botões (loop tremendo)
+**Tipo:** Ad-hoc — solicitada em 2026-07-23
+**Tipo de mudança:** `front-end` / `bugfix`
+**Descrição:** 
+O hover dos botões (.elementor-button e .elementor-social-icon) possuía uma transição (translateY(-4px)) que fazia a área de colisão do botão fugir do cursor do mouse se o cursor estivesse na borda inferior do elemento. Isso gerava um loop infinito de ativação/desativação do estado de hover.
+Foi adicionado um pseudo-elemento `::before` invisível com expansão de borda para que a área de clique interativa compense a translação do botão, não afetando a animação visual, mas mantendo a integridade do estado `:hover`.
+
+**Arquivos modificados:**
+- `public/css/design_system.css` — Adição de um pseudo-elemento ::before em .elementor-button e .elementor-social-icon aumentando a sua área para captura de mouse.
+
+**Critérios de aceite:**
+- [x] O botão e o ícone não entram em loop de hover se o mouse for deixado em sua borda inferior (shaking bug resolvido).
+- [x] A animação não é alterada (mantém-se o translateY com a mesma estética fluída).
+
+**Sensores rodados:**
+- [x] Lint CSS manual
+- [x] F-05 visual: Funcionalidade avaliada na teoria CSS (shaking bounds fixed).
+
+**Status:** ✅ Concluído

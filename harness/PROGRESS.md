@@ -142,6 +142,14 @@ Otimizações de performance aplicadas (2026-04-28):
 | 2026-07-23 | T-AD-28: padronização do border-radius da foto Sobre Mim (24px/15px) | — |
 | 2026-07-23 | T-AD-29: ajuste de espaçamento e proporção das imagens de feedbacks (9:16) no mobile | — |
 | 2026-07-23 | T-AD-30: ajuste da largura (80vw) e alinhamento do card de feedbacks no mobile | — |
+| 2026-07-23 | T-AD-31: comportamento de imagens de projetos nos Feedbacks (cursor expandir, lightbox, scale-down hover) | — |
+| 2026-07-23 | T-AD-32: correção de centralização e hover background nos Feedbacks | — |
+| 2026-07-23 | T-AD-33: ajuste de espaçamentos da seção Feedbacks (Mobile) | — |
+| 2026-07-23 | T-AD-34: padronização do padding de seções no Mobile | — |
+| 2026-07-23 | T-AD-35: ajuste de aspect-ratio da imagem da seção Sobre Mim no Mobile (1:1) | — |
+| 2026-07-23 | T-AD-36: auto-scroll lento na seção de Feedbacks (com pause on hover/touch) | — |
+| 2026-07-23 | T-AD-37: ajuste visual dos botões WhatsApp e Instagram no Sobre Mim (ícones e estilo unificado) | — |
+| 2026-07-23 | T-AD-38: correção de bug no hover dos botões (loop tremendo) com pseudoelemento | — |
 ---
 
 ## Variáveis de Ambiente Necessárias
