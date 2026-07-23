@@ -640,6 +640,47 @@
 
 ---
 
+#### T-AD-25: Turbinar SEO e Corrigir Favicon
+**Tipo:** Ad-hoc — solicitada em 2026-07-23T10:21
+**Tipo de mudança:** `front-end` / `SEO`
+**Descrição:** Duas frentes:
+1. **Favicon ausente:** Adicionar `<link rel="icon">` apontando para `/assets/FavIcon.jpg` em todas as 7 páginas. Gerar também versão `.ico` via conversão local se possível.
+2. **SEO expandido:** Enriquecer os metadados HTML de todas as páginas com:
+   - Palavras-chave locais ("Nova Petrópolis", "pedro lima"), nichos ("fotógrafo", "psicóloga", "marca pessoal") e identifiers ("lima_", "1pedrolima")
+   - `<meta name="keywords">` com termos-alvo
+   - JSON-LD Schema.org atualizado (Person + LocalBusiness) com endereço, área de atuação e sameAs para redes sociais
+   - Open Graph e Twitter Card com imagem real (FavIcon.jpg)
+   - `<meta name="geo.region">` e `<meta name="geo.placename">` para sinalizar localidade ao Google
+   - Atualizar `article:modified_time` para data atual
+
+**Arquivos que serão modificados:**
+- `views/index.html` — SEO principal + favicon
+- `views/luna-sheeny.html` — favicon + SEO de projeto
+- `views/martin-dahmer.html` — favicon + SEO de projeto
+- `views/priscila-elpo.html` — favicon + SEO de projeto
+- `views/robison-kunz.html` — favicon + SEO de projeto
+- `views/roger-nobles.html` — favicon + SEO de projeto
+- `views/vitor-dos-santos.html` — favicon + SEO de projeto
+
+**Critérios de aceite — Código:**
+- [ ] `<link rel="icon">` presente em todas as 7 páginas
+- [ ] `<meta name="keywords">` com ≥ 15 termos relevantes na index
+- [ ] JSON-LD atualizado com LocalBusiness + sameAs
+- [ ] Open Graph com `og:image` apontando para imagem real
+- [ ] Tags geo adicionadas
+- [ ] Sensor: servidor sobe sem erros
+
+**Critérios de aceite — Visuais:**
+- [ ] Favicon aparece na aba do browser (verificação manual)
+
+**Sensores rodados:**
+- [ ] Servidor sobe
+- [ ] F-05 visual: favicon visível em todas as páginas
+
+**Status:** 🔄 Em implementação
+
+---
+
 ## Template para Novo Contrato
 
 > Copie o bloco abaixo quando for iniciar um novo sprint.
