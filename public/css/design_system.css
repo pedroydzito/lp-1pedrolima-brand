@@ -592,3 +592,273 @@ button,
         --row-gap: 10px;
     }
 }
+
+/* =========================================================================
+   Gradiente de texto (para uso fora do Elementor)
+   ========================================================================= */
+.degrade-lima {
+    background: var(--lima-dark-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+}
+
+.degrade-lima-escuro {
+    background: var(--lima-light-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+}
+
+/* =========================================================================
+   Utilitário: seção inner genérico (para #sobre e #faq)
+   ========================================================================= */
+.lima-section-inner {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 32px;
+}
+
+/* =========================================================================
+   Seção Sobre Mim (#sobre)
+   ========================================================================= */
+#sobre {
+    background-color: #060312;
+    padding: 120px 0;
+    position: relative;
+    z-index: 5;
+}
+
+.lima-sobre-heading {
+    font-family: "CircularStd", sans-serif;
+    font-size: 84px;
+    line-height: 0.95;
+    letter-spacing: -2px;
+    font-weight: 700;
+    color: var(--lima-dark-text);
+    margin: 0;
+}
+
+.lima-sobre-text {
+    font-family: "CircularStd", sans-serif;
+    font-size: 18px;
+    line-height: 1.65;
+    font-weight: 400;
+    color: var(--lima-dark-text-sec);
+    max-width: 600px;
+    margin: 0;
+}
+
+.lima-sobre-ctas {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 8px;
+}
+
+/* Botões no fundo escuro — override para contexto #sobre */
+#sobre .elementor-button {
+    background: rgba(255, 255, 255, 0.08) !important;
+    color: #ffffff !important;
+    border: 1px solid rgba(255, 255, 255, 0.18) !important;
+    backdrop-filter: blur(10px);
+    padding: 14px 30px !important;
+}
+
+#sobre .elementor-button:hover {
+    background: rgba(255, 255, 255, 0.16) !important;
+    border-color: rgba(255, 255, 255, 0.35) !important;
+}
+
+/* Botão primário: gradiente no fundo */
+#sobre .elementor-button.lima-btn-primary {
+    background: var(--lima-dark-gradient) !important;
+    color: #060312 !important;
+    border: none !important;
+    font-weight: 700 !important;
+}
+
+#sobre .elementor-button.lima-btn-primary:hover {
+    filter: brightness(1.08);
+    background: var(--lima-dark-gradient) !important;
+}
+
+@media (max-width: 767px) {
+    #sobre {
+        padding: 80px 0;
+    }
+
+    .lima-sobre-heading {
+        font-size: 42px;
+        letter-spacing: -1px;
+        line-height: 0.95;
+    }
+
+    .lima-sobre-text {
+        font-size: 16px;
+    }
+
+    .lima-sobre-ctas {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .lima-sobre-ctas .elementor-button {
+        text-align: center;
+        width: 100%;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .lima-sobre-heading {
+        font-size: 56px;
+    }
+}
+
+/* =========================================================================
+   Seção FAQ (#faq)
+   ========================================================================= */
+#faq {
+    background-color: #ffffff;
+    padding: 120px 0;
+    position: relative;
+    z-index: 5;
+}
+
+.lima-faq-heading {
+    font-family: "CircularStd", sans-serif;
+    font-size: 84px;
+    line-height: 0.95;
+    letter-spacing: -2px;
+    font-weight: 700;
+    color: var(--lima-light-text);
+    margin: 0;
+    max-width: 780px;
+}
+
+/* Lista de perguntas */
+.lima-faq-list {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border-top: 1px solid rgba(6, 3, 18, 0.1);
+}
+
+.lima-faq-item {
+    border-bottom: 1px solid rgba(6, 3, 18, 0.1);
+    overflow: hidden;
+}
+
+.lima-faq-question {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 26px 0;
+    cursor: pointer;
+    gap: 24px;
+    user-select: none;
+    background: none;
+    border: none;
+    width: 100%;
+    text-align: left;
+}
+
+.lima-faq-question-text {
+    font-family: "CircularStd", sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--lima-light-text);
+    line-height: 1.3;
+    margin: 0;
+    transition: color 0.3s ease;
+}
+
+.lima-faq-item:hover .lima-faq-question-text {
+    color: #2bce4d;
+}
+
+/* Ícone +/× */
+.lima-faq-icon {
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 2px solid rgba(6, 3, 18, 0.15);
+    color: var(--lima-light-text);
+    font-size: 20px;
+    font-weight: 300;
+    font-family: "CircularStd", sans-serif;
+    line-height: 1;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                border-color 0.3s ease,
+                background 0.3s ease,
+                color 0.3s ease;
+}
+
+.lima-faq-item.is-open .lima-faq-icon {
+    transform: rotate(45deg);
+    background: var(--lima-light-gradient);
+    border-color: transparent;
+    color: #ffffff;
+}
+
+/* Resposta com animação de altura */
+.lima-faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.lima-faq-item.is-open .lima-faq-answer {
+    max-height: 600px;
+}
+
+.lima-faq-answer-inner {
+    font-family: "CircularStd", sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: rgba(6, 3, 18, 0.6);
+    line-height: 1.75;
+    padding: 0 0 28px 0;
+    max-width: 720px;
+}
+
+@media (max-width: 767px) {
+    #faq {
+        padding: 80px 0;
+    }
+
+    .lima-faq-heading {
+        font-size: 42px;
+        letter-spacing: -1px;
+    }
+
+    .lima-faq-question-text {
+        font-size: 15px;
+    }
+
+    .lima-faq-answer-inner {
+        font-size: 14px;
+    }
+
+    .lima-faq-icon {
+        width: 26px;
+        height: 26px;
+        font-size: 16px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .lima-faq-heading {
+        font-size: 56px;
+    }
+}
