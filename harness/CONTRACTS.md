@@ -1087,5 +1087,29 @@ Aplicar em:
 
 **Status:** ✅ Concluído
 
+---
+
+#### T-AD-42: Transição direta do hover de texto do FAQ (Degradê -> Branco sem piscar em preto)
+**Tipo:** Ad-hoc — solicitada em 2026-07-23
+**Tipo de mudança:** `front-end` / `design`
+**Descrição:** 
+Corrigir a transição do hover do texto das perguntas do FAQ (`.lima-faq-question-text`). Anteriormente, `color` interpolava para `transparent` no hover (para mostrar o `background-clip: text`), mas ao retirar o mouse o browser interpolava de `transparent` para `rgba(0,0,0,1)` antes de chegar em `#ffffff`, causando um flash preto indesejado.
+A solução foi utilizar um pseudo-elemento `::before` sobreposto com `opacity: 0 -> 1` contendo o texto em degradê, mantendo a cor base branca fixada no elemento principal.
+
+**Arquivos modificados:**
+- `public/css/design_system.css` — Transição por opacidade do pseudo-elemento `::before`.
+- `views/index.html` — Auto-preenchimento do atributo `data-text` via JS para o pseudo-elemento.
+
+**Critérios de aceite:**
+- [x] Texto do FAQ faz transição fluida do branco para o degradê no mouseover.
+- [x] Texto do FAQ faz transição fluida do degradê diretamente para o branco no mouseout, sem piscar em preto.
+
+**Sensores rodados:**
+- [x] Servidor sobe (HTTP 200 OK)
+- [x] F-05 visual: Transição sem flash escuro no mouseout.
+
+**Status:** ✅ Concluído
+
+
 
 

@@ -153,6 +153,7 @@ Otimizações de performance aplicadas (2026-04-28):
 | 2026-07-23 | T-AD-39: ajuste de espaçamento simétrico (40px) da tag FAQ no mobile | — |
 | 2026-07-23 | T-AD-40: reposicionamento dos botões no Sobre Mim (após foto e antes da descrição) no mobile | — |
 | 2026-07-23 | T-AD-41: padronização de textos descritivos (16px desktop / 13px mobile / #0F172BBF) | — |
+| 2026-07-23 | T-AD-42: transição direta do hover de texto do FAQ (sem piscar preto) | — |
 ---
 
 ## Variáveis de Ambiente Necessárias
