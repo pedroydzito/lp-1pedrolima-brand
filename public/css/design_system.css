@@ -400,7 +400,10 @@ button,
     left: -10px;
     right: -10px;
     bottom: -10px;
-    z-index: -1;
+    pointer-events: none;
+    /* Sem z-index negativo: o buffer permanece no mesmo layer do elemento,
+       estendendo a zona de hover em 10px ao redor do botão. Isso evita o loop
+       de ativar/desativar quando o botão sobe 4px com translateY no hover. */
 }
 
 /* Hover nos Botões e Ícones Sociais */
