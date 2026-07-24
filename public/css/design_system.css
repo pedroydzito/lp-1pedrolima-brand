@@ -1267,3 +1267,15 @@ button,
         font-size: 20px;
     }
 }
+
+/* =========================================================================
+   Navbar Links Hover
+   ========================================================================= */
+.elementor-element-0b6e017 .elementor-widget-text-editor a:hover,
+.elementor-element-0b6e017 .elementor-widget-text-editor a:focus {
+    background: var(--lima-dark-gradient) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    color: transparent !important;
+}
