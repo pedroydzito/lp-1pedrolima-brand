@@ -706,7 +706,6 @@
 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 	<script src="/assets/wp-emoji-release.min.js.download" defer=""></script>
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" media="print" onload="this.media='all'">
 	<link rel="stylesheet" href="/css/design_system.css">
 <link rel="stylesheet" href="/css/animations.css" media="print" onload="this.media='all'">
     <!-- PERF: preload critical above-the-fold images -->
@@ -714,6 +713,19 @@
     <link rel="preload" as="image" href="/assets/IMG_8394 2.webp" fetchpriority="high">
     <link rel="preload" as="image" href="/assets/Card1-front-1.webp" fetchpriority="high">
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+
+    <!-- Preloads de Fontes -->
+    <link rel="preload" href="/assets/Fontes/CircularStd-Book.ttf" as="font" type="font/ttf" crossorigin>
+    <link rel="preload" href="/assets/Fontes/CircularStd-Medium.ttf" as="font" type="font/ttf" crossorigin>
+    <link rel="preload" href="/assets/Fontes/CircularStd-Bold.ttf" as="font" type="font/ttf" crossorigin>
+    <!-- Preload LCP Image -->
+    <link rel="preload" href="/assets/Card1-background.webp" as="image" fetchpriority="high">
+
+
+    <!-- Preloads de CSS crítico -->
+    <link rel="preload" href="/css/design_system.css" as="style">
+    <link rel="preload" href="/assets/frontend.min.css" as="style">
+
 </head>
 
 <body data-rsssl="1"
@@ -773,14 +785,14 @@
 					data-id="313a119" data-element_type="widget" data-e-type="widget" data-widget_type="image.default">
 					<div class="lima-hero-wrapper">
 						<img src="/assets/Card1-front-1.webp" class="lima-static-mobile" alt="Pedro Lima Mobile Banner"
-							style="width: 100%; height: auto; display: none;">
+							style="width: 100%; height: auto; display: none;" width="2560" height="1762" fetchpriority="high">
 						<div class="lima-hero-parallax" id="limaParallax">
 							<img src="/assets/Lima_.webp" class="parallax-layer layer-back" data-speed="0.012"
-								alt="Lima Text" loading="lazy" decoding="async">
+								alt="Lima Text" loading="lazy" decoding="async" width="1920" height="716">
 							<img src="/assets/IMG_8394 2.webp" class="parallax-layer layer-mid" data-speed="0.01"
-								alt="Pedro Lima" loading="lazy" decoding="async">
+								alt="Pedro Lima" loading="lazy" decoding="async" width="1920" height="1322">
 							<img src="/assets/Brand Designer.svg" class="parallax-layer layer-front" data-speed="0.015"
-								alt="Brand Designer" loading="lazy" decoding="async">
+								alt="Brand Designer" loading="lazy" decoding="async" width="213" height="122">
 						</div>
 					</div>
 				</div>
@@ -874,7 +886,7 @@
 						Pedro <span class="degrade-lima-escuro">Lima</span>
 					</h1>
 					<div class="lima-sobre-image">
-						<img src="/assets/1738535223268_lima.webp" alt="Pedro Lima" loading="lazy" decoding="async">
+						<img src="/assets/1738535223268_lima.webp" alt="Pedro Lima" loading="lazy" decoding="async" width="1536" height="1536">
 					</div>
 					<p class="lima-sobre-text">
 						O design precisa mostrar quem as pessoas realmente são. Essência, verdade e personalidade. É isso que me move.<br><br>
@@ -931,19 +943,19 @@
 				<div class="lima-feedbacks-container">
 					<div class="lima-feedbacks-track" id="feedbacks-track">
 						<div class="lima-feedback-card">
-							<img src="/assets/Feedbacks/1.webp" alt="Feedback 1" loading="lazy" decoding="async" class="lima-lightbox-trigger">
+							<img src="/assets/Feedbacks/1.webp" alt="Feedback 1" loading="lazy" decoding="async" class="lima-lightbox-trigger" width="1080" height="1920">
 						</div>
 						<div class="lima-feedback-card">
-							<img src="/assets/Feedbacks/2.webp" alt="Feedback 2" loading="lazy" decoding="async" class="lima-lightbox-trigger">
+							<img src="/assets/Feedbacks/2.webp" alt="Feedback 2" loading="lazy" decoding="async" class="lima-lightbox-trigger" width="1080" height="1920">
 						</div>
 						<div class="lima-feedback-card">
-							<img src="/assets/Feedbacks/3.webp" alt="Feedback 3" loading="lazy" decoding="async" class="lima-lightbox-trigger">
+							<img src="/assets/Feedbacks/3.webp" alt="Feedback 3" loading="lazy" decoding="async" class="lima-lightbox-trigger" width="1080" height="1920">
 						</div>
 						<div class="lima-feedback-card">
-							<img src="/assets/Feedbacks/4.webp" alt="Feedback 4" loading="lazy" decoding="async" class="lima-lightbox-trigger">
+							<img src="/assets/Feedbacks/4.webp" alt="Feedback 4" loading="lazy" decoding="async" class="lima-lightbox-trigger" width="1080" height="1920">
 						</div>
 						<div class="lima-feedback-card">
-							<img src="/assets/Feedbacks/5.webp" alt="Feedback 5" loading="lazy" decoding="async" class="lima-lightbox-trigger">
+							<img src="/assets/Feedbacks/5.webp" alt="Feedback 5" loading="lazy" decoding="async" class="lima-lightbox-trigger" width="1080" height="1920">
 						</div>
 					</div>
 				</div>

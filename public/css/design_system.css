@@ -679,7 +679,7 @@ button,
 
 .lima-sobre-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 0.95fr 1.05fr;
     grid-template-areas:
         "tag image"
         "heading image"
