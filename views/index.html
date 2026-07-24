@@ -693,8 +693,8 @@
 	<link rel="stylesheet" id="widget-image-css" href="/assets/widget-image.min.css" type="text/css" media="all">
 	<link rel="stylesheet" id="widget-heading-css" href="/assets/widget-heading.min.css" type="text/css" media="all">
 	<link rel="stylesheet" id="widget-social-icons-css" href="/assets/widget-social-icons.min.css" type="text/css"
-		media="all">
-	<link rel="stylesheet" id="e-apple-webkit-css" href="/assets/apple-webkit.min.css" type="text/css" media="all">
+	 media="print" onload="this.media='all'">
+	<link rel="stylesheet" id="e-apple-webkit-css" href="/assets/apple-webkit.min.css" type="text/css" media="print" onload="this.media='all'">
 	<link rel="stylesheet" id="elementor-post-2-css" href="/assets/post-2.css" type="text/css" media="all">
 	<script type="text/javascript" src="/assets/jquery.min.js.download" id="jquery-core-js" defer></script>
 	<script type="text/javascript" src="/assets/jquery-migrate.min.js.download" id="jquery-migrate-js" defer></script>
@@ -706,9 +706,9 @@
 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 	<script src="/assets/wp-emoji-release.min.js.download" defer=""></script>
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" media="print" onload="this.media='all'">
 	<link rel="stylesheet" href="/css/design_system.css">
-<link rel="stylesheet" href="/css/animations.css">
+<link rel="stylesheet" href="/css/animations.css" media="print" onload="this.media='all'">
     <!-- PERF: preload critical above-the-fold images -->
     <link rel="preload" as="image" href="/assets/Lima_.webp" fetchpriority="high">
     <link rel="preload" as="image" href="/assets/IMG_8394 2.webp" fetchpriority="high">
@@ -735,7 +735,7 @@
 							data-widget_type="image.default">
 							<a href="/" class="lima-logo-link"><img fetchpriority="high" decoding="async" width="1024" height="288"
 								src="/assets/1.-Lima-e-Branco.svg" class="attachment-large size-large wp-image-178"
-								alt=""></a>
+								alt="" loading="lazy" decoding="async"></a>
 						</div>
 					</div>
 					<div class="elementor-element elementor-element-0b6e017 e-grid e-con-full elementor-hidden-mobile e-con e-child"
@@ -776,11 +776,11 @@
 							style="width: 100%; height: auto; display: none;">
 						<div class="lima-hero-parallax" id="limaParallax">
 							<img src="/assets/Lima_.webp" class="parallax-layer layer-back" data-speed="0.012"
-								alt="Lima Text">
+								alt="Lima Text" loading="lazy" decoding="async">
 							<img src="/assets/IMG_8394 2.webp" class="parallax-layer layer-mid" data-speed="0.01"
-								alt="Pedro Lima">
+								alt="Pedro Lima" loading="lazy" decoding="async">
 							<img src="/assets/Brand Designer.svg" class="parallax-layer layer-front" data-speed="0.015"
-								alt="Brand Designer">
+								alt="Brand Designer" loading="lazy" decoding="async">
 						</div>
 					</div>
 				</div>
@@ -874,7 +874,7 @@
 						Pedro <span class="degrade-lima-escuro">Lima</span>
 					</h1>
 					<div class="lima-sobre-image">
-						<img src="/assets/1738535223268_lima.webp" alt="Pedro Lima" loading="lazy">
+						<img src="/assets/1738535223268_lima.webp" alt="Pedro Lima" loading="lazy" decoding="async">
 					</div>
 					<p class="lima-sobre-text">
 						O design precisa mostrar quem as pessoas realmente são. Essência, verdade e personalidade. É isso que me move.<br><br>
@@ -931,19 +931,19 @@
 				<div class="lima-feedbacks-container">
 					<div class="lima-feedbacks-track" id="feedbacks-track">
 						<div class="lima-feedback-card">
-							<img src="/assets/Feedbacks/1.webp" alt="Feedback 1" loading="lazy" class="lima-lightbox-trigger">
+							<img src="/assets/Feedbacks/1.webp" alt="Feedback 1" loading="lazy" decoding="async" class="lima-lightbox-trigger">
 						</div>
 						<div class="lima-feedback-card">
-							<img src="/assets/Feedbacks/2.webp" alt="Feedback 2" loading="lazy" class="lima-lightbox-trigger">
+							<img src="/assets/Feedbacks/2.webp" alt="Feedback 2" loading="lazy" decoding="async" class="lima-lightbox-trigger">
 						</div>
 						<div class="lima-feedback-card">
-							<img src="/assets/Feedbacks/3.webp" alt="Feedback 3" loading="lazy" class="lima-lightbox-trigger">
+							<img src="/assets/Feedbacks/3.webp" alt="Feedback 3" loading="lazy" decoding="async" class="lima-lightbox-trigger">
 						</div>
 						<div class="lima-feedback-card">
-							<img src="/assets/Feedbacks/4.webp" alt="Feedback 4" loading="lazy" class="lima-lightbox-trigger">
+							<img src="/assets/Feedbacks/4.webp" alt="Feedback 4" loading="lazy" decoding="async" class="lima-lightbox-trigger">
 						</div>
 						<div class="lima-feedback-card">
-							<img src="/assets/Feedbacks/5.webp" alt="Feedback 5" loading="lazy" class="lima-lightbox-trigger">
+							<img src="/assets/Feedbacks/5.webp" alt="Feedback 5" loading="lazy" decoding="async" class="lima-lightbox-trigger">
 						</div>
 					</div>
 				</div>
@@ -964,7 +964,7 @@
 					<div class="lima-lightbox-close-wrap" id="lima-feedbacks-lightbox-close">
 						<svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#111111" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="1" y1="1" x2="13" y2="13"></line><line x1="13" y1="1" x2="1" y2="13"></line></svg>
 					</div>
-					<img class="lima-lightbox-content" id="lima-feedbacks-lightbox-img" alt="Feedback em tela cheia">
+					<img class="lima-lightbox-content" id="lima-feedbacks-lightbox-img" alt="Feedback em tela cheia" loading="lazy" decoding="async">
 				</div>
 			</div>
 		</div>
@@ -1119,7 +1119,7 @@
 							data-widget_type="image.default">
 							<a href="/" class="lima-logo-link"><img fetchpriority="high" decoding="async" width="1024" height="288"
 								src="/assets/1.-Lima-e-Branco.svg" class="attachment-large size-large wp-image-178"
-								alt=""></a>
+								alt="" loading="lazy" decoding="async"></a>
 						</div>
 						<div class="elementor-element elementor-element-eac1383 elementor-widget__width-initial elementor-widget elementor-widget-heading"
 							data-id="eac1383" data-element_type="widget" data-e-type="widget"

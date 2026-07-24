@@ -17,25 +17,25 @@
     --lima-light-card: #f6f6f6;
 }
 
-@font-face {
+@font-face { font-display: swap; 
     font-family: 'CircularStd';
     src: url('../assets/Fontes/CircularStd-Book.ttf') format('truetype');
     font-weight: 400;
 }
 
-@font-face {
+@font-face { font-display: swap; 
     font-family: 'CircularStd';
     src: url('../assets/Fontes/CircularStd-Medium.ttf') format('truetype');
     font-weight: 500;
 }
 
-@font-face {
+@font-face { font-display: swap; 
     font-family: 'CircularStd';
     src: url('../assets/Fontes/CircularStd-Bold.ttf') format('truetype');
     font-weight: 700;
 }
 
-@font-face {
+@font-face { font-display: swap; 
     font-family: 'CircularStd';
     src: url('../assets/Fontes/CircularStd-Black.ttf') format('truetype');
     font-weight: 900;
