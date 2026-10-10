@@ -30,20 +30,11 @@
        carregam com prioridade; o restante não bloqueia.
        ================================================================ */
 
-    // Aplica opacity:0 imediatamente para evitar flash de conteúdo preto
-    document.documentElement.style.opacity = '0';
-
-    // Fade-in rápido ao DOMContentLoaded — não espera todas as imagens
-    document.addEventListener('DOMContentLoaded', function () {
-        // Transição suave de entrada
-        document.documentElement.style.transition = 'opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1)';
-        // Usa rAF para garantir que o browser aplique o estado inicial antes de animar
-        requestAnimationFrame(function () {
-            requestAnimationFrame(function () {
-                document.documentElement.style.opacity = '1';
-            });
-        });
-    });
+    // FIX: antes o JS zerava a opacidade da página DEPOIS do primeiro paint
+    // (script no fim do body), causando o efeito de "recarregar". Agora o
+    // estado inicial das animações é aplicado via CSS desde o primeiro paint
+    // (classe .lima-js no <html>, setada inline no <head>).
+    window.__limaReady = true;
 
     /* ================================================================
        2. CURSOR PERSONALIZADO
@@ -427,8 +418,10 @@
         document.querySelectorAll('.elementor-widget-image img').forEach(function (img) {
             var link = img.closest('a');
             var widget = img.closest('.elementor-widget-image');
-            if (link && PROJECT_HREFS.indexOf(link.getAttribute('href')) !== -1) return;
-            if (img.closest('.parallax-layer')) return;
+            if ((link && PROJECT_HREFS.indexOf(link.getAttribute('href')) !== -1) || img.closest('.parallax-layer')) {
+                if (widget) widget.setAttribute('data-lima-skip', '');
+                return;
+            }
             if (widget && !widget.hasAttribute('data-lima-anim')) {
                 widget.setAttribute('data-lima-anim', 'image');
             }
@@ -643,14 +636,20 @@
        INIT
        ================================================================ */
 
-    /* Pré-carrega imagens dos projetos imediatamente */
-    preloadAllProjectImages();
+    /* Pré-carrega imagens do slideshow só em desktop (hover) e depois que a
+       página terminou de carregar — não compete com o conteúdo inicial. */
+    if (!isTouchDevice) {
+        window.addEventListener('load', function () {
+            (window.requestIdleCallback || function (cb) { setTimeout(cb, 1500); })(preloadAllProjectImages);
+        });
+    }
 
     document.addEventListener('DOMContentLoaded', function () {
         decorateElements();
         setupProjectSlideshows();
         setupScrollAnimations();
         setupLightbox();
+        document.documentElement.classList.add('lima-ready');
     });
 
 })();

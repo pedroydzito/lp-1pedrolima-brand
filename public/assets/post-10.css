@@ -16,7 +16,7 @@
 	font-style: normal;
 	font-weight: normal;
 	font-display: auto;
-	src: url('https://1pedrolima.com/wp-content/uploads/2025/10/CircularStd-Book.ttf') format('truetype');
+	src: url('/assets/Fontes/CircularStd-Book.woff2') format('woff2');
 }
 @font-face {
 	font-family: 'Circular Std';
@@ -30,7 +30,7 @@
 	font-style: normal;
 	font-weight: bold;
 	font-display: auto;
-	src: url('https://1pedrolima.com/wp-content/uploads/2025/10/CircularStd-Bold.ttf') format('truetype');
+	src: url('/assets/Fontes/CircularStd-Bold.woff2') format('woff2');
 }
 @font-face {
 	font-family: 'Circular Std';
@@ -44,7 +44,7 @@
 	font-style: normal;
 	font-weight: 900;
 	font-display: auto;
-	src: url('https://1pedrolima.com/wp-content/uploads/2025/10/CircularStd-Black.ttf') format('truetype');
+	src: url('/assets/Fontes/CircularStd-Black.woff2') format('woff2');
 }
 @font-face {
 	font-family: 'Circular Std';
@@ -58,7 +58,7 @@
 	font-style: normal;
 	font-weight: 500;
 	font-display: auto;
-	src: url('https://1pedrolima.com/wp-content/uploads/2025/10/CircularStd-Medium.ttf') format('truetype');
+	src: url('/assets/Fontes/CircularStd-Medium.woff2') format('woff2');
 }
 @font-face {
 	font-family: 'Circular Std';

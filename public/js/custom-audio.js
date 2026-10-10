@@ -14,6 +14,8 @@ document.addEventListener("DOMContentLoaded", function () {
     document.querySelectorAll('.iron-audioplayer').forEach(playerContainer => {
         const audioEl = document.createElement('audio');
         audioEl.style.display = 'none';
+        // Só baixa os metadados (duração) até o usuário dar play — evita baixar ~4MB de MP3 ao abrir a página
+        audioEl.preload = 'metadata';
         playerContainer.appendChild(audioEl);
 
         const playlistItem = playerContainer.querySelector('.sr-playlist-item');

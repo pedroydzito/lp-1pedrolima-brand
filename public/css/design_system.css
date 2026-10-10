@@ -20,25 +20,25 @@
 
 @font-face { font-display: swap; 
     font-family: 'CircularStd';
-    src: url('../assets/Fontes/CircularStd-Book.ttf') format('truetype');
+    src: url('../assets/Fontes/CircularStd-Book.woff2') format('woff2'), url('../assets/Fontes/CircularStd-Book.ttf') format('truetype');
     font-weight: 400;
 }
 
 @font-face { font-display: swap; 
     font-family: 'CircularStd';
-    src: url('../assets/Fontes/CircularStd-Medium.ttf') format('truetype');
+    src: url('../assets/Fontes/CircularStd-Medium.woff2') format('woff2'), url('../assets/Fontes/CircularStd-Medium.ttf') format('truetype');
     font-weight: 500;
 }
 
 @font-face { font-display: swap; 
     font-family: 'CircularStd';
-    src: url('../assets/Fontes/CircularStd-Bold.ttf') format('truetype');
+    src: url('../assets/Fontes/CircularStd-Bold.woff2') format('woff2'), url('../assets/Fontes/CircularStd-Bold.ttf') format('truetype');
     font-weight: 700;
 }
 
 @font-face { font-display: swap; 
     font-family: 'CircularStd';
-    src: url('../assets/Fontes/CircularStd-Black.ttf') format('truetype');
+    src: url('../assets/Fontes/CircularStd-Black.woff2') format('woff2'), url('../assets/Fontes/CircularStd-Black.ttf') format('truetype');
     font-weight: 900;
 }
 

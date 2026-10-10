@@ -331,6 +331,13 @@
    ANIMAÇÕES DE SCROLL — FADE + SLIDE UP
    ---------------------------------------------------------------- */
 
+/* Esconde desde o primeiro paint os elementos que o JS vai animar, evitando
+   o "pisca" (aparece → some → anima). Removido se o JS não rodar. */
+.lima-js:not(.lima-ready) :is(h1, h2, h3).elementor-heading-title:not(.lima-heading-anim),
+.lima-js:not(.lima-ready) :is(p.elementor-heading-title, .elementor-widget-text-editor, .lima-tag, .elementor-widget-button, .elementor-widget-social-icons, .iron_widget_radio, .elementor-widget-image):not([data-lima-anim]):not([data-lima-skip]) {
+    opacity: 0;
+}
+
 [data-lima-anim] {
     opacity: 0;
     transform: translateY(30px);
