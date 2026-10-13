@@ -13,28 +13,36 @@ app.use(compression({ level: 6 }));
 // 1 ano de cache para assets com hash/versão; 1 dia para o restante
 app.use('/assets', (req, res, next) => {
     const ext = path.extname(req.path).toLowerCase();
-    const immutable = ['.webp', '.png', '.jpg', '.svg', '.woff2', '.woff', '.ttf', '.mp3', '.mp4'];
+    const immutable = ['.webp', '.png', '.jpg', '.jpeg', '.svg', '.gif', '.woff2', '.woff', '.ttf', '.css', '.js', '.mp3', '.mp4'];
     if (immutable.includes(ext)) {
-        // 1 ano — assets de mídia não mudam de nome
         res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
     } else {
-        // CSS/JS — 1 dia
         res.setHeader('Cache-Control', 'public, max-age=86400');
     }
     next();
 });
 
 app.use('/css', (req, res, next) => {
-    res.setHeader('Cache-Control', 'public, max-age=86400');
+    res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
     next();
 });
 
 app.use('/js', (req, res, next) => {
-    res.setHeader('Cache-Control', 'public, max-age=86400');
+    res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
     next();
 });
 
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.get('/robots.txt', (req, res) => {
+    res.type('text/plain');
+    res.set('Cache-Control', 'public, max-age=86400');
+    res.send(`User-agent: *
+Allow: /
+
+Sitemap: https://brand.1pedrolima.com/sitemap.xml
+`);
+});
 
 app.get('/favicon.ico', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'assets', 'FavIcon.jpg'));
@@ -63,14 +71,23 @@ projects.forEach(project => {
 // Sitemap dinâmico — atualiza automaticamente quando novos projetos são adicionados ao array `projects`
 app.get('/sitemap.xml', (req, res) => {
     const baseUrl = 'https://brand.1pedrolima.com';
-    const today = new Date().toISOString().split('T')[0];
+    const pageLastMod = {
+        '/': '2026-10-10',
+        'luna-sheeny': '2026-07-23',
+        'martin-dahmer': '2026-07-23',
+        'priscila-elpo': '2026-07-23',
+        'robison-kunz': '2026-07-23',
+        'roger-nobles': '2026-07-23',
+        'vitor-dos-santos': '2026-07-23'
+    };
 
     const urls = [
-        { loc: `${baseUrl}/`, priority: '1.0', changefreq: 'weekly' },
+        { loc: `${baseUrl}/`, priority: '1.0', changefreq: 'weekly', lastmod: pageLastMod['/'] },
         ...projects.map(p => ({
             loc: `${baseUrl}/${p}`,
             priority: '0.8',
-            changefreq: 'monthly'
+            changefreq: 'monthly',
+            lastmod: pageLastMod[p] || '2026-07-23'
         }))
     ];
 
@@ -78,7 +95,7 @@ app.get('/sitemap.xml', (req, res) => {
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${urls.map(u => `  <url>
     <loc>${u.loc}</loc>
-    <lastmod>${today}</lastmod>
+    <lastmod>${u.lastmod}</lastmod>
     <changefreq>${u.changefreq}</changefreq>
     <priority>${u.priority}</priority>
   </url>`).join('\n')}

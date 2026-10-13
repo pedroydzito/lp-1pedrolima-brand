@@ -73,7 +73,10 @@ textarea,
 }
 
 h1,
-h1.elementor-heading-title {
+h1.elementor-heading-title,
+#projetos h2.elementor-heading-title,
+h2.lima-sobre-heading,
+h2.lima-feedbacks-heading {
     font-size: 84px;
     line-height: 0.95; /* Tighter look as requested */
     letter-spacing: -2px;
@@ -81,7 +84,10 @@ h1.elementor-heading-title {
 }
 
 @media (max-width: 767px) {
-    .elementor-kit-10 h1 {
+    .elementor-kit-10 h1,
+    .elementor-kit-10 #projetos h2.elementor-heading-title,
+    .elementor-kit-10 h2.lima-sobre-heading,
+    .elementor-kit-10 h2.lima-feedbacks-heading {
         font-size: 32px !important;
         line-height: 0.95 !important;
         letter-spacing: -1px !important;

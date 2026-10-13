@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://brand.1pedrolima.com/sitemap.xml
