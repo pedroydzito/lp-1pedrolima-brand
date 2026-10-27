@@ -226,12 +226,19 @@
             link.classList.add('lima-project-card');
             watchCardForPreload(link, images);
 
-            /* -- Cria wrapper + camadas B1 e B2 (double buffering) -- */
-            var wrap = document.createElement('div');
-            wrap.className = 'lima-slide-wrap';
-            link.insertBefore(wrap, originalImg);
+            /* -- Wrapper + camadas B1 e B2 (double buffering) --
+               FIX (Safari/iOS): o wrapper agora vem pronto no HTML. Antes o JS
+               movia a <img loading="lazy"> para dentro dele enquanto ela ainda
+               carregava, e o WebKit às vezes nunca terminava o carregamento
+               (thumb em branco até recarregar a página). */
+            var wrap = originalImg.parentElement;
+            if (!wrap.classList.contains('lima-slide-wrap')) {
+                wrap = document.createElement('div');
+                wrap.className = 'lima-slide-wrap';
+                link.insertBefore(wrap, originalImg);
+                wrap.appendChild(originalImg);
+            }
             originalImg.classList.add('lima-slide-a');
-            wrap.appendChild(originalImg);
 
             var imgB1 = document.createElement('img');
             imgB1.className = 'lima-slide-b';
