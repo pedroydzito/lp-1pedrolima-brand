@@ -670,12 +670,25 @@
        INIT
        ================================================================ */
 
-    document.addEventListener('DOMContentLoaded', function () {
-        decorateElements();
-        setupProjectSlideshows();
-        setupScrollAnimations();
-        setupLightbox();
+    /* Cada etapa isolada: se uma falhar, as outras rodam e a página é SEMPRE
+       marcada como pronta (senão navbar, hero e footer ficariam invisíveis). */
+    function safe(fn) {
+        try { fn(); } catch (err) { if (window.console) console.error('[lima]', err); }
+    }
+    var initialized = false;
+    function init() {
+        if (initialized) return;
+        initialized = true;
+        safe(decorateElements);
+        safe(setupProjectSlideshows);
+        safe(setupScrollAnimations);
+        safe(setupLightbox);
         document.documentElement.classList.add('lima-ready');
-    });
+    }
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        init();
+    }
 
 })();

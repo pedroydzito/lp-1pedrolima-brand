@@ -336,6 +336,12 @@
 .lima-js:not(.lima-ready) :is(h1, h2, h3).elementor-heading-title:not(.lima-heading-anim),
 .lima-js:not(.lima-ready) :is(p.elementor-heading-title, .elementor-widget-text-editor, .lima-tag, .elementor-widget-button, .elementor-widget-social-icons, .iron_widget_radio, .elementor-widget-image):not([data-lima-anim]):not([data-lima-skip]) {
     opacity: 0;
+    /* Fail-safe só em CSS: se o JS não marcar .lima-ready, aparece sozinho em 3s */
+    animation: lima-failsafe-show 0s linear 3s forwards;
+}
+
+@keyframes lima-failsafe-show {
+    to { opacity: 1; }
 }
 
 [data-lima-anim] {

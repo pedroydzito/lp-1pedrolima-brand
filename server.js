@@ -2,6 +2,8 @@ const express = require('express');
 const path = require('path');
 const https = require('https');
 const compression = require('compression');
+const fs = require('fs');
+const crypto = require('crypto');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -48,8 +50,45 @@ app.get('/favicon.ico', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'assets', 'FavIcon.jpg'));
 });
 
+// Versionamento automático de CSS/JS (cache busting).
+// O Vercel entrega /css, /js e /assets com cache de 1 ano "immutable". Sem
+// versão no endereço, o navegador podia combinar HTML novo com CSS/JS antigo
+// do cache após um deploy (ex.: navbar, foto e footer sem aparecer até
+// recarregar). Aqui cada referência local a .css/.js ganha ?v=<hash do
+// conteúdo>: mudou o arquivo, muda o endereço.
+const PUBLIC_DIR = path.join(__dirname, 'public');
+const assetHashes = {};
+function assetVersion(urlPath) {
+    if (!(urlPath in assetHashes)) {
+        try {
+            const buf = fs.readFileSync(path.join(PUBLIC_DIR, decodeURIComponent(urlPath)));
+            assetHashes[urlPath] = crypto.createHash('md5').update(buf).digest('hex').slice(0, 10);
+        } catch (e) {
+            assetHashes[urlPath] = null;
+        }
+    }
+    return assetHashes[urlPath];
+}
+
+const viewCache = {};
+function renderView(name) {
+    if (!viewCache[name]) {
+        const html = fs.readFileSync(path.join(__dirname, 'views', name + '.html'), 'utf8');
+        viewCache[name] = html.replace(/(href|src)="(\/(?:css|js|assets)\/[^"?#]+\.(?:css|js))"/g, (m, attr, url) => {
+            const v = assetVersion(url);
+            return v ? `${attr}="${url}?v=${v}"` : m;
+        });
+    }
+    return viewCache[name];
+}
+
+function sendView(res, name) {
+    res.set('Cache-Control', 'public, max-age=0, must-revalidate');
+    res.type('html').send(renderView(name));
+}
+
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'views', 'index.html'));
+    sendView(res, 'index');
 });
 
 // Setup routes for projects
@@ -73,7 +112,7 @@ hiddenProjects.forEach(project => {
 
 projects.forEach(project => {
     app.get('/' + project, (req, res) => {
-        res.sendFile(path.join(__dirname, 'views', project + '.html'));
+        sendView(res, project);
     });
 });
 
