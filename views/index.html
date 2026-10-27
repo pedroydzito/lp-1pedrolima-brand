@@ -691,17 +691,17 @@
 	<link rel="stylesheet" href="/css/design_system.css">
 <link rel="stylesheet" href="/css/animations.css">
     <!-- PERF: preload critical above-the-fold images -->
-    <link rel="preload" as="image" href="/assets/Lima_.webp" fetchpriority="high">
-    <link rel="preload" as="image" href="/assets/IMG_8394 2.webp" fetchpriority="high">
-    <link rel="preload" as="image" href="/assets/Card1-front-1.webp" fetchpriority="high">
-    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="preload" as="image" href="/assets/Lima_.webp" imagesrcset="/assets/Lima_-480w.webp 480w, /assets/Lima_-800w.webp 800w, /assets/Lima_-1200w.webp 1200w, /assets/Lima_-1600w.webp 1600w, /assets/Lima_.webp 1920w" imagesizes="(max-width: 1024px) 91vw, 80vw" media="(min-width: 769px)" fetchpriority="high">
+    <link rel="preload" as="image" href="/assets/IMG_8394 2.webp" imagesrcset="/assets/IMG_8394%202-480w.webp 480w, /assets/IMG_8394%202-800w.webp 800w, /assets/IMG_8394%202-1200w.webp 1200w, /assets/IMG_8394%202-1600w.webp 1600w, /assets/IMG_8394%202.webp 1920w" imagesizes="(max-width: 1024px) 91vw, 80vw" media="(min-width: 769px)" fetchpriority="high">
+    <link rel="preload" as="image" href="/assets/Card1-front-1.webp" imagesrcset="/assets/Card1-front-1-480w.webp 480w, /assets/Card1-front-1-800w.webp 800w, /assets/Card1-front-1-1200w.webp 1200w, /assets/Card1-front-1-1600w.webp 1600w, /assets/Card1-front-1.webp 2000w" imagesizes="(max-width: 767px) 90vw, (max-width: 1024px) 90vw, 90vw" media="(max-width: 768px)" fetchpriority="high">
 
     <!-- Preloads de Fontes -->
     <link rel="preload" href="/assets/Fontes/CircularStd-Book.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="/assets/Fontes/CircularStd-Medium.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="/assets/Fontes/CircularStd-Bold.woff2" as="font" type="font/woff2" crossorigin>
     <!-- Preload LCP Image -->
-    <link rel="preload" href="/assets/Card1-background.webp" as="image" fetchpriority="high">
+    <link rel="preload" href="/assets/Card1-background.webp" as="image" media="(min-width: 769px)" fetchpriority="high">
+    <link rel="preload" href="/assets/Card1-background-1280w.webp" as="image" media="(max-width: 768px)">
 
 
     <!-- Preloads de CSS crítico -->
@@ -768,12 +768,12 @@
 					data-id="313a119" data-element_type="widget" data-e-type="widget" data-widget_type="image.default">
 					<div class="lima-hero-wrapper">
 						<img src="/assets/Card1-front-1.webp" class="lima-static-mobile" alt="Pedro Lima Mobile Banner"
-							style="width: 100%; height: auto; display: none;" width="2560" height="1762" fetchpriority="high">
+							style="width: 100%; height: auto; display: none;" width="2560" height="1762" fetchpriority="high" srcset="/assets/Card1-front-1-480w.webp 480w, /assets/Card1-front-1-800w.webp 800w, /assets/Card1-front-1-1200w.webp 1200w, /assets/Card1-front-1-1600w.webp 1600w, /assets/Card1-front-1.webp 2000w" sizes="(max-width: 767px) 90vw, (max-width: 1024px) 90vw, 90vw">
 						<div class="lima-hero-parallax" id="limaParallax">
-							<img src="/assets/Lima_.webp" class="parallax-layer layer-back" data-speed="0.012"
-								alt="Lima Text" loading="lazy" decoding="async" width="1920" height="716">
-							<img src="/assets/IMG_8394 2.webp" class="parallax-layer layer-mid" data-speed="0.01"
-								alt="Pedro Lima" loading="lazy" decoding="async" width="1920" height="1322">
+							<img src="/assets/Lima_.webp" class="parallax-layer layer-back" loading="lazy" data-speed="0.012"
+								alt="Lima Text" decoding="async" width="1920" height="716" srcset="/assets/Lima_-480w.webp 480w, /assets/Lima_-800w.webp 800w, /assets/Lima_-1200w.webp 1200w, /assets/Lima_-1600w.webp 1600w, /assets/Lima_.webp 1920w" sizes="(max-width: 1024px) 91vw, 80vw">
+							<img src="/assets/IMG_8394 2.webp" class="parallax-layer layer-mid" loading="lazy" data-speed="0.01"
+								alt="Pedro Lima" decoding="async" width="1920" height="1322" srcset="/assets/IMG_8394%202-480w.webp 480w, /assets/IMG_8394%202-800w.webp 800w, /assets/IMG_8394%202-1200w.webp 1200w, /assets/IMG_8394%202-1600w.webp 1600w, /assets/IMG_8394%202.webp 1920w" sizes="(max-width: 1024px) 91vw, 80vw">
 							<img src="/assets/Brand Designer.svg" class="parallax-layer layer-front" data-speed="0.015"
 								alt="Brand Designer" loading="lazy" decoding="async" width="213" height="122">
 						</div>
@@ -814,7 +814,7 @@
 					data-widget_type="image.default">
 					<a href="/vex">
 						<img decoding="async" width="1536" height="857" src="/assets/Vex-1-1536x857.webp" loading="lazy"
-							class="attachment-1536x1536 size-1536x1536" alt="Identidade visual de VEX por Pedro Lima"> </a>
+							class="attachment-1536x1536 size-1536x1536" alt="Identidade visual de VEX por Pedro Lima" srcset="/assets/Vex-1-1536x857-480w.webp 480w, /assets/Vex-1-1536x857-800w.webp 800w, /assets/Vex-1-1536x857-1200w.webp 1200w, /assets/Vex-1-1536x857.webp 1536w" sizes="(max-width: 767px) 90vw, (max-width: 1024px) 91vw, 48vw"> </a>
 				</div>
 				<div class="elementor-element e-transform elementor-widget elementor-widget-image"
 					data-id="de4db98" data-element_type="widget" data-e-type="widget"
@@ -822,7 +822,7 @@
 					data-widget_type="image.default">
 					<a href="/conexion-idiomas">
 						<img decoding="async" width="1536" height="857" src="/assets/ConexionIdiomas-1-1536x857.webp" loading="lazy"
-							class="attachment-1536x1536 size-1536x1536" alt="Identidade visual de Conexión Idiomas por Pedro Lima"> </a>
+							class="attachment-1536x1536 size-1536x1536" alt="Identidade visual de Conexión Idiomas por Pedro Lima" srcset="/assets/ConexionIdiomas-1-1536x857-480w.webp 480w, /assets/ConexionIdiomas-1-1536x857-800w.webp 800w, /assets/ConexionIdiomas-1-1536x857-1200w.webp 1200w, /assets/ConexionIdiomas-1-1536x857.webp 1536w" sizes="(max-width: 767px) 90vw, (max-width: 1024px) 91vw, 48vw"> </a>
 				</div>
 				<div class="elementor-element e-transform elementor-widget elementor-widget-image"
 					data-id="de4db98" data-element_type="widget" data-e-type="widget"
@@ -830,7 +830,7 @@
 					data-widget_type="image.default">
 					<a href="/tais-veiga">
 						<img decoding="async" width="1536" height="857" src="/assets/TaisVeiga-1-1536x857.webp" loading="lazy"
-							class="attachment-1536x1536 size-1536x1536" alt="Identidade visual de Taís Veiga por Pedro Lima"> </a>
+							class="attachment-1536x1536 size-1536x1536" alt="Identidade visual de Taís Veiga por Pedro Lima" srcset="/assets/TaisVeiga-1-1536x857-480w.webp 480w, /assets/TaisVeiga-1-1536x857-800w.webp 800w, /assets/TaisVeiga-1-1536x857-1200w.webp 1200w, /assets/TaisVeiga-1-1536x857.webp 1536w" sizes="(max-width: 767px) 90vw, (max-width: 1024px) 91vw, 48vw"> </a>
 				</div>
 				<div class="elementor-element elementor-element-de4db98 e-transform elementor-widget elementor-widget-image"
 					data-id="de4db98" data-element_type="widget" data-e-type="widget"
@@ -838,7 +838,7 @@
 					data-widget_type="image.default">
 					<a href="/roger-nobles">
 						<img decoding="async" width="1536" height="857" src="/assets/RogerNobles-1-1536x857.webp" loading="lazy"
-							class="attachment-1536x1536 size-1536x1536 wp-image-303" alt="Identidade visual de Róger Nobles por Pedro Lima"> </a>
+							class="attachment-1536x1536 size-1536x1536 wp-image-303" alt="Identidade visual de Róger Nobles por Pedro Lima" srcset="/assets/RogerNobles-1-1536x857-480w.webp 480w, /assets/RogerNobles-1-1536x857-800w.webp 800w, /assets/RogerNobles-1-1536x857-1200w.webp 1200w, /assets/RogerNobles-1-1536x857-1600w.webp 1600w, /assets/RogerNobles-1-1536x857.webp 2032w" sizes="(max-width: 767px) 90vw, (max-width: 1024px) 91vw, 48vw"> </a>
 				</div>
 				<div class="elementor-element elementor-element-0527fd5 e-transform elementor-widget elementor-widget-image"
 					data-id="0527fd5" data-element_type="widget" data-e-type="widget"
@@ -846,7 +846,7 @@
 					data-widget_type="image.default">
 					<a href="/robison-kunz">
 						<img decoding="async" width="1536" height="857" src="/assets/RobisonKunz-1-1536x857.webp" loading="lazy"
-							class="attachment-1536x1536 size-1536x1536 wp-image-302" alt="Identidade visual de Robison Kunz por Pedro Lima"> </a>
+							class="attachment-1536x1536 size-1536x1536 wp-image-302" alt="Identidade visual de Robison Kunz por Pedro Lima" srcset="/assets/RobisonKunz-1-1536x857-480w.webp 480w, /assets/RobisonKunz-1-1536x857-800w.webp 800w, /assets/RobisonKunz-1-1536x857-1200w.webp 1200w, /assets/RobisonKunz-1-1536x857-1600w.webp 1600w, /assets/RobisonKunz-1-1536x857.webp 2000w" sizes="(max-width: 767px) 90vw, (max-width: 1024px) 91vw, 48vw"> </a>
 				</div>
 				<div class="elementor-element elementor-element-8cb6563 e-transform elementor-widget elementor-widget-image"
 					data-id="8cb6563" data-element_type="widget" data-e-type="widget"
@@ -854,7 +854,7 @@
 					data-widget_type="image.default">
 					<a href="/luna-sheeny">
 						<img decoding="async" width="1536" height="857" src="/assets/LunaSheeny-1-1536x857.webp" loading="lazy"
-							class="attachment-1536x1536 size-1536x1536 wp-image-299" alt="Identidade visual de Luna Sheeny por Pedro Lima"> </a>
+							class="attachment-1536x1536 size-1536x1536 wp-image-299" alt="Identidade visual de Luna Sheeny por Pedro Lima" srcset="/assets/LunaSheeny-1-1536x857-480w.webp 480w, /assets/LunaSheeny-1-1536x857-800w.webp 800w, /assets/LunaSheeny-1-1536x857-1200w.webp 1200w, /assets/LunaSheeny-1-1536x857-1600w.webp 1600w, /assets/LunaSheeny-1-1536x857.webp 2000w" sizes="(max-width: 767px) 90vw, (max-width: 1024px) 91vw, 48vw"> </a>
 				</div>
 				<div class="elementor-element elementor-element-fc0f3d6 e-transform elementor-widget elementor-widget-image"
 					data-id="fc0f3d6" data-element_type="widget" data-e-type="widget"
@@ -862,7 +862,7 @@
 					data-widget_type="image.default">
 					<a href="/priscila-elpo">
 						<img decoding="async" width="1536" height="857" src="/assets/PriscilaElpo-1-1536x857.webp" loading="lazy"
-							class="attachment-1536x1536 size-1536x1536 wp-image-301" alt="Identidade visual de Priscila Elpo por Pedro Lima"> </a>
+							class="attachment-1536x1536 size-1536x1536 wp-image-301" alt="Identidade visual de Priscila Elpo por Pedro Lima" srcset="/assets/PriscilaElpo-1-1536x857-480w.webp 480w, /assets/PriscilaElpo-1-1536x857-800w.webp 800w, /assets/PriscilaElpo-1-1536x857-1200w.webp 1200w, /assets/PriscilaElpo-1-1536x857-1600w.webp 1600w, /assets/PriscilaElpo-1-1536x857.webp 2000w" sizes="(max-width: 767px) 90vw, (max-width: 1024px) 91vw, 48vw"> </a>
 				</div>
 				<div class="elementor-element elementor-element-69bea9d e-transform elementor-widget elementor-widget-image"
 					data-id="69bea9d" data-element_type="widget" data-e-type="widget"
@@ -870,7 +870,7 @@
 					data-widget_type="image.default">
 					<a href="/martin-dahmer">
 						<img decoding="async" width="1536" height="857" src="/assets/MartinDahmer-1-1536x857.webp" loading="lazy"
-							class="attachment-1536x1536 size-1536x1536 wp-image-300" alt="Identidade visual de Martin Dahmer por Pedro Lima"> </a>
+							class="attachment-1536x1536 size-1536x1536 wp-image-300" alt="Identidade visual de Martin Dahmer por Pedro Lima" srcset="/assets/MartinDahmer-1-1536x857-480w.webp 480w, /assets/MartinDahmer-1-1536x857-800w.webp 800w, /assets/MartinDahmer-1-1536x857-1200w.webp 1200w, /assets/MartinDahmer-1-1536x857-1600w.webp 1600w, /assets/MartinDahmer-1-1536x857.webp 2032w" sizes="(max-width: 767px) 90vw, (max-width: 1024px) 91vw, 48vw"> </a>
 				</div>
 				<!-- OCULTO: Vitor dos Santos (identidade sendo refeita). Para reexibir, remova o comentário.
 				<div class="elementor-element elementor-element-4eaf10e e-transform elementor-widget elementor-widget-image"
@@ -895,7 +895,7 @@
 						Pedro <span class="degrade-lima-escuro">Lima</span>
 					</h2>
 					<div class="lima-sobre-image">
-						<img src="/assets/1738535223268_lima.webp" alt="Pedro Lima" loading="lazy" decoding="async" width="1536" height="1536">
+						<img src="/assets/1738535223268_lima.webp" alt="Pedro Lima" loading="lazy" decoding="async" width="1536" height="1536" srcset="/assets/1738535223268_lima-480w.webp 480w, /assets/1738535223268_lima-800w.webp 800w, /assets/1738535223268_lima-1200w.webp 1200w, /assets/1738535223268_lima.webp 1536w" sizes="(max-width: 767px) 90vw, (max-width: 1024px) 91vw, 40vw">
 					</div>
 					<p class="lima-sobre-text">
 						O design precisa mostrar quem as pessoas realmente são. Essência, verdade e personalidade. É isso que me move.<br><br>
@@ -952,28 +952,28 @@
 				<div class="lima-feedbacks-container">
 					<div class="lima-feedbacks-track" id="feedbacks-track">
 						<div class="lima-feedback-card">
-							<img src="/assets/Feedbacks/1.webp" alt="Feedback 1" loading="lazy" decoding="async" class="lima-lightbox-trigger" width="1080" height="1920">
+							<img src="/assets/Feedbacks/1.webp" alt="Feedback 1" loading="lazy" decoding="async" class="lima-lightbox-trigger" width="1080" height="1920" srcset="/assets/Feedbacks/1-480w.webp 480w, /assets/Feedbacks/1-800w.webp 800w, /assets/Feedbacks/1.webp 1080w" sizes="(max-width: 767px) 80vw, (max-width: 1024px) 80vw, 28vw">
 						</div>
 						<div class="lima-feedback-card">
-							<img src="/assets/Feedbacks/2.webp" alt="Feedback 2" loading="lazy" decoding="async" class="lima-lightbox-trigger" width="1080" height="1920">
+							<img src="/assets/Feedbacks/2.webp" alt="Feedback 2" loading="lazy" decoding="async" class="lima-lightbox-trigger" width="1080" height="1920" srcset="/assets/Feedbacks/2-480w.webp 480w, /assets/Feedbacks/2-800w.webp 800w, /assets/Feedbacks/2.webp 1080w" sizes="(max-width: 767px) 80vw, (max-width: 1024px) 80vw, 28vw">
 						</div>
 						<div class="lima-feedback-card">
-							<img src="/assets/Feedbacks/3.webp" alt="Feedback 3" loading="lazy" decoding="async" class="lima-lightbox-trigger" width="1080" height="1920">
+							<img src="/assets/Feedbacks/3.webp" alt="Feedback 3" loading="lazy" decoding="async" class="lima-lightbox-trigger" width="1080" height="1920" srcset="/assets/Feedbacks/3-480w.webp 480w, /assets/Feedbacks/3-800w.webp 800w, /assets/Feedbacks/3.webp 1080w" sizes="(max-width: 767px) 80vw, (max-width: 1024px) 80vw, 28vw">
 						</div>
 						<div class="lima-feedback-card">
-							<img src="/assets/Feedbacks/4.webp" alt="Feedback 4" loading="lazy" decoding="async" class="lima-lightbox-trigger" width="1080" height="1920">
+							<img src="/assets/Feedbacks/4.webp" alt="Feedback 4" loading="lazy" decoding="async" class="lima-lightbox-trigger" width="1080" height="1920" srcset="/assets/Feedbacks/4-480w.webp 480w, /assets/Feedbacks/4-800w.webp 800w, /assets/Feedbacks/4.webp 1080w" sizes="(max-width: 767px) 80vw, (max-width: 1024px) 80vw, 28vw">
 						</div>
 						<div class="lima-feedback-card">
-							<img src="/assets/Feedbacks/5.webp" alt="Feedback 5" loading="lazy" decoding="async" class="lima-lightbox-trigger" width="1080" height="1920">
+							<img src="/assets/Feedbacks/5.webp" alt="Feedback 5" loading="lazy" decoding="async" class="lima-lightbox-trigger" width="1080" height="1920" srcset="/assets/Feedbacks/5-480w.webp 480w, /assets/Feedbacks/5-800w.webp 800w, /assets/Feedbacks/5.webp 1080w" sizes="(max-width: 767px) 80vw, (max-width: 1024px) 80vw, 28vw">
 						</div>
 						<div class="lima-feedback-card">
 							<picture>
 								<source media="(max-width: 1024px)" srcset="/assets/Feedbacks/katiuscia_mobile.webp">
-								<img src="/assets/Feedbacks/katiuscia_desktop.webp" alt="Feedback Katiuscia" loading="lazy" decoding="async" class="lima-lightbox-trigger" width="1080" height="1080">
+								<img src="/assets/Feedbacks/katiuscia_desktop.webp" alt="Feedback Katiuscia" loading="lazy" decoding="async" class="lima-lightbox-trigger" width="1080" height="1080" srcset="/assets/Feedbacks/katiuscia_desktop-480w.webp 480w, /assets/Feedbacks/katiuscia_desktop-800w.webp 800w, /assets/Feedbacks/katiuscia_desktop.webp 1080w" sizes="(max-width: 767px) 80vw, (max-width: 1024px) 80vw, 28vw">
 							</picture>
 						</div>
 						<div class="lima-feedback-card">
-							<img src="/assets/Feedbacks/tais-veiga.webp" alt="Feedback Taís Veiga" loading="lazy" decoding="async" class="lima-lightbox-trigger" width="1080" height="1920">
+							<img src="/assets/Feedbacks/tais-veiga.webp" alt="Feedback Taís Veiga" loading="lazy" decoding="async" class="lima-lightbox-trigger" width="1080" height="1920" srcset="/assets/Feedbacks/tais-veiga-480w.webp 480w, /assets/Feedbacks/tais-veiga-800w.webp 800w, /assets/Feedbacks/tais-veiga.webp 1080w" sizes="(max-width: 767px) 80vw, (max-width: 1024px) 80vw, 28vw">
 						</div>
 					</div>
 				</div>
@@ -1262,7 +1262,7 @@
 		});
 	</script>
 
-	<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js" defer></script>
+	<script src="/js/lenis.min.js" defer></script>
 	<script>
 		document.addEventListener('DOMContentLoaded', function () {
 		if (!window.Lenis) return;
@@ -1460,7 +1460,8 @@
 			if (lightbox && lightboxImg && lightboxClose) {
 				document.addEventListener('click', function(e) {
 					if (e.target && e.target.classList.contains('lima-lightbox-trigger')) {
-						lightboxImg.src = e.target.currentSrc || e.target.src;
+						// srcset entrega versão reduzida no card; o lightbox abre sempre o arquivo original
+						lightboxImg.src = e.target.closest('picture') ? (e.target.currentSrc || e.target.src) : e.target.src;
 						lightbox.classList.add('is-active');
 						document.body.style.overflow = 'hidden';
 					}

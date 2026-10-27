@@ -1,5 +1,10 @@
 /* Design System */
-@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
+/* Bootstrap Icons — subset local só com os glifos usados no player (play/pause).
+   Substitui o @import do CDN (85KB CSS + 128KB fonte, bloqueava a renderização). */
+@font-face{font-display:block;font-family:bootstrap-icons;src:url("../assets/Fontes/bootstrap-icons-player.woff2") format("woff2")}
+.bi::before,[class*=" bi-"]::before,[class^=bi-]::before{display:inline-block;font-family:bootstrap-icons!important;font-style:normal;font-weight:400!important;font-variant:normal;text-transform:none;line-height:1;vertical-align:-.125em;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+.bi-pause-fill::before{content:"\f4c3"}
+.bi-play-fill::before{content:"\f4f4"}
 
 :root {
     /* EM FUNDOS ESCUROS */
@@ -316,6 +321,11 @@ html.lenis body {
 
 /* Mobile Fallback: Mostra estático e tira parallax */
 @media (max-width: 768px) {
+    /* Fundo desfocado: versão 1280px é visualmente idêntica no celular (18KB vs 136KB) */
+    .layer-bg {
+        background-image: url('../assets/Card1-background-1280w.webp');
+    }
+
     .lima-hero-parallax {
         display: none !important;
     }
