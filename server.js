@@ -58,9 +58,15 @@ const projects = [
     'martin-dahmer',
     'priscila-elpo',
     'robison-kunz',
-    'roger-nobles',
-    'vitor-dos-santos'
+    'roger-nobles'
 ];
+
+// Projetos temporariamente fora do ar (arquivos mantidos em views/ e assets/).
+// Para reativar: mova o slug de volta para `projects` e descomente o card na home.
+const hiddenProjects = ['vitor-dos-santos'];
+hiddenProjects.forEach(project => {
+    app.get('/' + project, (req, res) => res.redirect(302, '/'));
+});
 
 projects.forEach(project => {
     app.get('/' + project, (req, res) => {
@@ -77,8 +83,7 @@ app.get('/sitemap.xml', (req, res) => {
         'martin-dahmer': '2026-07-23',
         'priscila-elpo': '2026-07-23',
         'robison-kunz': '2026-07-23',
-        'roger-nobles': '2026-07-23',
-        'vitor-dos-santos': '2026-07-23'
+        'roger-nobles': '2026-07-23'
     };
 
     const urls = [
