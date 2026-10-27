@@ -12,6 +12,9 @@
        ================================================================ */
 
     var PROJECT_IMAGES = {
+        '/vex': ['/assets/vex-1.webp', '/assets/vex-2.webp', '/assets/vex-3.webp', '/assets/vex-4.webp', '/assets/vex-6.webp'],
+        '/conexion-idiomas': ['/assets/conexion-idiomas-video-poster.webp', '/assets/conexion-idiomas-2.webp', '/assets/conexion-idiomas-3.webp', '/assets/conexion-idiomas-4.webp', '/assets/conexion-idiomas-6.webp'],
+        '/tais-veiga': ['/assets/tais-veiga-1.webp', '/assets/tais-veiga-2.webp', '/assets/tais-veiga-3.webp', '/assets/tais-veiga-4.webp', '/assets/tais-veiga-5.webp'],
         '/roger-nobles': ['/assets/roger-nobles-1.webp', '/assets/roger-nobles-2.webp', '/assets/roger-nobles-5.webp', '/assets/roger-nobles-4.webp', '/assets/roger-nobles-6.webp', '/assets/roger-nobles-3.webp', '/assets/roger-nobles-7.webp'],
         '/robison-kunz': ['/assets/robison-kunz-1.webp', '/assets/robison-kunz-2.webp', '/assets/robison-kunz-3.webp', '/assets/robison-kunz-4.webp', '/assets/robison-kunz-6.webp'],
         '/luna-sheeny': ['/assets/luna-sheeny-2.webp', '/assets/luna-sheeny-3.webp', '/assets/luna-sheeny-4.webp', '/assets/luna-sheeny-5.webp', '/assets/luna-sheeny-6.webp', '/assets/luna-sheeny-7.webp'],

@@ -54,6 +54,9 @@ app.get('/', (req, res) => {
 
 // Setup routes for projects
 const projects = [
+    'vex',
+    'conexion-idiomas',
+    'tais-veiga',
     'luna-sheeny',
     'martin-dahmer',
     'priscila-elpo',
@@ -78,7 +81,10 @@ projects.forEach(project => {
 app.get('/sitemap.xml', (req, res) => {
     const baseUrl = 'https://brand.1pedrolima.com';
     const pageLastMod = {
-        '/': '2026-10-10',
+        '/': '2026-10-27',
+        'vex': '2026-10-27',
+        'conexion-idiomas': '2026-10-27',
+        'tais-veiga': '2026-10-27',
         'luna-sheeny': '2026-07-23',
         'martin-dahmer': '2026-07-23',
         'priscila-elpo': '2026-07-23',
